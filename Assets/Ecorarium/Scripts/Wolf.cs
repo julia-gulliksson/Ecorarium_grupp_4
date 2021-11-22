@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Wolf : MonoBehaviour
 {
-    [SerializeField] float speed = 10f;
+    [SerializeField] float speed = 6f;
     [SerializeField] Transform target;
     void Start()
     {
@@ -17,6 +17,15 @@ public class Wolf : MonoBehaviour
         {
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, transform.position.y, target.position.z), step);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        if (collision.transform.CompareTag("SheepEnclosure"))
+        {
+            GameEventsManager.current.WolfCollided();
         }
     }
 }
