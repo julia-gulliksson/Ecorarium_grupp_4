@@ -34,7 +34,20 @@ public class WolfSpawn : MonoBehaviour
         {
             float x = Random.Range(plusX, minusX);
             Vector3 targetPoint = new Vector3(x, sheepEnclosure.position.y, sheepEnclosure.position.z);
-            targetPoints.Add(targetPoint);
+            bool isTooClose = false;
+
+            for (int i = 0; i < targetPoints.Count; i++)
+            {
+                if (Vector3.Distance(targetPoints[i], targetPoint) < 1f)
+                {
+                    isTooClose = true;
+                }
+            }
+            if (!isTooClose)
+            {
+                targetPoints.Add(targetPoint);
+
+            }
             yield return null;
         }
     }
