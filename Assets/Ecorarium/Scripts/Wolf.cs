@@ -19,13 +19,4 @@ public class Wolf : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, transform.position.y, target.position.z), step);
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.gameObject.name);
-        if (collision.transform.CompareTag("SheepEnclosure"))
-        {
-            GameEventsManager.current.WolfCollided();
-        }
-    }
 }
