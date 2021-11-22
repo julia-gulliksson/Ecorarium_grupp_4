@@ -7,10 +7,36 @@ public class WolfSpawn : MonoBehaviour
     [SerializeField] GameObject wolf;
     private List<GameObject> wolves = new List<GameObject>();
     [SerializeField] float waifForSeconds = 0.2f;
+    [SerializeField] Transform sheepEnclosure;
+    private List<Vector3> targetPoints = new List<Vector3>();
 
     void Start()
     {
-        StartCoroutine(SpawnWolves());
+        StartCoroutine(CreateTargetPoints());
+    }
+
+
+
+    private void Update()
+    {
+        if (targetPoints.Count == 10)
+        {
+            StartCoroutine(SpawnWolves());
+        }
+    }
+
+    IEnumerator CreateTargetPoints()
+    {
+        float centerX = sheepEnclosure.localScale.x / 2;
+        float plusX = sheepEnclosure.position.x + centerX;
+        float minusX = sheepEnclosure.position.x - centerX;
+        while (targetPoints.Count < 10)
+        {
+            float x = Random.Range(plusX, minusX);
+            Vector3 targetPoint = new Vector3(x, sheepEnclosure.position.y, sheepEnclosure.position.z);
+            targetPoints.Add(targetPoint);
+            yield return null;
+        }
     }
 
     IEnumerator SpawnWolves()
@@ -34,9 +60,18 @@ public class WolfSpawn : MonoBehaviour
 
             if (!isTooClose)
             {
-                GameObject cloudObj = Instantiate(wolf, positioning, Quaternion.identity);
-                wolves.Add(cloudObj);
+                GameObject wolfObj = Instantiate(wolf, positioning, Quaternion.identity);
+                Wolf wolfScript = wolfObj.GetComponent<Wolf>();
+                Debug.Log(targetPoints[0]);
+
+                wolves.Add(wolfObj);
+                int wolfIndex = wolves.FindIndex(w => w == wolfObj);
+                wolfScript.targetPoint = targetPoints[wolfIndex];
+                targetPoints.Remove(targetPoints[wolfIndex]);
+                targetPoints.ForEach(t => Debug.Log(t + " TARGET POINT"));
+                Debug.Log(targetPoints.Count + " TAGET POINT COUNT");
             }
+
 
             yield return new WaitForSeconds(waifForSeconds);
         }

@@ -11,7 +11,7 @@ public class SheepEnclosure : MonoBehaviour
     private void Start()
     {
         positioning = new GameObject("Positioning");
-        StartCoroutine(CreateTransformPoints());
+        //StartCoroutine(CreateTransformPoints());
     }
 
     IEnumerator CreateTransformPoints()

@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &582174863 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9167185678379683744, guid: b6f54216586955c42ac52d8abdea2634, type: 3}
+  m_PrefabInstance: {fileID: 1632902073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1110287100
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,3 +507,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wolf: {fileID: 379894836497156008, guid: a5c90bec66dbe9c46b34b4fd2004e21b, type: 3}
   waifForSeconds: 0.2
+  sheepEnclosure: {fileID: 582174863}
