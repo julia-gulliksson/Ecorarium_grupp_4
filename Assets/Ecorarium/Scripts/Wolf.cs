@@ -6,10 +6,6 @@ public class Wolf : MonoBehaviour
 {
     [SerializeField] float speed = 6f;
     [SerializeField] Transform target;
-    void Start()
-    {
-
-    }
 
     void Update()
     {
