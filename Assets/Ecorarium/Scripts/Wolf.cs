@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Wolf : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] float speed = 10f;
+    [SerializeField] Transform target;
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Vector3.Distance(transform.position, target.position) > 0.5f)
+        {
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, transform.position.y, target.position.z), step);
+        }
     }
 }
