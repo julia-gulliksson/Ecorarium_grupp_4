@@ -4,30 +4,23 @@ using UnityEngine;
 
 public class SheepEnclosure : MonoBehaviour
 {
-
-    GameObject positioning;
     int wolvesAttacking = 0;
-    int health;
-
-    private void Start()
-    {
-        positioning = new GameObject("Positioning");
-        //StartCoroutine(CreateTransformPoints());
-    }
+    int health = 100;
+    bool isHealthTicking = false;
 
     private void OnEnable()
     {
-        GameEventsManager.current.onWolfCollide += DetectWolves;
+        GameEventsManager.current.onWolfCollide += IncrementWolvesAttacking;
     }
 
     private void OnDisable()
     {
-        GameEventsManager.current.onWolfCollide -= DetectWolves;
+        GameEventsManager.current.onWolfCollide -= IncrementWolvesAttacking;
     }
 
-    void DetectWolves(bool found)
+    void IncrementWolvesAttacking(bool attacking)
     {
-        if (found)
+        if (attacking)
         {
             wolvesAttacking++;
         }
@@ -35,25 +28,28 @@ public class SheepEnclosure : MonoBehaviour
         {
             wolvesAttacking--;
         }
-
-        Debug.Log(wolvesAttacking + " collisions");
+        if (!isHealthTicking)
+        {
+            StartCoroutine(DoDamage());
+        }
     }
 
-    IEnumerator CreateTransformPoints()
+    IEnumerator DoDamage()
     {
-        Debug.Log(transform.position + " POSITION");
-        Debug.Log(transform.localScale + " SCALE");
-        float centerX = transform.localScale.x / 2;
-        float plusX = transform.position.x + centerX;
-        float minusX = transform.position.x - centerX;
-        Debug.Log(transform.position.x + " POSITION X");
-        Debug.Log(centerX + "CENTER X");
-        for (int i = 0; i < 10; i++)
+        isHealthTicking = true;
+        if (wolvesAttacking > 0)
         {
-            float x = Random.Range(plusX, minusX);
-            Debug.Log(x + " XXX");
-            Instantiate(positioning, new Vector3(x, transform.position.y, transform.position.z), Quaternion.identity);
-            yield return null;
+            while (wolvesAttacking > 0 && health > 0)
+            {
+                Debug.Log("Wolves attacking");
+                health--;
+                Debug.Log(health + " HEALTH");
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+        else
+        {
+            isHealthTicking = false;
         }
     }
 }

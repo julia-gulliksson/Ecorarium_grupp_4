@@ -13,7 +13,6 @@ public class Wolf : MonoBehaviour
     [SerializeField] LayerMask hitMask;
     bool moving;
     bool hasCollided = false;
-    int id;
 
     void Update()
     {
@@ -42,6 +41,11 @@ public class Wolf : MonoBehaviour
             if (hasCollided == true) GameEventsManager.current.WolfFoundTarget(false);
             hasCollided = false;
         }
+    }
+
+    private void OnDestroy()
+    {
+        if (hasCollided == true) GameEventsManager.current.WolfFoundTarget(false);
     }
 
     private void Move()
