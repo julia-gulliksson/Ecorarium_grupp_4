@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,12 +12,15 @@ public class Wolf : MonoBehaviour
     [SerializeField] float range = 2;
     [SerializeField] LayerMask hitMask;
     bool moving;
+    bool hasCollided = false;
+    int id;
 
     void Update()
     {
         DetectFence();
         Move();
     }
+
 
     void DetectFence()
     {
@@ -25,12 +29,18 @@ public class Wolf : MonoBehaviour
 
         if (Physics.Raycast(transform.position, forward, out hit, range, hitMask))
         {
-            //Debug.Log(hit.transform.name);
             moving = false;
+            //TODO: Check if wolf is close enough, call event then
+
+            if (hasCollided == false) GameEventsManager.current.WolfFoundTarget(true);
+            hasCollided = true;
+
         }
         else
         {
             moving = true;
+            if (hasCollided == true) GameEventsManager.current.WolfFoundTarget(false);
+            hasCollided = false;
         }
     }
 

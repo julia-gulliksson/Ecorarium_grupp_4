@@ -5,13 +5,38 @@ using UnityEngine;
 public class SheepEnclosure : MonoBehaviour
 {
 
-    private int wolfCollisions;
     GameObject positioning;
+    int wolvesAttacking = 0;
+    int health;
 
     private void Start()
     {
         positioning = new GameObject("Positioning");
         //StartCoroutine(CreateTransformPoints());
+    }
+
+    private void OnEnable()
+    {
+        GameEventsManager.current.onWolfCollide += DetectWolves;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.current.onWolfCollide -= DetectWolves;
+    }
+
+    void DetectWolves(bool found)
+    {
+        if (found)
+        {
+            wolvesAttacking++;
+        }
+        else
+        {
+            wolvesAttacking--;
+        }
+
+        Debug.Log(wolvesAttacking + " collisions");
     }
 
     IEnumerator CreateTransformPoints()
@@ -29,15 +54,6 @@ public class SheepEnclosure : MonoBehaviour
             Debug.Log(x + " XXX");
             Instantiate(positioning, new Vector3(x, transform.position.y, transform.position.z), Quaternion.identity);
             yield return null;
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        wolfCollisions++;
-        if (wolfCollisions >= 10)
-        {
-            Debug.Log("Complete");
         }
     }
 }
