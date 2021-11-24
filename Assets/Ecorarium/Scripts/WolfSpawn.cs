@@ -9,46 +9,46 @@ public class WolfSpawn : MonoBehaviour
     [SerializeField] float waifForSeconds = 0.2f;
     [SerializeField] Transform sheepEnclosure;
     private List<Vector3> targetPoints = new List<Vector3>();
+    float centerX;
+    float plusX;
+    float minusX;
 
     void Start()
     {
+        centerX = sheepEnclosure.localScale.x / 2;
+        plusX = sheepEnclosure.position.x + centerX;
+        minusX = sheepEnclosure.position.x - centerX;
         StartCoroutine(CreateTargetPoints());
-    }
-
-
-
-    private void Update()
-    {
-        if (targetPoints.Count == 10)
-        {
-            StartCoroutine(SpawnWolves());
-        }
     }
 
     IEnumerator CreateTargetPoints()
     {
-        float centerX = sheepEnclosure.localScale.x / 2;
-        float plusX = sheepEnclosure.position.x + centerX;
-        float minusX = sheepEnclosure.position.x - centerX;
+
         while (targetPoints.Count < 10)
         {
             float x = Random.Range(plusX, minusX);
             Vector3 targetPoint = new Vector3(x, sheepEnclosure.position.y, sheepEnclosure.position.z);
-            bool isTooClose = false;
 
-            for (int i = 0; i < targetPoints.Count; i++)
+            foreach (Vector3 point in targetPoints)
             {
-                if (Vector3.Distance(targetPoints[i], targetPoint) < 1f)
+                if (Vector3.Distance(point, targetPoint) < 1f)
                 {
-                    isTooClose = true;
+                    // Too close to another point, wait for next frame and start from the beginning
+                    yield return null;
                 }
             }
-            if (!isTooClose)
-            {
-                targetPoints.Add(targetPoint);
 
+            targetPoints.Add(targetPoint);
+
+            if (targetPoints.Count == 10)
+            {
+                // All target point spots are created, begin spawning wolves
+                yield return StartCoroutine(SpawnWolves());
             }
-            yield return null;
+            else
+            {
+                yield return null;
+            }
         }
     }
 
@@ -61,31 +61,23 @@ public class WolfSpawn : MonoBehaviour
             float z = Random.Range(-10, 10);
             Vector3 positioning = new Vector3(x, y, z);
 
-            bool isTooClose = false;
-
-            for (int i = 0; i < wolves.Count; i++)
+            foreach (GameObject wolf in wolves)
             {
-                if (Vector3.Distance(wolves[i].transform.position, positioning) < 0.4f)
+                if (Vector3.Distance(wolf.transform.position, positioning) < 0.4f)
                 {
-                    isTooClose = true;
+                    // Too close to another wolf, wait for next frame and start from the beginning
+                    yield return null;
                 }
             }
 
-            if (!isTooClose)
-            {
-                GameObject wolfObj = Instantiate(wolf, positioning, Quaternion.identity);
-                Wolf wolfScript = wolfObj.GetComponent<Wolf>();
-                Debug.Log(targetPoints[0]);
+            GameObject wolfObj = Instantiate(wolf, positioning, Quaternion.identity);
+            Wolf wolfScript = wolfObj.GetComponent<Wolf>();
 
-                wolves.Add(wolfObj);
-                int wolfIndex = wolves.FindIndex(w => w == wolfObj);
-                wolfScript.targetPoint = targetPoints[wolfIndex];
-                targetPoints.Remove(targetPoints[wolfIndex]);
-                targetPoints.ForEach(t => Debug.Log(t + " TARGET POINT"));
-                Debug.Log(targetPoints.Count + " TAGET POINT COUNT");
-            }
-
-
+            wolves.Add(wolfObj);
+            // Assign a targetPoint to the wolf
+            wolfScript.targetPoint = targetPoints[0];
+            // Remove targetPoint in list, since no other wolves should get this targetPoint
+            targetPoints.Remove(targetPoints[0]);
             yield return new WaitForSeconds(waifForSeconds);
         }
     }
