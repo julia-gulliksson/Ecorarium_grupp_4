@@ -6,18 +6,11 @@ public class Wolf : MonoBehaviour
 {
     [SerializeField] float speed = 6f;
     public Vector3 targetPoint;
-    [SerializeField] Transform target;
+    //[SerializeField] Transform target;
     RaycastHit hit;
     [SerializeField] float range = 2;
     [SerializeField] LayerMask hitMask;
     bool moving;
-    Vector3 originalUp;
-
-    private void Start()
-    {
-        originalUp = transform.up;
-
-    }
 
     void Update()
     {
@@ -47,9 +40,9 @@ public class Wolf : MonoBehaviour
         if (moving)
         {
             float step = speed * Time.deltaTime;
-            Vector3 targetPostition = new Vector3(target.position.x, transform.position.y, target.position.z);
+            Vector3 targetPostition = new Vector3(targetPoint.x, transform.position.y, targetPoint.z);
             transform.LookAt(targetPostition);
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, transform.position.y, target.position.z), step);
+            transform.position = Vector3.MoveTowards(transform.position, targetPostition, step);
         }
     }
 }

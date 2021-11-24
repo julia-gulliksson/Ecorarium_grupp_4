@@ -18,7 +18,7 @@ public class WolfSpawn : MonoBehaviour
         centerX = sheepEnclosure.localScale.x / 2;
         plusX = sheepEnclosure.position.x + centerX;
         minusX = sheepEnclosure.position.x - centerX;
-        //StartCoroutine(CreateTargetPoints());
+        StartCoroutine(CreateTargetPoints());
     }
 
     IEnumerator CreateTargetPoints()
