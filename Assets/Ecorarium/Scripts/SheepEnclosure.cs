@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SheepEnclosure : MonoBehaviour
 {
     int wolvesAttacking = 0;
     int health = 100;
     bool isHealthTicking = false;
+    [SerializeField] TMP_Text healthUI;
 
     private void OnEnable()
     {
@@ -41,10 +43,9 @@ public class SheepEnclosure : MonoBehaviour
         {
             while (wolvesAttacking > 0 && health > 0)
             {
-                Debug.Log("Wolves attacking");
                 health--;
-                Debug.Log(health + " HEALTH");
-                yield return new WaitForSeconds(0.5f);
+                healthUI.text = health.ToString();
+                yield return new WaitForSeconds(0.7f / wolvesAttacking);
             }
         }
         else
