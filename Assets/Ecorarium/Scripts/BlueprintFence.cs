@@ -8,14 +8,17 @@ public class BlueprintFence : MonoBehaviour
     Vector3 movePoint;
 
     Transform childeTransform;
+    bool adjustRotationOnce;
 
     public LayerMask placeable;
     public float speed = 720;
     public GameObject prefab;
 
+
     // Start is called before the first frame update
     void Start()
     {
+        adjustRotationOnce = true;
         childeTransform = transform.GetChild(0);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -56,21 +59,30 @@ public class BlueprintFence : MonoBehaviour
         Transform snapPointTwo = hit.transform.GetChild(1);
         float distanceOne = Vector3.Distance(hit.point, snapPointOne.position);
         float distanceTwo = Vector3.Distance(hit.point, snapPointTwo.position);
+        if (adjustRotationOnce)
+        {
+            transform.rotation = hit.transform.rotation;
+            adjustRotationOnce = false;
+        }
+
         print("1: "+snapPointOne.name + "\n2: " + snapPointTwo.name);
         if (distanceOne < distanceTwo)
         {
             transform.position = snapPointOne.position;
             childeTransform.localPosition = new Vector3(2.5f, 0.0f, 0f);
+            
         }
         else if(distanceOne > distanceTwo)
         {
             transform.position = snapPointTwo.position;
             childeTransform.localPosition = new Vector3(-2.5f, 0.0f, 0f);
+            
         }
     }
     private void Unsnap()
     {
         childeTransform.localPosition = new Vector3(0, 0.5f, 0f);
         transform.position = hit.point;
+        adjustRotationOnce = true;
     }
 }

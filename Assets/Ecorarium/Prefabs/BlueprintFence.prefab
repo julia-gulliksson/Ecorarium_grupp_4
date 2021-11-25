@@ -131,5 +131,5 @@ MonoBehaviour:
   placeable:
     serializedVersion: 2
     m_Bits: 64
-  speed: 7200
+  speed: 14400
   prefab: {fileID: 4155817381621492062, guid: 4dac0643857c74443a65424359defd92, type: 3}
