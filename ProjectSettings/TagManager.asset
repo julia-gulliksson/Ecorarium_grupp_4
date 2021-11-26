@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fence
   - Ground
+  - SheepEnclosure
   layers:
   - Default
   - TransparentFX
@@ -14,6 +15,7 @@ TagManager:
   - Water
   - UI
   - Walkable
+  - Fence
   - 
   - 
   - 
