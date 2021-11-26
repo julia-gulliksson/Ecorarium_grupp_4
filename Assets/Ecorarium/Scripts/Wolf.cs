@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Wolf : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class Wolf : MonoBehaviour
     [SerializeField] LayerMask hitMask;
     bool moving;
     bool hasCollided = false;
+    NavMeshAgent navMeshAgent;
+
+    void Start()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }
 
     void Update()
     {
@@ -53,10 +60,16 @@ public class Wolf : MonoBehaviour
 
         if (moving)
         {
-            float step = speed * Time.deltaTime;
-            Vector3 targetPostition = new Vector3(targetPoint.x, transform.position.y, targetPoint.z);
-            transform.LookAt(targetPostition);
-            transform.position = Vector3.MoveTowards(transform.position, targetPostition, step);
+            navMeshAgent.destination = targetPoint;
+
+            //float step = speed * Time.deltaTime;
+            //Vector3 targetPostition = new Vector3(targetPoint.x, transform.position.y, targetPoint.z);
+            //transform.LookAt(targetPostition);
+            //transform.position = Vector3.MoveTowards(transform.position, targetPostition, step);
+        }
+        else
+        {
+            navMeshAgent.destination = transform.position;
         }
     }
 }

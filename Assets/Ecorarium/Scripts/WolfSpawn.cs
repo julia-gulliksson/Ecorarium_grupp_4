@@ -56,7 +56,7 @@ public class WolfSpawn : MonoBehaviour
         {
             float x = UnityEngine.Random.Range(-10, 10);
             float y = 0.5f;
-            float z = UnityEngine.Random.Range(-10, 10);
+            float z = UnityEngine.Random.Range(-40, -30);
             Vector3 positioning = new Vector3(x, y, z);
 
             bool tooClose = false;
