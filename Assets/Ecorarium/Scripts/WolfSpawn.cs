@@ -9,6 +9,7 @@ public class WolfSpawn : MonoBehaviour
     private List<GameObject> wolves = new List<GameObject>();
     [SerializeField] Transform sheepEnclosure;
     private List<Vector3> targetPoints = new List<Vector3>();
+    [SerializeField] int nrOfWolves = 1;
     float centerX;
     float plusX;
     float minusX;
@@ -23,7 +24,7 @@ public class WolfSpawn : MonoBehaviour
 
     IEnumerator CreateTargetPoints()
     {
-        while (targetPoints.Count < 10)
+        while (targetPoints.Count < nrOfWolves)
         {
             float x = UnityEngine.Random.Range(plusX, minusX);
             Vector3 targetPoint = new Vector3(x, sheepEnclosure.position.y, sheepEnclosure.position.z);
@@ -35,10 +36,14 @@ public class WolfSpawn : MonoBehaviour
                     tooClose = true;
                 }
             }
-            if (!tooClose) targetPoints.Add(targetPoint);
+            if (!tooClose)
+            {
+
+                targetPoints.Add(targetPoint);
+            }
 
 
-            if (targetPoints.Count == 10)
+            if (targetPoints.Count == nrOfWolves)
             {
                 // All target point spots are created, begin spawning wolves
                 yield return StartCoroutine(SpawnWolves());
@@ -52,7 +57,7 @@ public class WolfSpawn : MonoBehaviour
 
     IEnumerator SpawnWolves()
     {
-        while (wolves.Count < 10)
+        while (wolves.Count < nrOfWolves)
         {
             float x = UnityEngine.Random.Range(-10, 10);
             float y = 0.5f;

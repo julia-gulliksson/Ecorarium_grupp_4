@@ -19,6 +19,7 @@ public class Wolf : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.speed = speed;
     }
 
     void Update()
@@ -35,8 +36,18 @@ public class Wolf : MonoBehaviour
 
         if (Physics.Raycast(transform.position, forward, out hit, range, hitMask))
         {
+
+
+            Vector3 direction = hit.point - transform.position;
+            Debug.DrawRay(transform.position, direction, Color.red);
+            float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            Debug.Log(angle + " ANGLE");
+            if (angle != 0)
+            {
+                Quaternion angleAxis = Quaternion.AngleAxis(0, Vector3.up);
+                transform.rotation = Quaternion.Slerp(transform.rotation, angleAxis, Time.deltaTime * 10);
+            }
             moving = false;
-            //TODO: Check if wolf is close enough, call event then
 
             if (hasCollided == false) GameEventsManager.current.WolfFoundTarget(true);
             hasCollided = true;
