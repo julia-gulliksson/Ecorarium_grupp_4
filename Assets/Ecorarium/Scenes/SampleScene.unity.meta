@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 9fc0d4010bbf28b4594072e72b8655ab
+<<<<<<< HEAD:Assets/Ecorarium/Scenes/DevRickSheeps.unity.meta
+guid: 281a09947d5b1914e8f270af664c337e
+=======
+guid: 626ed05967b79fd43b438e23fe0abb32
+>>>>>>> develop:Assets/Ecorarium/Scenes/SampleScene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
