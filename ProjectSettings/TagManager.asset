@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Fence
+  - Ground
   - SheepEnclosure
   layers:
   - Default
@@ -12,6 +14,7 @@ TagManager:
   - 
   - Water
   - UI
+  - Walkable
   - Fence
   - 
   - 
