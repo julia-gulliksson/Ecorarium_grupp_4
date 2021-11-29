@@ -1210,7 +1210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
       propertyPath: nrOfWolves
-      value: 12
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1542121967731945669, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
       propertyPath: m_RootOrder
@@ -1261,8 +1261,12 @@ PrefabInstance:
       value: -1.44
       objectReference: {fileID: 0}
     - target: {fileID: 7618430588529802179, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618430588529802179, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.78
+      value: -31.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
