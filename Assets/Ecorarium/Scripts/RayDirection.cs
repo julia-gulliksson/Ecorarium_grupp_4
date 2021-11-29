@@ -2,27 +2,21 @@ using UnityEngine;
 public class RayDirection
 {
     private Ray ray;
-    public Direction direction;
     public RaycastHit hit;
-    float range = 4;
+    float range;
     Vector3 targetPoint;
-    float hitDistance = 2;
+    float hitDistance = 4;
     LayerMask hitMask;
 
-    public RayDirection(Ray rayCast, Direction directionToFace, Vector3 target, LayerMask mask)
+    public RayDirection(Ray rayCast, Vector3 target, LayerMask mask, float rayRange)
     {
         ray = rayCast;
-        direction = directionToFace;
         targetPoint = target;
         hitMask = mask;
+        range = rayRange;
     }
 
-    public void DrawDebugRay()
-    {
-        Debug.DrawRay(ray.origin, ray.direction, Color.red);
-    }
-
-    public bool CastRay()
+    public bool TargetFound()
     {
         if (Physics.Raycast(ray, out hit, range, hitMask))
         {
@@ -30,11 +24,4 @@ public class RayDirection
         }
         return false;
     }
-}
-
-public enum Direction
-{
-    Left,
-    Right,
-    Forward
 }

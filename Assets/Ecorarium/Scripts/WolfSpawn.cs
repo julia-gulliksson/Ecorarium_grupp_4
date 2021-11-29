@@ -58,6 +58,7 @@ public class WolfSpawn : MonoBehaviour
 
                     // Assign a targetPoint to the wolf
                     wolfScript.targetPoint = allTargetPoints[0];
+                    wolfScript.id = wolves.Count;
                     // Remove targetPoint in list, since no other wolves should get this targetPoint
                     allTargetPoints.Remove(allTargetPoints[0]);
                     wolves.Add(wolfObj);
