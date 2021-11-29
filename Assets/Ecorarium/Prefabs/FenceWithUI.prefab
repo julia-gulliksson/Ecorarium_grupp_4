@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 582174860}
   - component: {fileID: 2175812139544329922}
   - component: {fileID: 2358337092682943509}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FenceWithUI
   m_TagString: SheepEnclosure
   m_Icon: {fileID: 0}

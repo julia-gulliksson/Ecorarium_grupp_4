@@ -217,6 +217,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FenceWithUI
       objectReference: {fileID: 0}
+    - target: {fileID: 9167185678379683772, guid: b6f54216586955c42ac52d8abdea2634, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6f54216586955c42ac52d8abdea2634, type: 3}
 --- !u!4 &236887208 stripped
@@ -551,6 +555,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FenceWithUI (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9167185678379683772, guid: b6f54216586955c42ac52d8abdea2634, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6f54216586955c42ac52d8abdea2634, type: 3}
 --- !u!4 &1012940321 stripped
@@ -696,17 +704,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1471953071 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7268259106845152983, guid: b6f54216586955c42ac52d8abdea2634, type: 3}
-  m_PrefabInstance: {fileID: 1632902073}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1632902073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -718,10 +715,6 @@ PrefabInstance:
       propertyPath: wolfSpawn
       value: 
       objectReference: {fileID: 2067916117}
-    - target: {fileID: 0}
-      propertyPath: healthUI
-      value: 
-      objectReference: {fileID: 1471953071}
     - target: {fileID: 8911363510099659687, guid: b6f54216586955c42ac52d8abdea2634, type: 3}
       propertyPath: m_Camera
       value: 
@@ -780,7 +773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9167185678379683772, guid: b6f54216586955c42ac52d8abdea2634, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9167185678379683772, guid: b6f54216586955c42ac52d8abdea2634, type: 3}
       propertyPath: m_IsActive
@@ -1147,8 +1140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wolf: {fileID: 379894836497156008, guid: a5c90bec66dbe9c46b34b4fd2004e21b, type: 3}
-  sheepEnclosure: {fileID: 582174863}
-  nrOfWolves: 10
+  nrOfWolves: 4
+  nrOfTargetPointsGenerated: 0
 --- !u!1001 &2109997715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1160,10 +1153,6 @@ PrefabInstance:
       propertyPath: wolfSpawn
       value: 
       objectReference: {fileID: 2067916117}
-    - target: {fileID: 0}
-      propertyPath: healthUI
-      value: 
-      objectReference: {fileID: 2109997717}
     - target: {fileID: 8911363510099659687, guid: b6f54216586955c42ac52d8abdea2634, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1221,10 +1210,6 @@ PrefabInstance:
       value: FenceWithUI (3)
       objectReference: {fileID: 0}
     - target: {fileID: 9167185678379683772, guid: b6f54216586955c42ac52d8abdea2634, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 9167185678379683772, guid: b6f54216586955c42ac52d8abdea2634, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -1235,14 +1220,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9167185678379683744, guid: b6f54216586955c42ac52d8abdea2634, type: 3}
   m_PrefabInstance: {fileID: 2109997715}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2109997717 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7268259106845152983, guid: b6f54216586955c42ac52d8abdea2634, type: 3}
-  m_PrefabInstance: {fileID: 2109997715}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

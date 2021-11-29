@@ -8,11 +8,11 @@ public class Wolf : MonoBehaviour
 {
     public Vector3 targetPoint;
     RaycastHit hit;
-    [SerializeField] float range = 2;
     [SerializeField] LayerMask hitMask;
     bool moving = true;
     bool hasCollided = false;
     NavMeshAgent navMeshAgent;
+    float range = 4;
 
     void Start()
     {
@@ -29,37 +29,68 @@ public class Wolf : MonoBehaviour
     void DetectFence()
     {
         Vector3 forward = transform.forward;
-        Debug.DrawRay(transform.position, forward * range, Color.red);
+        Vector3 right = transform.right;
 
-        if (Physics.Raycast(transform.position, forward, out hit, range))
+        Ray faceForward = new Ray(transform.position, forward * range);
+        Ray faceRight = new Ray(transform.position, right * range);
+        Ray faceLeft = new Ray(transform.position, -right * range);
+
+        List<RayDirection> rayDirections = new List<RayDirection>() { new RayDirection(faceForward, Direction.Forward, targetPoint, hitMask),
+            new RayDirection(faceRight, Direction.Right, targetPoint, hitMask),
+            new RayDirection(faceLeft, Direction.Left, targetPoint, hitMask) };
+
+        List<RayDirection> detectingFences = new List<RayDirection>();
+
+        foreach (RayDirection ray in rayDirections)
         {
-            Debug.Log(hit.point + " HIT POINT");
-            Debug.Log(targetPoint + " targetPOINT");
-            if (Vector3.Distance(hit.point, targetPoint) < 2f)
+            ray.DrawDebugRay();
+            if (ray.CastRay())
             {
-                moving = false;
-
-                if (hasCollided == false) GameEventsManager.current.WolfFoundTarget();
-                hasCollided = true;
-
+                detectingFences.Add(ray);
             }
-            // TODO: Make rotation work
-            //Vector3 direction = hit.point - transform.position;
-            //Debug.DrawRay(transform.position, direction, Color.red);
-            //float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            //if (angle != 0)
-            //{
-            //    Quaternion angleAxis = Quaternion.AngleAxis(0, Vector3.up);
-            //    transform.rotation = Quaternion.Slerp(transform.rotation, angleAxis, Time.deltaTime * 10);
-            //}
+        }
 
-        }
-        else
+        if (detectingFences.Count == 2)
         {
-            moving = true;
-            if (hasCollided == true) GameEventsManager.current.WolfLostTarget();
-            hasCollided = false;
+            foreach (RayDirection ray in detectingFences)
+            {
+                if (ray.direction == Direction.Forward)
+                {
+                    Debug.Log("Forward");
+                }
+            }
+            Vector3 middle = Vector3.Lerp(detectingFences[0].hit.point, detectingFences[1].hit.point, 0.5f);
+            Instantiate(new GameObject("Middle"), middle, Quaternion.identity);
         }
+
+        //if (Physics.Raycast(transform.position, forward, out hit, range))
+        //{
+        //    if (Vector3.Distance(hit.point, targetPoint) < 2f)
+        //    {
+        //        Debug.Log("Framme");
+        //        moving = false;
+
+        //        if (hasCollided == false) GameEventsManager.current.WolfFoundTarget();
+        //        hasCollided = true;
+
+        //        // TODO: Make rotation work
+        //        //Vector3 direction = hit.point - transform.position;
+        //        //Debug.DrawRay(transform.position, direction, Color.green);
+        //        //float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        //        //if (angle != 0)
+        //        //{
+        //        //    Quaternion angleAxis = Quaternion.AngleAxis(0, Vector3.up);
+        //        //    transform.rotation = Quaternion.Slerp(transform.rotation, angleAxis, Time.deltaTime * 10);
+        //        //}
+        //    }
+
+        //}
+        //else
+        //{
+        //    moving = true;
+        //    if (hasCollided == true) GameEventsManager.current.WolfLostTarget();
+        //    hasCollided = false;
+        //}
     }
 
     private void OnDestroy()
@@ -85,3 +116,4 @@ public class Wolf : MonoBehaviour
         }
     }
 }
+

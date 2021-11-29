@@ -154,4 +154,4 @@ MonoBehaviour:
   range: 2
   hitMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
