@@ -20,18 +20,18 @@ public class Fence : MonoBehaviour
 
     IEnumerator CreateTargetPoints()
     {
-        //TODO: Make dynamic according to number of wolves
-        float lerpPoint = 0.5f;
-        while (targetPoints.Count <= wolfSpawn.nrOfWolves / 4)
+        float lerpPoint = 0.1f;
+        float lerpBy = 0.8f / (wolfSpawn.nrOfWolves / 4);
+        while (targetPoints.Count < wolfSpawn.nrOfWolves / 4)
         {
-
             Vector3 targetPoint = Vector3.Lerp(fromPosition, toPosition, lerpPoint);
-
-            //lerpPoint += 0.1f;
+            lerpPoint += lerpBy;
             targetPoints.Add(targetPoint);
+            Instantiate(new GameObject("Point " + lerpPoint), targetPoint, Quaternion.identity);
 
             if (targetPoints.Count == wolfSpawn.nrOfWolves / 4)
             {
+                Debug.Log(targetPoints.Count + " All created");
                 // All target points are created
                 GameEventsManager.current.TargetPointsGenerated(targetPoints);
             }

@@ -11,7 +11,7 @@ public class Wolf : MonoBehaviour
     bool hasFoundTarget = false;
     NavMeshAgent navMeshAgent;
     float range = 4;
-    public int id;
+    [SerializeField] public int id;
 
     void Start()
     {
@@ -31,7 +31,7 @@ public class Wolf : MonoBehaviour
         Ray faceForward = new Ray(transform.position, forward * range);
 
         Debug.DrawRay(transform.position, forward * range, Color.red);
-
+        //TODO: all directions ray again
         RayDirection fenceRay = new RayDirection(faceForward, targetPoint, hitMask, range);
 
         if (fenceRay.TargetFound())

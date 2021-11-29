@@ -28,6 +28,7 @@ public class WolfSpawn : MonoBehaviour
     {
         nrOfTargetPointsGenerated++;
         allTargetPoints.AddRange(targetPoints);
+        Debug.Log(allTargetPoints.Count + " All target points");
         if (nrOfTargetPointsGenerated == 4)
         {
             // All fences have generated their target points, spawn wolves
@@ -37,6 +38,7 @@ public class WolfSpawn : MonoBehaviour
 
     IEnumerator SpawnWolves()
     {
+        Debug.Log(allTargetPoints.Count + " ALL TARGET POPINTS");
         while (wolves.Count < nrOfWolves && allTargetPoints.Count > 0)
         {
             float x = UnityEngine.Random.Range(endPoint.position.x, startPoint.position.x);
