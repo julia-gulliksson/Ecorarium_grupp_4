@@ -6,9 +6,7 @@ using UnityEngine.AI;
 
 public class Wolf : MonoBehaviour
 {
-    [SerializeField] float speed = 6f;
     public Vector3 targetPoint;
-    //[SerializeField] Transform target;
     RaycastHit hit;
     [SerializeField] float range = 2;
     [SerializeField] LayerMask hitMask;
@@ -19,7 +17,6 @@ public class Wolf : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.speed = speed;
     }
 
     void Update()
@@ -40,13 +37,13 @@ public class Wolf : MonoBehaviour
 
             Vector3 direction = hit.point - transform.position;
             Debug.DrawRay(transform.position, direction, Color.red);
-            float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            Debug.Log(angle + " ANGLE");
-            if (angle != 0)
-            {
-                Quaternion angleAxis = Quaternion.AngleAxis(0, Vector3.up);
-                transform.rotation = Quaternion.Slerp(transform.rotation, angleAxis, Time.deltaTime * 10);
-            }
+            // TODO: Make rotation work
+            //float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            //if (angle != 0)
+            //{
+            //    Quaternion angleAxis = Quaternion.AngleAxis(0, Vector3.up);
+            //    transform.rotation = Quaternion.Slerp(transform.rotation, angleAxis, Time.deltaTime * 10);
+            //}
             moving = false;
 
             if (hasCollided == false) GameEventsManager.current.WolfFoundTarget(true);

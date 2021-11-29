@@ -9,39 +9,30 @@ public class WolfSpawn : MonoBehaviour
     private List<GameObject> wolves = new List<GameObject>();
     [SerializeField] Transform sheepEnclosure;
     private List<Vector3> targetPoints = new List<Vector3>();
-    [SerializeField] int nrOfWolves = 1;
-    float centerX;
-    float plusX;
-    float minusX;
+    [SerializeField] int nrOfWolves = 10;
+    Vector3 fromPosition;
+    Vector3 toPosition;
+    MeshFilter enclosureMeshFilter;
 
     void Start()
     {
-        centerX = sheepEnclosure.localScale.x / 2;
-        plusX = sheepEnclosure.position.x + centerX;
-        minusX = sheepEnclosure.position.x - centerX;
+
+        enclosureMeshFilter = sheepEnclosure.GetComponent<MeshFilter>();
+        fromPosition = sheepEnclosure.TransformPoint(enclosureMeshFilter.mesh.bounds.max);
+        toPosition = sheepEnclosure.TransformPoint(enclosureMeshFilter.mesh.bounds.min);
         StartCoroutine(CreateTargetPoints());
     }
 
     IEnumerator CreateTargetPoints()
     {
+        float lerpPoint = 0.0f;
         while (targetPoints.Count < nrOfWolves)
         {
-            float x = UnityEngine.Random.Range(plusX, minusX);
-            Vector3 targetPoint = new Vector3(x, sheepEnclosure.position.y, sheepEnclosure.position.z);
-            bool tooClose = false;
-            foreach (Vector3 point in targetPoints)
-            {
-                if (Vector3.Distance(point, targetPoint) < 2f)
-                {
-                    tooClose = true;
-                }
-            }
-            if (!tooClose)
-            {
+            Vector3 targetPoint = Vector3.Lerp(fromPosition, toPosition, lerpPoint);
 
-                targetPoints.Add(targetPoint);
-            }
+            targetPoints.Add(targetPoint);
 
+            lerpPoint += 0.1f;
 
             if (targetPoints.Count == nrOfWolves)
             {
