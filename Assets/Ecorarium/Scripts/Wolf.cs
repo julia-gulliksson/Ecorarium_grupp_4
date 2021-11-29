@@ -10,7 +10,7 @@ public class Wolf : MonoBehaviour
     RaycastHit hit;
     [SerializeField] float range = 2;
     [SerializeField] LayerMask hitMask;
-    bool moving;
+    bool moving = true;
     bool hasCollided = false;
     NavMeshAgent navMeshAgent;
 
@@ -31,36 +31,40 @@ public class Wolf : MonoBehaviour
         Vector3 forward = transform.forward;
         Debug.DrawRay(transform.position, forward * range, Color.red);
 
-        if (Physics.Raycast(transform.position, forward, out hit, range, hitMask))
+        if (Physics.Raycast(transform.position, forward, out hit, range))
         {
+            Debug.Log(hit.point + " HIT POINT");
+            Debug.Log(targetPoint + " targetPOINT");
+            if (Vector3.Distance(hit.point, targetPoint) < 2f)
+            {
+                moving = false;
 
+                if (hasCollided == false) GameEventsManager.current.WolfFoundTarget();
+                hasCollided = true;
 
-            Vector3 direction = hit.point - transform.position;
-            Debug.DrawRay(transform.position, direction, Color.red);
+            }
             // TODO: Make rotation work
+            //Vector3 direction = hit.point - transform.position;
+            //Debug.DrawRay(transform.position, direction, Color.red);
             //float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             //if (angle != 0)
             //{
             //    Quaternion angleAxis = Quaternion.AngleAxis(0, Vector3.up);
             //    transform.rotation = Quaternion.Slerp(transform.rotation, angleAxis, Time.deltaTime * 10);
             //}
-            moving = false;
-
-            if (hasCollided == false) GameEventsManager.current.WolfFoundTarget(true);
-            hasCollided = true;
 
         }
         else
         {
             moving = true;
-            if (hasCollided == true) GameEventsManager.current.WolfFoundTarget(false);
+            if (hasCollided == true) GameEventsManager.current.WolfLostTarget();
             hasCollided = false;
         }
     }
 
     private void OnDestroy()
     {
-        if (hasCollided == true) GameEventsManager.current.WolfFoundTarget(false);
+        if (hasCollided == true) GameEventsManager.current.WolfLostTarget();
     }
 
     private void Move()

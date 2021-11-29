@@ -7,42 +7,26 @@ public class WolfSpawn : MonoBehaviour
 {
     [SerializeField] GameObject wolf;
     private List<GameObject> wolves = new List<GameObject>();
-    [SerializeField] Transform sheepEnclosure;
-    private List<Vector3> targetPoints = new List<Vector3>();
-    [SerializeField] int nrOfWolves = 10;
-    Vector3 fromPosition;
-    Vector3 toPosition;
-    MeshFilter enclosureMeshFilter;
-
-    void Start()
+    private List<Vector3> allTargetPoints = new List<Vector3>();
+    [SerializeField] public int nrOfWolves = 4;
+    [SerializeField] public int nrOfTargetPointsGenerated;
+    private void OnEnable()
     {
-
-        enclosureMeshFilter = sheepEnclosure.GetComponent<MeshFilter>();
-        fromPosition = sheepEnclosure.TransformPoint(enclosureMeshFilter.mesh.bounds.max);
-        toPosition = sheepEnclosure.TransformPoint(enclosureMeshFilter.mesh.bounds.min);
-        StartCoroutine(CreateTargetPoints());
+        GameEventsManager.current.onTargetPointsGenerated += StartSpawningWolves;
     }
 
-    IEnumerator CreateTargetPoints()
+    private void OnDisable()
     {
-        float lerpPoint = 0.0f;
-        while (targetPoints.Count < nrOfWolves)
+        GameEventsManager.current.onTargetPointsGenerated -= StartSpawningWolves;
+    }
+
+    void StartSpawningWolves(List<Vector3> targetPoints)
+    {
+        nrOfTargetPointsGenerated++;
+        allTargetPoints.AddRange(targetPoints);
+        if (nrOfTargetPointsGenerated == 4)
         {
-            Vector3 targetPoint = Vector3.Lerp(fromPosition, toPosition, lerpPoint);
-
-            targetPoints.Add(targetPoint);
-
-            lerpPoint += 0.1f;
-
-            if (targetPoints.Count == nrOfWolves)
-            {
-                // All target point spots are created, begin spawning wolves
-                yield return StartCoroutine(SpawnWolves());
-            }
-            else
-            {
-                yield return null;
-            }
+            StartCoroutine(SpawnWolves());
         }
     }
 
@@ -73,9 +57,9 @@ public class WolfSpawn : MonoBehaviour
                     Wolf wolfScript = wolfObj.GetComponent<Wolf>();
 
                     // Assign a targetPoint to the wolf
-                    wolfScript.targetPoint = targetPoints[0];
+                    wolfScript.targetPoint = allTargetPoints[0];
                     // Remove targetPoint in list, since no other wolves should get this targetPoint
-                    targetPoints.Remove(targetPoints[0]);
+                    allTargetPoints.Remove(allTargetPoints[0]);
                     wolves.Add(wolfObj);
 
                 }
