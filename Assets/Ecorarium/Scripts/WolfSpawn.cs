@@ -38,7 +38,6 @@ public class WolfSpawn : MonoBehaviour
 
     IEnumerator SpawnWolves()
     {
-        Debug.Log(allTargetPoints.Count + " ALL TARGET POPINTS");
         while (wolves.Count < nrOfWolves && allTargetPoints.Count > 0)
         {
             float x = UnityEngine.Random.Range(endPoint.position.x, startPoint.position.x);
