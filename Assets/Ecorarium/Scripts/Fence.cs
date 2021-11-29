@@ -32,7 +32,7 @@ public class Fence : MonoBehaviour
 
             if (targetPoints.Count == wolfSpawn.nrOfWolves / 4)
             {
-                // All target point spots are created
+                // All target points are created
                 GameEventsManager.current.TargetPointsGenerated(targetPoints);
             }
             else
