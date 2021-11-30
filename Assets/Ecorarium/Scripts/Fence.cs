@@ -27,11 +27,6 @@ public class Fence : MonoBehaviour
             lerpPoint += lerpBy;
         }
 
-
-        lerpNumbers.ForEach(l => Debug.Log(l));
-
-        //float closest = ClosestToMiddle();
-        //Debug.Log(nearest + " Nearest");
         StartCoroutine(CreateTargetPoints());
     }
 

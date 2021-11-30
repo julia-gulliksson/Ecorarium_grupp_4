@@ -68,6 +68,7 @@ public class Wolf : MonoBehaviour
 
     void Move()
     {
+
         navMeshAgent.destination = targetPoint;
     }
 }
