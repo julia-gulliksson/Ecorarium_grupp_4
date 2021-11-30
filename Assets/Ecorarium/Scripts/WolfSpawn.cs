@@ -13,32 +13,55 @@ public class WolfSpawn : MonoBehaviour
     [SerializeField] Transform startPoint;
     [SerializeField] Transform endPoint;
     float distance = 0.4f;
+    [SerializeField] List<GameObject> fenceSides;
+    List<Vector3> targetPoints = new List<Vector3>();
 
-    private void OnEnable()
+    //private void OnEnable()
+    //{
+    //    GameEventsManager.current.onTargetPointsGenerated += StartSpawningWolves;
+    //}
+
+    //private void OnDisable()
+    //{
+    //    GameEventsManager.current.onTargetPointsGenerated -= StartSpawningWolves;
+    //}
+
+    private void Start()
     {
-        GameEventsManager.current.onTargetPointsGenerated += StartSpawningWolves;
+        StartCoroutine(DetermineFencePositions());
     }
 
-    private void OnDisable()
+    IEnumerator DetermineFencePositions()
     {
-        GameEventsManager.current.onTargetPointsGenerated -= StartSpawningWolves;
-    }
-
-    void StartSpawningWolves(List<Vector3> targetPoints)
-    {
-        nrOfTargetPointsGenerated++;
-        allTargetPoints.AddRange(targetPoints);
-        Debug.Log(allTargetPoints.Count + " All target points");
-        if (nrOfTargetPointsGenerated == 4)
+        foreach (GameObject fenceSide in fenceSides)
         {
-            // All fences have generated their target points, spawn wolves
-            StartCoroutine(SpawnWolves());
+            Transform[] fencePositions = fenceSide.GetComponentsInChildren<Transform>();
+            foreach (Transform fencePosition in fencePositions)
+            {
+                targetPoints.Add(fencePosition.position);
+            }
+
         }
+        targetPoints.ForEach(t => Debug.Log(t));
+        Debug.Log(targetPoints.Count);
+        yield return StartCoroutine(SpawnWolves());
     }
+
+    //void StartSpawningWolves(List<Vector3> targetPoints)
+    //{
+    //    nrOfTargetPointsGenerated++;
+    //    allTargetPoints.AddRange(targetPoints);
+    //    Debug.Log(allTargetPoints.Count + " All target points");
+    //    if (nrOfTargetPointsGenerated == 4)
+    //    {
+    //        // All fences have generated their target points, spawn wolves
+    //        StartCoroutine(SpawnWolves());
+    //    }
+    //}
 
     IEnumerator SpawnWolves()
     {
-        while (wolves.Count < nrOfWolves && allTargetPoints.Count > 0)
+        while (wolves.Count < nrOfWolves && targetPoints.Count > 0)
         {
             float x = UnityEngine.Random.Range(endPoint.position.x, startPoint.position.x);
             float y = UnityEngine.Random.Range(endPoint.position.y, startPoint.position.y);
@@ -60,9 +83,9 @@ public class WolfSpawn : MonoBehaviour
                 Vector3 targetPoint = Vector3.zero;
                 try
                 {
-                    targetPoint = allTargetPoints[0];
+                    targetPoint = targetPoints[0];
                     // Remove targetPoint in list, since no other wolves should get this targetPoint
-                    allTargetPoints.Remove(allTargetPoints[0]);
+                    targetPoints.Remove(targetPoints[0]);
                 }
                 catch
                 {

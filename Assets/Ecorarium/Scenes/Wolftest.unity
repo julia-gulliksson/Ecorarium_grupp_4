@@ -200,7 +200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &86948803
 Transform:
   m_ObjectHideFlags: 0
@@ -486,7 +486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 250990016}
   m_Layer: 0
-  m_Name: FenceSide
+  m_Name: FenceSide 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -521,7 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 278149852}
   m_Layer: 0
-  m_Name: FenceSide
+  m_Name: FenceSide 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1072,7 +1072,7 @@ GameObject:
   m_Component:
   - component: {fileID: 991231785}
   m_Layer: 0
-  m_Name: FenceSide
+  m_Name: FenceSide 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1395,7 +1395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1174427759}
   m_Layer: 0
-  m_Name: FenceSide
+  m_Name: FenceSide 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2317,6 +2317,46 @@ PrefabInstance:
       propertyPath: nrOfWolves
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
+      propertyPath: fences.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
+      propertyPath: fences.Array.data[0]
+      value: 
+      objectReference: {fileID: 1174427758}
+    - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
+      propertyPath: fences.Array.data[1]
+      value: 
+      objectReference: {fileID: 278149851}
+    - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
+      propertyPath: fences.Array.data[2]
+      value: 
+      objectReference: {fileID: 250990015}
+    - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
+      propertyPath: fences.Array.data[3]
+      value: 
+      objectReference: {fileID: 991231784}
+    - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
+      propertyPath: fenceSides.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
+      propertyPath: fenceSides.Array.data[0]
+      value: 
+      objectReference: {fileID: 1174427758}
+    - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
+      propertyPath: fenceSides.Array.data[1]
+      value: 
+      objectReference: {fileID: 278149851}
+    - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
+      propertyPath: fenceSides.Array.data[2]
+      value: 
+      objectReference: {fileID: 250990015}
+    - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
+      propertyPath: fenceSides.Array.data[3]
+      value: 
+      objectReference: {fileID: 991231784}
     - target: {fileID: 1542121967731945669, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
       propertyPath: m_RootOrder
       value: 3
