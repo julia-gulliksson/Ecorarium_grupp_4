@@ -12,6 +12,7 @@ public class WolfSpawn : MonoBehaviour
     [SerializeField] List<GameObject> fenceSides;
     List<Vector3> targetPoints = new List<Vector3>();
     float spawnRadius = 10;
+    GameObject[] destinationObjects;
 
     private void Start()
     {
@@ -20,7 +21,8 @@ public class WolfSpawn : MonoBehaviour
 
     IEnumerator DetermineFencePositions()
     {
-        foreach (GameObject destination in GameObject.FindGameObjectsWithTag("Destination"))
+        destinationObjects = GameObject.FindGameObjectsWithTag("Destination");
+        foreach (GameObject destination in destinationObjects)
         {
             targetPoints.Add(destination.transform.position);
         }
@@ -29,7 +31,7 @@ public class WolfSpawn : MonoBehaviour
 
     IEnumerator SpawnWolves()
     {
-        while (wolves.Count < targetPoints.Count)
+        while (wolves.Count < destinationObjects.Length)
         {
             Vector2 radius = UnityEngine.Random.insideUnitCircle * spawnRadius;
             Vector3 positioning = new Vector3(transform.position.x + radius.x, transform.position.y, transform.position.z + radius.y);

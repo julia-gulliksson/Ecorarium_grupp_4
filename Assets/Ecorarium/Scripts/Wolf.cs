@@ -63,16 +63,15 @@ public class Wolf : MonoBehaviour
 
                 if (Vector3.Distance(navMeshAgent.destination, transform.position) < 1f && !foundHitPoint)
                 {
-                    //Debug.Log("In here " + id);
+                    Debug.Log("In here " + id);
                     foundHitPoint = true;
                     hitPoint = -raysFoundTarget[0].hit.normal;
-                    Instantiate(new GameObject("Hit point" + id), hitPoint, Quaternion.identity);
                 }
 
                 if (foundHitPoint)
                 {
                     // Rotate towards fence
-                    Debug.Log("Rotating");
+                    //Debug.Log("Rotating");
                     Quaternion look = Quaternion.LookRotation(hitPoint);
                     transform.rotation = Quaternion.Slerp(transform.rotation, look, rotationSpeed * Time.deltaTime);
                 }
@@ -86,4 +85,3 @@ public class Wolf : MonoBehaviour
         navMeshAgent.destination = targetPoint;
     }
 }
-
