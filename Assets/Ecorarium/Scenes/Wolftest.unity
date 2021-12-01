@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 1
+    agentRadius: 0.69
     agentHeight: 1.57
     agentSlope: 25.8
     agentClimb: 1.31
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.33333334
+    cellSize: 0.23
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -1607,7 +1607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 682812916002854007, guid: fd752afff71c6414085f2c66f64d72cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.0299997
+      value: 6.68
       objectReference: {fileID: 0}
     - target: {fileID: 682812916002854007, guid: fd752afff71c6414085f2c66f64d72cb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1615,7 +1615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 682812916002854007, guid: fd752afff71c6414085f2c66f64d72cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.49000168
+      value: 0.47
       objectReference: {fileID: 0}
     - target: {fileID: 682812916002854007, guid: fd752afff71c6414085f2c66f64d72cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2407,6 +2407,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WolfSpawn
       objectReference: {fileID: 0}
+    - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
+      propertyPath: wolf
+      value: 
+      objectReference: {fileID: 3373009278612546657, guid: e2715243a108ca14ca71063acd060efa, type: 3}
     - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
       propertyPath: target
       value: 

@@ -88,10 +88,10 @@ public class WolfSpawn : MonoBehaviour
                 Vector3 targetPoint = Vector3.zero;
                 try
                 {
-                    // TODO: Make wolves choose position closest to middle
-                    targetPoint = targetPoints[0];
+                    int randomIndex = UnityEngine.Random.Range(0, targetPoints.Count);
+                    targetPoint = targetPoints[randomIndex];
                     // Remove targetPoint in list, since no other wolves should get this targetPoint
-                    targetPoints.Remove(targetPoints[0]);
+                    targetPoints.Remove(targetPoints[randomIndex]);
                 }
                 catch
                 {

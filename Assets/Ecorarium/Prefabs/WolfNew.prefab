@@ -769,12 +769,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a909061c9d440f4d9ceb7c97a592e0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
   targetPoint: {x: 0, y: 0, z: 0}
-  range: 2
   hitMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+  id: 0
 --- !u!114 &919132147529897823
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,11 +11,10 @@ public class Wolf : MonoBehaviour
     float range = 4f;
     [SerializeField] public int id;
     float rotationSpeed = 5f;
-    Vector3 rayFound;
-
+    Vector3 hitPoint;
+    bool foundHitPoint;
     void Start()
     {
-        rayFound = Vector3.zero;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -60,24 +59,21 @@ public class Wolf : MonoBehaviour
             {
                 if (hasFoundTarget == false) GameEventsManager.current.WolfFoundTarget();
                 hasFoundTarget = true;
-                // Rotate towards fence
-                //Debug.Log("ROTATION " + id);
-                if (Vector3.Distance(navMeshAgent.destination, transform.position) < 1f && rayFound == Vector3.zero)
+                //Debug.Log("here " + id);
+
+                if (Vector3.Distance(navMeshAgent.destination, transform.position) < 1f && !foundHitPoint)
                 {
-                    Debug.Log("In here " + id);
-                    rayFound = -raysFoundTarget[0].hit.normal;
+                    //Debug.Log("In here " + id);
+                    foundHitPoint = true;
+                    hitPoint = -raysFoundTarget[0].hit.normal;
+                    Instantiate(new GameObject("Hit point" + id), hitPoint, Quaternion.identity);
                 }
-                if (id == 5)
+
+                if (foundHitPoint)
                 {
-                    Debug.Log(rayFound + " FOUND");
-                }
-                if (rayFound != Vector3.zero)
-                {
-                    if (id == 5)
-                    {
-                        Debug.Log(rayFound + " ROTATING");
-                    }
-                    Quaternion look = Quaternion.LookRotation(rayFound);
+                    // Rotate towards fence
+                    Debug.Log("Rotating");
+                    Quaternion look = Quaternion.LookRotation(hitPoint);
                     transform.rotation = Quaternion.Slerp(transform.rotation, look, rotationSpeed * Time.deltaTime);
                 }
             }
@@ -87,7 +83,6 @@ public class Wolf : MonoBehaviour
 
     void Move()
     {
-
         navMeshAgent.destination = targetPoint;
     }
 }
