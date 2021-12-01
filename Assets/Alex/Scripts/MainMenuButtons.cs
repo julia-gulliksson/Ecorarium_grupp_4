@@ -5,22 +5,15 @@ using UnityEngine.SceneManagement;
 
 namespace Alex
 {
-    public class GameOverButtons : MonoBehaviour
+    public class MainMenuButtons : MonoBehaviour
     {
-
-        public void PlayAgain()
+        public void StartGame()
         {
             SceneManager.LoadScene("EcoTerrain 1");
         }
 
-        public void MainMenu()
+        public void QuitApp()
         {
-            SceneManager.LoadScene("Scen1 1");
-        }
-
-        public void QuitGame()
-        {
-            Debug.Log("Quit");
             Application.Quit();
         }
     }
