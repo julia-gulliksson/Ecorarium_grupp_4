@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 2453968944822605844}
   - component: {fileID: 919132147529897823}
   m_Layer: 0
-  m_Name: Wolf
+  m_Name: WolfNew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
