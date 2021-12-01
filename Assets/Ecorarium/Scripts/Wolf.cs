@@ -11,9 +11,11 @@ public class Wolf : MonoBehaviour
     float range = 4f;
     [SerializeField] public int id;
     float rotationSpeed = 5f;
+    Vector3 rayFound;
 
     void Start()
     {
+        rayFound = Vector3.zero;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -59,8 +61,25 @@ public class Wolf : MonoBehaviour
                 if (hasFoundTarget == false) GameEventsManager.current.WolfFoundTarget();
                 hasFoundTarget = true;
                 // Rotate towards fence
-                Quaternion look = Quaternion.LookRotation(-raysFoundTarget[0].hit.normal);
-                transform.rotation = Quaternion.Slerp(transform.rotation, look, rotationSpeed * Time.deltaTime);
+                //Debug.Log("ROTATION " + id);
+                if (Vector3.Distance(navMeshAgent.destination, transform.position) < 1f && rayFound == Vector3.zero)
+                {
+                    Debug.Log("In here " + id);
+                    rayFound = -raysFoundTarget[0].hit.normal;
+                }
+                if (id == 5)
+                {
+                    Debug.Log(rayFound + " FOUND");
+                }
+                if (rayFound != Vector3.zero)
+                {
+                    if (id == 5)
+                    {
+                        Debug.Log(rayFound + " ROTATING");
+                    }
+                    Quaternion look = Quaternion.LookRotation(rayFound);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, look, rotationSpeed * Time.deltaTime);
+                }
             }
         }
 
