@@ -7,24 +7,11 @@ public class WolfSpawn : MonoBehaviour
 {
     [SerializeField] GameObject wolf;
     List<GameObject> wolves = new List<GameObject>();
-    List<Vector3> allTargetPoints = new List<Vector3>();
     [SerializeField] public int nrOfWolves = 10;
-    int nrOfTargetPointsGenerated;
-    [SerializeField] Transform startPoint;
-    [SerializeField] Transform endPoint;
     float distance = 0.4f;
     [SerializeField] List<GameObject> fenceSides;
     List<Vector3> targetPoints = new List<Vector3>();
-
-    //private void OnEnable()
-    //{
-    //    GameEventsManager.current.onTargetPointsGenerated += StartSpawningWolves;
-    //}
-
-    //private void OnDisable()
-    //{
-    //    GameEventsManager.current.onTargetPointsGenerated -= StartSpawningWolves;
-    //}
+    float spawnRadius = 10;
 
     private void Start()
     {
@@ -36,42 +23,16 @@ public class WolfSpawn : MonoBehaviour
         foreach (GameObject destination in GameObject.FindGameObjectsWithTag("Destination"))
         {
             targetPoints.Add(destination.transform.position);
-
         }
-        //{
-        //    MeshCollider[] fencePositions = fenceSide.GetComponentsInChildren<MeshCollider>();
-        //    for (int i = 0; i < fencePositions.Length; i++)
-        //    {
-        //        targetPoints.Add(fencePositions[i].bounds.center);
-        //        Instantiate(new GameObject("position"), fencePositions[i].bounds.center, Quaternion.identity);
-        //    }
-
-        //}
         yield return StartCoroutine(SpawnWolves());
-        //yield return null;
     }
-
-    //void StartSpawningWolves(List<Vector3> targetPoints)
-    //{
-    //    nrOfTargetPointsGenerated++;
-    //    allTargetPoints.AddRange(targetPoints);
-    //    Debug.Log(allTargetPoints.Count + " All target points");
-    //    if (nrOfTargetPointsGenerated == 4)
-    //    {
-    //        // All fences have generated their target points, spawn wolves
-    //        StartCoroutine(SpawnWolves());
-    //    }
-    //}
 
     IEnumerator SpawnWolves()
     {
-
-        while (wolves.Count < 16)
+        while (wolves.Count < targetPoints.Count)
         {
-            float x = UnityEngine.Random.Range(endPoint.position.x, startPoint.position.x);
-            float y = UnityEngine.Random.Range(endPoint.position.y, startPoint.position.y);
-            float z = UnityEngine.Random.Range(endPoint.position.z, startPoint.position.z);
-            Vector3 positioning = new Vector3(x, y, z);
+            Vector2 radius = UnityEngine.Random.insideUnitCircle * spawnRadius;
+            Vector3 positioning = new Vector3(transform.position.x + radius.x, transform.position.y, transform.position.z + radius.y);
 
             bool tooClose = false;
 
@@ -90,6 +51,7 @@ public class WolfSpawn : MonoBehaviour
                 {
                     int randomIndex = UnityEngine.Random.Range(0, targetPoints.Count);
                     targetPoint = targetPoints[randomIndex];
+                    //targetPoint = new Vector3(1.99259f, 2.097882f, 6.81123f);
                     // Remove targetPoint in list, since no other wolves should get this targetPoint
                     targetPoints.Remove(targetPoints[randomIndex]);
                 }
@@ -109,5 +71,11 @@ public class WolfSpawn : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, spawnRadius);
     }
 }
