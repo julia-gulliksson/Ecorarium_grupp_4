@@ -5,29 +5,45 @@ using UnityEngine;
 
 public class Fence : MonoBehaviour
 {
-    MeshFilter meshFilter;
+    //MeshFilter meshFilter;
     Vector3 fromPosition;
     Vector3 toPosition;
     private List<Vector3> targetPoints = new List<Vector3>();
     [SerializeField] WolfSpawn wolfSpawn;
     List<float> lerpNumbers = new List<float>();
     float lerpMiddle = 0.5f;
+    MeshFilter meshFilter;
 
     void Start()
     {
-        meshFilter = GetComponent<MeshFilter>();
-        fromPosition = transform.TransformPoint(meshFilter.mesh.bounds.max);
-        toPosition = transform.TransformPoint(meshFilter.mesh.bounds.min);
-        float lerpPoint = 0.1f;
-        //TODO: Twerk these numbers
-        float lerpBy = 0.8f / (wolfSpawn.nrOfWolves);
-        while (lerpNumbers.Count < (wolfSpawn.nrOfWolves))
-        {
-            lerpNumbers.Add(lerpPoint);
-            lerpPoint += lerpBy;
-        }
 
-        StartCoroutine(CreateTargetPoints());
+
+        //MeshCollider[] fencePositions = GetComponentsInChildren<MeshCollider>();
+        //Debug.Log(fencePositions.Length);
+        //for (int i = 1; i < fencePositions.Length; i++)
+        //{
+        //    Instantiate(new GameObject("Position from parent"), fencePositions[i].bounds.center, Quaternion.identity);
+
+        //}
+        //foreach (Transform fencePosition in fencePositions)
+        //{
+        //    targetPoints.Add(fencePosition.position);
+        //    Instantiate(new GameObject("Position from parent"), fencePosition.position, Quaternion.identity);
+        //}
+
+
+    }
+
+    Bounds GetMaxBounds()
+    {
+        MeshFilter[] renderers = GetComponentsInChildren<MeshFilter>();
+        //if (renderers.Length == 0) return new Bounds(transform.position, Vector3.zero);
+        var b = renderers[0].mesh.bounds;
+        foreach (MeshFilter r in renderers)
+        {
+            b.Encapsulate(r.mesh.bounds);
+        }
+        return b;
     }
 
     float ClosestToMiddle()

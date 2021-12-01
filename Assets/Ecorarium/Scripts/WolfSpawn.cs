@@ -33,18 +33,22 @@ public class WolfSpawn : MonoBehaviour
 
     IEnumerator DetermineFencePositions()
     {
-        foreach (GameObject fenceSide in fenceSides)
+        foreach (GameObject destination in GameObject.FindGameObjectsWithTag("Destination"))
         {
-            Transform[] fencePositions = fenceSide.GetComponentsInChildren<Transform>();
-            foreach (Transform fencePosition in fencePositions)
-            {
-                targetPoints.Add(fencePosition.position);
-            }
+            targetPoints.Add(destination.transform.position);
 
         }
-        targetPoints.ForEach(t => Debug.Log(t));
-        Debug.Log(targetPoints.Count);
+        //{
+        //    MeshCollider[] fencePositions = fenceSide.GetComponentsInChildren<MeshCollider>();
+        //    for (int i = 0; i < fencePositions.Length; i++)
+        //    {
+        //        targetPoints.Add(fencePositions[i].bounds.center);
+        //        Instantiate(new GameObject("position"), fencePositions[i].bounds.center, Quaternion.identity);
+        //    }
+
+        //}
         yield return StartCoroutine(SpawnWolves());
+        //yield return null;
     }
 
     //void StartSpawningWolves(List<Vector3> targetPoints)
@@ -61,7 +65,8 @@ public class WolfSpawn : MonoBehaviour
 
     IEnumerator SpawnWolves()
     {
-        while (wolves.Count < nrOfWolves && targetPoints.Count > 0)
+
+        while (wolves.Count < 16)
         {
             float x = UnityEngine.Random.Range(endPoint.position.x, startPoint.position.x);
             float y = UnityEngine.Random.Range(endPoint.position.y, startPoint.position.y);
@@ -83,6 +88,7 @@ public class WolfSpawn : MonoBehaviour
                 Vector3 targetPoint = Vector3.zero;
                 try
                 {
+                    // TODO: Make wolves choose position closest to middle
                     targetPoint = targetPoints[0];
                     // Remove targetPoint in list, since no other wolves should get this targetPoint
                     targetPoints.Remove(targetPoints[0]);
