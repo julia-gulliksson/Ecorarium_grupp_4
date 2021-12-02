@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,11 +10,24 @@ public class WolfAnimationHandler : MonoBehaviour
     float velocity;
     float normalizedVelocity;
     NavMeshAgent wolfNa;
+    Wolf wolfController;
     
     void Start()
     {
+        GameEventsManager.current.onWolfCollide += Attack;
         wolfAnimation = GetComponent<Animator>();
         wolfNa = GetComponent<NavMeshAgent>();
+        wolfController = GetComponent<Wolf>();
+        
+    }
+
+    private void Attack(bool obj, int id)
+    {
+        if(id == wolfController.id)
+        {
+            wolfAnimation.SetBool("Attack", obj);
+            print("Attack " + id);
+        }
         
     }
 

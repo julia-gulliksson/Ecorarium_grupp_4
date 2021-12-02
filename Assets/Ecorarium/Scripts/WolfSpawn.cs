@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WolfSpawn : MonoBehaviour
 {
+    [SerializeField] int amountOfWolves;
     [SerializeField] GameObject wolf;
     private List<GameObject> wolves = new List<GameObject>();
     [SerializeField] Transform sheepEnclosure;
@@ -12,6 +13,7 @@ public class WolfSpawn : MonoBehaviour
     float centerX;
     float plusX;
     float minusX;
+    int wolfId = 0;
 
     void Start()
     {
@@ -23,10 +25,10 @@ public class WolfSpawn : MonoBehaviour
 
     IEnumerator CreateTargetPoints()
     {
-        while (targetPoints.Count < 10)
+        while (targetPoints.Count < amountOfWolves)
         {
             float x = UnityEngine.Random.Range(plusX, minusX);
-            Vector3 targetPoint = new Vector3(x, sheepEnclosure.position.y, sheepEnclosure.position.z);
+            Vector3 targetPoint = new Vector3(x, sheepEnclosure.position.y, sheepEnclosure.position.z -1);
             bool tooClose = false;
             foreach (Vector3 point in targetPoints)
             {
@@ -52,7 +54,7 @@ public class WolfSpawn : MonoBehaviour
 
     IEnumerator SpawnWolves()
     {
-        while (wolves.Count < 10)
+        while (wolves.Count < amountOfWolves)
         {
             float x = UnityEngine.Random.Range(-10, 10);
             float y = 0.5f;
@@ -78,6 +80,10 @@ public class WolfSpawn : MonoBehaviour
 
                     // Assign a targetPoint to the wolf
                     wolfScript.targetPoint = targetPoints[0];
+                    // Asign id to wolf
+                    wolfScript.id = wolfId;
+                    //Incremetn wolfId so that the next wolf gets anouther one
+                    wolfId++;
                     // Remove targetPoint in list, since no other wolves should get this targetPoint
                     targetPoints.Remove(targetPoints[0]);
                     wolves.Add(wolfObj);

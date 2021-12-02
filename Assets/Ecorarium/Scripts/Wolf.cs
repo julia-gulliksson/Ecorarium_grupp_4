@@ -8,9 +8,10 @@ public class Wolf : MonoBehaviour
 {
     [SerializeField] float speed = 6f;
     public Vector3 targetPoint;
+    public int id;
     //[SerializeField] Transform target;
     RaycastHit hit;
-    [SerializeField] float range = 2;
+    [SerializeField] float range = 4;
     [SerializeField] LayerMask hitMask;
     bool moving;
     bool hasCollided = false;
@@ -38,21 +39,21 @@ public class Wolf : MonoBehaviour
             moving = false;
             //TODO: Check if wolf is close enough, call event then
 
-            if (hasCollided == false) GameEventsManager.current.WolfFoundTarget(true);
+            if (hasCollided == false) GameEventsManager.current.WolfFoundTarget(true, id);
             hasCollided = true;
 
         }
         else
         {
             moving = true;
-            if (hasCollided == true) GameEventsManager.current.WolfFoundTarget(false);
+            if (hasCollided == true) GameEventsManager.current.WolfFoundTarget(false, id);
             hasCollided = false;
         }
     }
 
     private void OnDestroy()
     {
-        if (hasCollided == true) GameEventsManager.current.WolfFoundTarget(false);
+        if (hasCollided == true) GameEventsManager.current.WolfFoundTarget(false, id);
     }
 
     private void Move()
@@ -67,9 +68,6 @@ public class Wolf : MonoBehaviour
             //transform.LookAt(targetPostition);
             //transform.position = Vector3.MoveTowards(transform.position, targetPostition, step);
         }
-        else
-        {
-            navMeshAgent.destination = transform.position;
-        }
+        
     }
 }

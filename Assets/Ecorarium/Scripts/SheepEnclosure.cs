@@ -20,7 +20,7 @@ public class SheepEnclosure : MonoBehaviour
         GameEventsManager.current.onWolfCollide -= IncrementWolvesAttacking;
     }
 
-    void IncrementWolvesAttacking(bool attacking)
+    void IncrementWolvesAttacking(bool attacking, int id)
     {
         if (attacking)
         {
