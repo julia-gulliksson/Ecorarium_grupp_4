@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Alex/Scenes/EcoTerrain 1.unity
+    guid: e610989812689dc408a3389260312c8a
+  - enabled: 1
+    path: Assets/Alex/Scenes/Scen1 1.unity
+    guid: 0b9b3ad6392b2bd489dac6e050d63769
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 064f2c5466bd1934f88cae5455aa0ee7, type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: b3c64f949448fe44ebbb30ea34be3375, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a91cdd484ccefd64e945aad8f3fbf819, type: 2}
