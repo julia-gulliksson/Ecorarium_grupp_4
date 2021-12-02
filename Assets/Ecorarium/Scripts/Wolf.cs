@@ -6,7 +6,7 @@ public class Wolf : MonoBehaviour
 {
     public Vector3 targetPoint;
     [SerializeField] LayerMask hitMask;
-    bool hasFoundTarget = false;
+    public bool hasFoundTarget = false;
     NavMeshAgent navMeshAgent;
     float range = 4f;
     [SerializeField] public int id;

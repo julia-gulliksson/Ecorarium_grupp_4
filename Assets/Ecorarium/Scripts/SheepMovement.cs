@@ -24,7 +24,7 @@ public class SheepMovement : MonoBehaviour
     float soundTimer;
     float freeWillBaa;
 
-    public LayerMask whatisWalkable, whatIsEatable;
+    public LayerMask whatisWalkable;
     void Start()
     {
         animal = GetComponent<NavMeshAgent>();
@@ -38,7 +38,7 @@ public class SheepMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SearchForNeeds();
+        Walk();
         if ((Time.time - timer) > 2.0f)
         {
             walkPointSet = false;
@@ -53,7 +53,7 @@ public class SheepMovement : MonoBehaviour
         }
     }
 
-    private void SearchForNeeds()
+    private void Walk()
     {
         if ((!walkPointSet)) SeachForWalkPoint();
         
