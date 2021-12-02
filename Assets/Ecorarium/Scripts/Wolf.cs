@@ -13,6 +13,7 @@ public class Wolf : MonoBehaviour
     float rotationSpeed = 5f;
     Vector3 hitPoint;
     bool foundHitPoint;
+    float heightOffset = 0.5f;
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -33,13 +34,14 @@ public class Wolf : MonoBehaviour
     {
         Vector3 forward = transform.forward;
         Vector3 right = transform.right;
-        Ray faceForward = new Ray(transform.position, forward * range);
-        Ray faceRight = new Ray(transform.position, right * range);
-        Ray faceLeft = new Ray(transform.position, -right * range);
+        Vector3 startPoint = new Vector3(transform.position.x, transform.position.y + heightOffset, transform.position.z);
+        Ray faceForward = new Ray(startPoint, forward * range);
+        Ray faceRight = new Ray(startPoint, right * range);
+        Ray faceLeft = new Ray(startPoint, -right * range);
 
-        Debug.DrawRay(transform.position, forward * range, Color.red);
-        Debug.DrawRay(transform.position, right * range, Color.blue);
-        Debug.DrawRay(transform.position, -right * range, Color.yellow);
+        Debug.DrawRay(startPoint, forward * range, Color.red);
+        Debug.DrawRay(startPoint, right * range, Color.blue);
+        Debug.DrawRay(startPoint, -right * range, Color.yellow);
 
         // Create list of rays facing different directions
         List<RayDirection> rayDirections = new List<RayDirection>() { new RayDirection(faceForward, targetPoint, hitMask, range),
@@ -59,7 +61,6 @@ public class Wolf : MonoBehaviour
             {
                 if (hasFoundTarget == false) GameEventsManager.current.WolfFoundTarget();
                 hasFoundTarget = true;
-                //Debug.Log("here " + id);
 
                 if (Vector3.Distance(navMeshAgent.destination, transform.position) < 1f && !foundHitPoint)
                 {
@@ -71,7 +72,6 @@ public class Wolf : MonoBehaviour
                 if (foundHitPoint)
                 {
                     // Rotate towards fence
-                    //Debug.Log("Rotating");
                     Quaternion look = Quaternion.LookRotation(hitPoint);
                     transform.rotation = Quaternion.Slerp(transform.rotation, look, rotationSpeed * Time.deltaTime);
                 }
