@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 4573074595643163939}
   - component: {fileID: 4573074595643163937}
   m_Layer: 0
-  m_Name: Sheep
+  m_Name: SheepNew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
