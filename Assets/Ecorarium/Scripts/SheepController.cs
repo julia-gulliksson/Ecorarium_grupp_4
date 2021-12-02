@@ -27,7 +27,7 @@ public class SheepController : MonoBehaviour
         fenceWidth = fencePrefab.transform.localScale.x;
         SpawnSheep(5);
         
-        //PlanSpawnFence(fenceLevel , transform.position.x , transform.position.z);
+        PlanSpawnFence(fenceLevel , transform.position.x , transform.position.z);
 
     }
 
