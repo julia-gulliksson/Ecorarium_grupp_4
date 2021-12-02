@@ -1,21 +1,19 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Wolf : MonoBehaviour
 {
-    [SerializeField] float speed = 6f;
     public Vector3 targetPoint;
-    //[SerializeField] Transform target;
-    RaycastHit hit;
-    [SerializeField] float range = 2;
     [SerializeField] LayerMask hitMask;
-    bool moving;
-    bool hasCollided = false;
+    bool hasFoundTarget = false;
     NavMeshAgent navMeshAgent;
-
+    float range = 4f;
+    [SerializeField] public int id;
+    float rotationSpeed = 5f;
+    Vector3 hitPoint;
+    bool foundHitPoint;
+    float heightOffset = 0.5f;
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -27,49 +25,63 @@ public class Wolf : MonoBehaviour
         Move();
     }
 
+    void OnDestroy()
+    {
+        if (hasFoundTarget == true) GameEventsManager.current.WolfLostTarget();
+    }
 
     void DetectFence()
     {
         Vector3 forward = transform.forward;
-        Debug.DrawRay(transform.position, forward * range, Color.red);
+        Vector3 right = transform.right;
+        Vector3 startPoint = new Vector3(transform.position.x, transform.position.y + heightOffset, transform.position.z);
+        Ray faceForward = new Ray(startPoint, forward * range);
+        Ray faceRight = new Ray(startPoint, right * range);
+        Ray faceLeft = new Ray(startPoint, -right * range);
 
-        if (Physics.Raycast(transform.position, forward, out hit, range, hitMask))
+        Debug.DrawRay(startPoint, forward * range, Color.red);
+        Debug.DrawRay(startPoint, right * range, Color.blue);
+        Debug.DrawRay(startPoint, -right * range, Color.yellow);
+
+        // Create list of rays facing different directions
+        List<RayDirection> rayDirections = new List<RayDirection>() { new RayDirection(faceForward, targetPoint, hitMask, range),
+        new RayDirection(faceRight, targetPoint, hitMask, range), new RayDirection(faceLeft, targetPoint, hitMask, range)};
+
+        List<RayDirection> raysFoundTarget = new List<RayDirection>();
+        foreach (RayDirection ray in rayDirections)
         {
-            moving = false;
-            //TODO: Check if wolf is close enough, call event then
-
-            if (hasCollided == false) GameEventsManager.current.WolfFoundTarget(true);
-            hasCollided = true;
-
+            if (ray.TargetFound())
+            {
+                raysFoundTarget.Add(ray);
+            }
         }
-        else
+        if (raysFoundTarget.Count > 0)
         {
-            moving = true;
-            if (hasCollided == true) GameEventsManager.current.WolfFoundTarget(false);
-            hasCollided = false;
+            if (raysFoundTarget[0].TargetFound())
+            {
+                if (hasFoundTarget == false) GameEventsManager.current.WolfFoundTarget();
+                hasFoundTarget = true;
+
+                if (Vector3.Distance(navMeshAgent.destination, transform.position) < 1f && !foundHitPoint)
+                {
+                    Debug.Log("In here " + id);
+                    foundHitPoint = true;
+                    hitPoint = -raysFoundTarget[0].hit.normal;
+                }
+
+                if (foundHitPoint)
+                {
+                    // Rotate towards fence
+                    Quaternion look = Quaternion.LookRotation(hitPoint);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, look, rotationSpeed * Time.deltaTime);
+                }
+            }
         }
+
     }
 
-    private void OnDestroy()
+    void Move()
     {
-        if (hasCollided == true) GameEventsManager.current.WolfFoundTarget(false);
-    }
-
-    private void Move()
-    {
-
-        if (moving)
-        {
-            navMeshAgent.destination = targetPoint;
-
-            //float step = speed * Time.deltaTime;
-            //Vector3 targetPostition = new Vector3(targetPoint.x, transform.position.y, targetPoint.z);
-            //transform.LookAt(targetPostition);
-            //transform.position = Vector3.MoveTowards(transform.position, targetPostition, step);
-        }
-        else
-        {
-            navMeshAgent.destination = transform.position;
-        }
+        navMeshAgent.destination = targetPoint;
     }
 }
