@@ -8,16 +8,10 @@ public class GameEventsManager : MonoBehaviour
 
     public event Action onWolfFoundTarget;
     public event Action onWolfLostTarget;
-    public event Action<List<Vector3>> onTargetPointsGenerated;
 
     void Awake()
     {
         current = this;
-    }
-
-    public void TargetPointsGenerated(List<Vector3> targetPoints)
-    {
-        onTargetPointsGenerated?.Invoke(targetPoints);
     }
 
     public void WolfFoundTarget()

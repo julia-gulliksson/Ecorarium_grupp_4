@@ -64,7 +64,6 @@ public class Wolf : MonoBehaviour
 
                 if (Vector3.Distance(navMeshAgent.destination, transform.position) < 1f && !foundHitPoint)
                 {
-                    Debug.Log("In here " + id);
                     foundHitPoint = true;
                     hitPoint = -raysFoundTarget[0].hit.normal;
                 }
