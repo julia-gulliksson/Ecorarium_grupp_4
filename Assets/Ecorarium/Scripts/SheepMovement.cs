@@ -72,9 +72,9 @@ public class SheepMovement : MonoBehaviour
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
-        Vector2 randomDirection = new Vector2(randomX, randomZ);
+        
 
-        walkPoint = new Vector3(transform.position.x + randomDirection.x, transform.position.y, transform.position.z + randomDirection.y);
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
         // walkPoint = walkPoint.normalized;
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatisWalkable))
         {
