@@ -6,64 +6,41 @@ using UnityEngine;
 public class WolfSpawn : MonoBehaviour
 {
     [SerializeField] GameObject wolf;
-    private List<GameObject> wolves = new List<GameObject>();
-    [SerializeField] Transform sheepEnclosure;
-    private List<Vector3> targetPoints = new List<Vector3>();
-    float centerX;
-    float plusX;
-    float minusX;
+    List<GameObject> wolves = new List<GameObject>();
+    [SerializeField] public int nrOfWolves = 10;
+    float distance = 0.4f;
+    [SerializeField] List<GameObject> fenceSides;
+    List<Vector3> targetPoints = new List<Vector3>();
+    float spawnRadius = 10;
+    GameObject[] destinationObjects;
 
-    void Start()
+    private void Start()
     {
-        centerX = sheepEnclosure.localScale.x / 2;
-        plusX = sheepEnclosure.position.x + centerX;
-        minusX = sheepEnclosure.position.x - centerX;
-        StartCoroutine(CreateTargetPoints());
+        StartCoroutine(DetermineFencePositions());
     }
 
-    IEnumerator CreateTargetPoints()
+    IEnumerator DetermineFencePositions()
     {
-        while (targetPoints.Count < 10)
+        destinationObjects = GameObject.FindGameObjectsWithTag("Destination");
+        foreach (GameObject destination in destinationObjects)
         {
-            float x = UnityEngine.Random.Range(plusX, minusX);
-            Vector3 targetPoint = new Vector3(x, sheepEnclosure.position.y, sheepEnclosure.position.z);
-            bool tooClose = false;
-            foreach (Vector3 point in targetPoints)
-            {
-                if (Vector3.Distance(point, targetPoint) < 2f)
-                {
-                    tooClose = true;
-                }
-            }
-            if (!tooClose) targetPoints.Add(targetPoint);
-
-
-            if (targetPoints.Count == 10)
-            {
-                // All target point spots are created, begin spawning wolves
-                yield return StartCoroutine(SpawnWolves());
-            }
-            else
-            {
-                yield return null;
-            }
+            targetPoints.Add(destination.transform.position);
         }
+        yield return StartCoroutine(SpawnWolves());
     }
 
     IEnumerator SpawnWolves()
     {
-        while (wolves.Count < 10)
+        while (wolves.Count < destinationObjects.Length)
         {
-            float x = UnityEngine.Random.Range(-10, 10);
-            float y = 0.5f;
-            float z = UnityEngine.Random.Range(-40, -30);
-            Vector3 positioning = new Vector3(x, y, z);
+            Vector2 radius = UnityEngine.Random.insideUnitCircle * spawnRadius;
+            Vector3 positioning = new Vector3(transform.position.x + radius.x, transform.position.y, transform.position.z + radius.y);
 
             bool tooClose = false;
 
             foreach (GameObject wolf in wolves)
             {
-                if (Vector3.Distance(wolf.transform.position, positioning) < 0.4f)
+                if (Vector3.Distance(wolf.transform.position, positioning) < distance)
                 {
                     tooClose = true;
                 }
@@ -71,24 +48,36 @@ public class WolfSpawn : MonoBehaviour
 
             if (!tooClose)
             {
+                Vector3 targetPoint = Vector3.zero;
                 try
+                {
+                    int randomIndex = UnityEngine.Random.Range(0, targetPoints.Count);
+                    targetPoint = targetPoints[randomIndex];
+                    //targetPoint = new Vector3(1.99259f, 2.097882f, 6.81123f);
+                    // Remove targetPoint in list, since no other wolves should get this targetPoint
+                    targetPoints.Remove(targetPoints[randomIndex]);
+                }
+                catch
+                {
+                    Debug.LogWarning("Target point index not found");
+                }
+
+                if (targetPoint != Vector3.zero)
                 {
                     GameObject wolfObj = Instantiate(wolf, positioning, Quaternion.identity);
                     Wolf wolfScript = wolfObj.GetComponent<Wolf>();
-
-                    // Assign a targetPoint to the wolf
-                    wolfScript.targetPoint = targetPoints[0];
-                    // Remove targetPoint in list, since no other wolves should get this targetPoint
-                    targetPoints.Remove(targetPoints[0]);
+                    wolfScript.targetPoint = targetPoint;
+                    wolfScript.id = wolves.Count;
                     wolves.Add(wolfObj);
-
-                }
-                catch (Exception e)
-                {
-                    Debug.LogWarning(e + " Could not create wolf");
                 }
             }
             yield return null;
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, spawnRadius);
     }
 }
