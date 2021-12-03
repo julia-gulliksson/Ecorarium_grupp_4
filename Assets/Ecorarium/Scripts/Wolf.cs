@@ -13,7 +13,7 @@ public class Wolf : MonoBehaviour
     float rotationSpeed = 5f;
     Vector3 hitPoint;
     bool foundHitPoint;
-    float heightOffset = 0.5f;
+    float heightOffset = 0.8f;
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
