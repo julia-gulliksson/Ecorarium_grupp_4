@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class RayDirection
 {
     private Ray ray;
@@ -7,13 +8,15 @@ public class RayDirection
     Vector3 targetPoint;
     float hitDistance = 4;
     LayerMask hitMask;
+    public Direction direction;
 
-    public RayDirection(Ray rayCast, Vector3 target, LayerMask mask, float rayRange)
+    public RayDirection(Ray rayCast, Vector3 target, LayerMask mask, float rayRange, Direction facingDirection)
     {
         ray = rayCast;
         targetPoint = target;
         hitMask = mask;
         range = rayRange;
+        direction = facingDirection;
     }
 
     public bool TargetFound()
@@ -24,4 +27,11 @@ public class RayDirection
         }
         return false;
     }
+}
+
+public enum Direction
+{
+    Forward,
+    Left,
+    Right
 }

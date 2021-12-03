@@ -775,6 +775,8 @@ MonoBehaviour:
     m_Bits: 128
   hasFoundTarget: 0
   id: 0
+  heightOffset: 1
+  heightOffsetLower: 0.2
 --- !u!114 &1198766668445621662
 MonoBehaviour:
   m_ObjectHideFlags: 0
