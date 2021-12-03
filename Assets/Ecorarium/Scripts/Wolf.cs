@@ -13,7 +13,7 @@ public class Wolf : MonoBehaviour
     float rotationSpeed = 5f;
     Vector3 hitPoint;
     [SerializeField] float heightOffset = 1f;
-    [SerializeField] float heightOffsetLower = 0.3f;
+    [SerializeField] float heightOffsetLower = 0.2f;
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
