@@ -76522,6 +76522,10 @@ PrefabInstance:
       propertyPath: nrOfWolves
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
+      propertyPath: spawnRadius
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1542121967731945669, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
       propertyPath: m_RootOrder
       value: 13
