@@ -10,6 +10,9 @@ public class GameEventsManager : MonoBehaviour
     public event Action onWolfLostTarget;
     public event Action<List<Vector3>> onTargetPointsGenerated;
 
+    public event Action OnDay;
+    public event Action OnNight;
+
     void Awake()
     {
         current = this;
@@ -29,4 +32,15 @@ public class GameEventsManager : MonoBehaviour
     {
         onWolfLostTarget?.Invoke();
     }
+
+    public void Day()
+    {
+        OnDay?.Invoke();
+    }
+
+    public void Night()
+    {
+        OnNight?.Invoke();
+    }
+
 }
