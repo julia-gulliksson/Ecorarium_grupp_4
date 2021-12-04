@@ -6,20 +6,12 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    int fenceSide;
-    Image barImage;
+    [SerializeField] int fenceSide;
+    Slider slider;
 
     private void Start()
     {
-        barImage = GetComponent<Image>();
-        try
-        {
-            fenceSide = transform.parent.parent.GetComponent<FenceHealth>().side;
-        }
-        catch
-        {
-            fenceSide = 0;
-        }
+        slider = GetComponent<Slider>();
     }
     private void OnEnable()
     {
@@ -35,7 +27,7 @@ public class HealthBar : MonoBehaviour
     {
         if (side == fenceSide)
         {
-            barImage.fillAmount = healthPercentage / 100;
+            slider.value = healthPercentage;
         }
     }
 }
