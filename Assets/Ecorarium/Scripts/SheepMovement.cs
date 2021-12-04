@@ -10,16 +10,12 @@ using Random = UnityEngine.Random;
 public class SheepMovement : MonoBehaviour
 {
     NavMeshAgent animal;
-
     [SerializeField]
     Vector3 walkPoint;
     [SerializeField]
     bool walkPointSet;
     private AudioSource baa;
-
-
     public float walkPointRange = 2;
-
     float timer;
     float soundTimer;
     float freeWillBaa;
@@ -31,32 +27,35 @@ public class SheepMovement : MonoBehaviour
         baa = GetComponent<AudioSource>();
         freeWillBaa = Random.Range(1.0f, 80.0f);
         soundTimer = Time.time;
-
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         Walk();
         if ((Time.time - timer) > 2.0f)
         {
             walkPointSet = false;
-
         }
+
         if ((Time.time - soundTimer) > freeWillBaa)
         {
-            baa.Play();
+            try
+            {
+                baa.Play();
+            }
+            catch
+            {
+                Debug.LogWarning("Audio source not found");
+            }
+
             freeWillBaa = Random.Range(10.0f, 80.0f);
             soundTimer = Time.time;
-
         }
     }
 
     private void Walk()
     {
         if ((!walkPointSet)) SeachForWalkPoint();
-        
 
         if (walkPointSet) animal.SetDestination(walkPoint);
 
@@ -72,20 +71,16 @@ public class SheepMovement : MonoBehaviour
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
-        
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        // walkPoint = walkPoint.normalized;
+
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatisWalkable))
         {
             walkPointSet = true;
             timer = Time.time;
         }
-            
-
-
-
     }
+
     private void OnTriggerEnter(Collider other)
     {
         print("HIT Somthing");
