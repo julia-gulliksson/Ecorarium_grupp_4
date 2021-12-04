@@ -5631,6 +5631,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 133247335}
+  - component: {fileID: 133247336}
   m_Layer: 0
   m_Name: Side 2
   m_TagString: Untagged
@@ -5657,6 +5658,19 @@ Transform:
   m_Father: {fileID: 1474028374}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &133247336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133247334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccef659c86da129479e565744dabc364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  side: 2
 --- !u!1001 &135181331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10257,6 +10271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 287501929}
+  - component: {fileID: 287501930}
   m_Layer: 0
   m_Name: Side 1
   m_TagString: Untagged
@@ -10282,6 +10297,19 @@ Transform:
   m_Father: {fileID: 1474028374}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &287501930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287501928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccef659c86da129479e565744dabc364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  side: 1
 --- !u!1001 &288266756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32904,6 +32932,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 878535958}
+  - component: {fileID: 878535959}
   m_Layer: 0
   m_Name: Side 3
   m_TagString: Untagged
@@ -32929,6 +32958,19 @@ Transform:
   m_Father: {fileID: 1474028374}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &878535959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878535957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccef659c86da129479e565744dabc364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  side: 3
 --- !u!1001 &882427457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36176,6 +36218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 935616255}
+  - component: {fileID: 935616256}
   m_Layer: 0
   m_Name: Side 4
   m_TagString: Untagged
@@ -36202,6 +36245,19 @@ Transform:
   m_Father: {fileID: 1474028374}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &935616256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935616254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccef659c86da129479e565744dabc364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  side: 4
 --- !u!1001 &936772240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54543,7 +54599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1474028374}
   m_Layer: 0
-  m_Name: Enclosure
+  m_Name: Sheep Enclosure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

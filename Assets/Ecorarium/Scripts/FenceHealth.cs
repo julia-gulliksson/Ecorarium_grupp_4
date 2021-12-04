@@ -6,8 +6,10 @@ using TMPro;
 public class FenceHealth : MonoBehaviour
 {
     int wolvesAttacking = 0;
-    int health = 100;
+    int health;
+    int baseHealth = 100;
     bool isHealthTicking = false;
+    [SerializeField] public int side;
 
     private void OnEnable()
     {
@@ -21,19 +23,31 @@ public class FenceHealth : MonoBehaviour
         GameEventsManager.current.onWolfLostTarget -= DecrementWolvesAttacking;
     }
 
-    void IncrementWolvesAttacking()
+    private void Start()
     {
-        wolvesAttacking++;
+        // Base health on amount of fence assets this side has
+        health = baseHealth * transform.childCount;
+    }
 
-        if (!isHealthTicking)
+    void IncrementWolvesAttacking(int fenceSide)
+    {
+        if (fenceSide == side)
         {
-            StartCoroutine(DoDamage());
+            wolvesAttacking++;
+
+            if (!isHealthTicking)
+            {
+                StartCoroutine(DoDamage());
+            }
         }
     }
 
-    void DecrementWolvesAttacking()
+    void DecrementWolvesAttacking(int fenceSide)
     {
-        wolvesAttacking--;
+        if (fenceSide == side)
+        {
+            wolvesAttacking--;
+        }
     }
 
     IEnumerator DoDamage()
@@ -43,8 +57,10 @@ public class FenceHealth : MonoBehaviour
         {
             while (wolvesAttacking > 0 && health > 0)
             {
+                Debug.Log(wolvesAttacking + " NR OF WOLVES");
+                Debug.Log(side);
                 health--;
-                Debug.Log(health);
+                Debug.Log("HEALTH: " + health);
                 //healthUI.text = health.ToString();
                 yield return new WaitForSeconds(2f / wolvesAttacking);
             }
@@ -52,6 +68,11 @@ public class FenceHealth : MonoBehaviour
         else
         {
             isHealthTicking = false;
+        }
+        if (health <= 0)
+        {
+            //TODO: Signal to wolves to advance, game over
+            Destroy(gameObject);
         }
     }
 }
