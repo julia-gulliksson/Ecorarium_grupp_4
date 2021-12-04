@@ -6,9 +6,11 @@ using TMPro;
 public class FenceHealth : MonoBehaviour
 {
     int wolvesAttacking = 0;
-    int health;
     int baseHealth = 100;
+    int health;
+    int maxHealth;
     bool isHealthTicking = false;
+    float tickSpeed = 2f;
     [SerializeField] public int side;
 
     private void OnEnable()
@@ -25,8 +27,14 @@ public class FenceHealth : MonoBehaviour
 
     private void Start()
     {
+        int children = 0;
+        foreach (Transform childTransform in transform)
+        {
+            if (childTransform.name.Contains("Fence")) children++;
+        }
         // Base health on amount of fence assets this side has
-        health = baseHealth * transform.childCount;
+        maxHealth = baseHealth * children;
+        health = maxHealth;
     }
 
     void IncrementWolvesAttacking(int fenceSide)
@@ -57,12 +65,10 @@ public class FenceHealth : MonoBehaviour
         {
             while (wolvesAttacking > 0 && health > 0)
             {
-                Debug.Log(wolvesAttacking + " NR OF WOLVES");
-                Debug.Log(side);
                 health--;
-                Debug.Log("HEALTH: " + health);
-                //healthUI.text = health.ToString();
-                yield return new WaitForSeconds(2f / wolvesAttacking);
+                float healthPercentage = ((float)health / (float)maxHealth) * 100;
+                GameEventsManager.current.FenceHealthChanged(side, healthPercentage);
+                yield return new WaitForSeconds(tickSpeed / wolvesAttacking);
             }
         }
         else

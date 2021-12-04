@@ -45,7 +45,7 @@ public class SheepMovement : MonoBehaviour
             }
             catch
             {
-                Debug.LogWarning("Audio source not found");
+                Debug.LogWarning("Sheep audio source not found");
             }
 
             freeWillBaa = Random.Range(10.0f, 80.0f);
