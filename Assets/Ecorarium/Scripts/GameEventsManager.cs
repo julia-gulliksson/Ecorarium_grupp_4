@@ -9,6 +9,9 @@ public class GameEventsManager : MonoBehaviour
     public event Action<int> onWolfFoundTarget;
     public event Action<int> onWolfLostTarget;
     public event Action<int, float> onFenceHealthChanged;
+    public event Action onFenceBreak;
+    public event Action<int> onWolfAttacking;
+    public event Action<int> onWolfStopAttacking;
 
     void Awake()
     {
@@ -28,5 +31,20 @@ public class GameEventsManager : MonoBehaviour
     public void FenceHealthChanged(int fenceSide, float healthPercentage)
     {
         onFenceHealthChanged?.Invoke(fenceSide, healthPercentage);
+    }
+
+    public void FenceBroke()
+    {
+        onFenceBreak?.Invoke();
+    }
+
+    public void WolfAttacking(int id)
+    {
+        onWolfAttacking?.Invoke(id);
+    }
+
+    public void WolfStopAttacking(int id)
+    {
+        onWolfStopAttacking?.Invoke(id);
     }
 }
