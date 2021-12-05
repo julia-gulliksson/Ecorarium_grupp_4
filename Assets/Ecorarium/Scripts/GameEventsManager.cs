@@ -10,6 +10,9 @@ public class GameEventsManager : MonoBehaviour
     public event Action<int> onWolfLostTarget;
     public event Action<int, float> onFenceHealthChanged;
 
+    public event Action OnDay;
+    public event Action OnNight;
+
     void Awake()
     {
         current = this;
@@ -29,4 +32,15 @@ public class GameEventsManager : MonoBehaviour
     {
         onFenceHealthChanged?.Invoke(fenceSide, healthPercentage);
     }
+
+    public void Day()
+    {
+        OnDay?.Invoke();
+    }
+
+    public void Night()
+    {
+        OnNight?.Invoke();
+    }
+
 }
