@@ -595,10 +595,10 @@ GameObject:
   - component: {fileID: 4573074595643163936}
   - component: {fileID: 4573074595643163939}
   - component: {fileID: 4573074595643163937}
-  - component: {fileID: 9111721070284708537}
+  - component: {fileID: 1434920770478127763}
   m_Layer: 0
   m_Name: SheepNew
-  m_TagString: Sheep
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -710,7 +710,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!65 &9111721070284708537
+--- !u!65 &1434920770478127763
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

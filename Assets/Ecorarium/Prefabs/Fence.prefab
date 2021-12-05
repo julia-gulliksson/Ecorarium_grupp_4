@@ -44,13 +44,13 @@ GameObject:
   - component: {fileID: 6541734344543689831}
   - component: {fileID: 6541734344539082537}
   - component: {fileID: 3885427365208696717}
-  - component: {fileID: 4317916422996101442}
+  - component: {fileID: 2153493350412757578}
   m_Layer: 7
   m_Name: Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6541734344541447481
 Transform:
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc8d6ddc4f7d5c428121cc134ff12db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!208 &4317916422996101442
+--- !u!208 &2153493350412757578
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
