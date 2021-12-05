@@ -8,12 +8,18 @@ public class HealthBar : MonoBehaviour
     Slider slider;
     [SerializeField] Gradient gradient;
     Animator animator;
+    [SerializeField] Transform player;
 
     private void Start()
     {
         slider = GetComponent<Slider>();
         animator = GetComponent<Animator>();
     }
+    private void Update()
+    {
+        transform.LookAt(player);
+    }
+
     private void OnEnable()
     {
         GameEventsManager.current.onFenceHealthChanged += UpdateHealthBar;

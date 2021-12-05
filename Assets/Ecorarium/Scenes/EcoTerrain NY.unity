@@ -38721,6 +38721,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 951992138}
     - target: {fileID: 4294666206722167966, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1458094067}
+    - target: {fileID: 4294666206722167966, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: fenceSide
       value: 3
       objectReference: {fileID: 0}
@@ -50093,6 +50097,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1913054284}
     - target: {fileID: 4294666206722167966, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1458094067}
+    - target: {fileID: 4294666206722167966, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: fenceSide
       value: 2
       objectReference: {fileID: 0}
@@ -54259,6 +54267,11 @@ Transform:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4294666206153129628, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
   m_PrefabInstance: {fileID: 4294666207385093251}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1458094067 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 388053812240416730, guid: 74389e85a3d0acd47b676db6807d2e5d, type: 3}
+  m_PrefabInstance: {fileID: 1214064473}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1459134658
 PrefabInstance:
@@ -68585,6 +68598,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 541592487}
     - target: {fileID: 4294666206722167966, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1458094067}
+    - target: {fileID: 4294666206722167966, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: fenceSide
       value: 4
       objectReference: {fileID: 0}
@@ -80562,6 +80579,10 @@ PrefabInstance:
       propertyPath: red.r
       value: 0.7735849
       objectReference: {fileID: 0}
+    - target: {fileID: 4294666206722167966, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1458094067}
     - target: {fileID: 4294666207652253560, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
