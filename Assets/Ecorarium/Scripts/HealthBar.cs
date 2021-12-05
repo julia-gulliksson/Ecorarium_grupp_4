@@ -6,6 +6,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] int fenceSide;
     [SerializeField] Image fill;
     Slider slider;
+    [SerializeField] Gradient gradient;
 
     private void Start()
     {
@@ -26,10 +27,7 @@ public class HealthBar : MonoBehaviour
         if (side == fenceSide)
         {
             slider.value = healthPercentage;
-            if (healthPercentage < 50 && fill.color != Color.red)
-            {
-                fill.color = Color.red;
-            }
+            fill.color = gradient.Evaluate(healthPercentage / 100);
         }
     }
 }
