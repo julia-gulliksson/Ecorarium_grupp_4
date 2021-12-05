@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 4294666206722167960}
   - component: {fileID: 4294666206722167967}
   - component: {fileID: 4294666206722167966}
+  - component: {fileID: 2086435771025899659}
   m_Layer: 0
   m_Name: Health Bar
   m_TagString: Untagged
@@ -235,6 +236,26 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+--- !u!95 &2086435771025899659
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294666206722167961}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 823264760e0860b4abea44d0ffdd0219, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4294666206889248476
 GameObject:
   m_ObjectHideFlags: 0

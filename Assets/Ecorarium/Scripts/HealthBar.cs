@@ -7,10 +7,12 @@ public class HealthBar : MonoBehaviour
     [SerializeField] Image fill;
     Slider slider;
     [SerializeField] Gradient gradient;
+    Animator animator;
 
     private void Start()
     {
         slider = GetComponent<Slider>();
+        animator = GetComponent<Animator>();
     }
     private void OnEnable()
     {
@@ -28,6 +30,7 @@ public class HealthBar : MonoBehaviour
         {
             slider.value = healthPercentage;
             fill.color = gradient.Evaluate(healthPercentage / 100);
+            animator.SetFloat("health", healthPercentage);
         }
     }
 }
