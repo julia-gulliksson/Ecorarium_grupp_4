@@ -1356,8 +1356,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1174427759}
-  - component: {fileID: 1174427760}
-  - component: {fileID: 1174427761}
   m_Layer: 0
   m_Name: FenceSide 1
   m_TagString: Untagged
@@ -1384,27 +1382,6 @@ Transform:
   m_Father: {fileID: 1854911302}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0.967, z: 0}
---- !u!114 &1174427760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174427758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d5df132af75f0469e1ad9a718c1b0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wolfSpawn: {fileID: 2067916117}
---- !u!33 &1174427761
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174427758}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1272399885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 682812916002854007, guid: fd752afff71c6414085f2c66f64d72cb, type: 3}
@@ -1738,6 +1715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1854911302}
+  - component: {fileID: 1854911303}
   m_Layer: 0
   m_Name: Fence
   m_TagString: Untagged
@@ -1764,6 +1742,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 44.671, z: 0}
+--- !u!114 &1854911303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854911301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccef659c86da129479e565744dabc364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1913479505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,17 +1952,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2067916117 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
-  m_PrefabInstance: {fileID: 1542121967039862161}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e549849fe085fcf40959de353d9fe300, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1259395546757304938
 PrefabInstance:
   m_ObjectHideFlags: 0
