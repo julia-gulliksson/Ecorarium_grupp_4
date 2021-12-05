@@ -8,7 +8,6 @@ public class WolfSpawn : MonoBehaviour
     [SerializeField] GameObject wolf;
     List<GameObject> wolves = new List<GameObject>();
     [SerializeField] public int nrOfWolves = 10;
-    float distance = 0.4f;
     List<Vector3> targetPoints = new List<Vector3>();
     [SerializeField] float spawnRadius = 6;
     GameObject[] destinationObjects;

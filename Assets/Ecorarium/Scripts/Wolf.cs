@@ -14,6 +14,7 @@ public class Wolf : MonoBehaviour
     Vector3 hitPoint;
     [SerializeField] float heightOffset = 1f;
     [SerializeField] float heightOffsetLower = 0.2f;
+    IFence fenceScript;
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -27,7 +28,7 @@ public class Wolf : MonoBehaviour
 
     void OnDestroy()
     {
-        if (hasFoundTarget == true) GameEventsManager.current.WolfLostTarget();
+        if (hasFoundTarget == true) fenceScript?.WolfLost();
     }
 
     void DetectFence()
@@ -75,7 +76,9 @@ public class Wolf : MonoBehaviour
 
         if (Vector3.Distance(navMeshAgent.destination, transform.position) < 1f && !hasFoundTarget)
         {
-            GameEventsManager.current.WolfFoundTarget();
+            IFence fence = firstRay.hit.collider.GetComponent<IFence>();
+            fence?.WolfHit();
+
             hasFoundTarget = true;
             hitPoint = -firstRay.hit.normal;
         }

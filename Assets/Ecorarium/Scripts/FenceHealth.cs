@@ -6,8 +6,12 @@ using TMPro;
 public class FenceHealth : MonoBehaviour
 {
     int wolvesAttacking = 0;
-    int health = 100;
+    int baseHealth = 100;
+    int health;
+    int maxHealth;
     bool isHealthTicking = false;
+    float tickSpeed = 2f;
+    [SerializeField] public int side;
 
     private void OnEnable()
     {
@@ -21,19 +25,37 @@ public class FenceHealth : MonoBehaviour
         GameEventsManager.current.onWolfLostTarget -= DecrementWolvesAttacking;
     }
 
-    void IncrementWolvesAttacking()
+    private void Start()
     {
-        wolvesAttacking++;
-
-        if (!isHealthTicking)
+        int children = 0;
+        foreach (Transform childTransform in transform)
         {
-            StartCoroutine(DoDamage());
+            if (childTransform.name.Contains("Fence")) children++;
+        }
+        // Base health on amount of fence assets this side has
+        maxHealth = baseHealth * children;
+        health = maxHealth;
+    }
+
+    void IncrementWolvesAttacking(int fenceSide)
+    {
+        if (fenceSide == side)
+        {
+            wolvesAttacking++;
+
+            if (!isHealthTicking)
+            {
+                StartCoroutine(DoDamage());
+            }
         }
     }
 
-    void DecrementWolvesAttacking()
+    void DecrementWolvesAttacking(int fenceSide)
     {
-        wolvesAttacking--;
+        if (fenceSide == side)
+        {
+            wolvesAttacking--;
+        }
     }
 
     IEnumerator DoDamage()
@@ -44,14 +66,19 @@ public class FenceHealth : MonoBehaviour
             while (wolvesAttacking > 0 && health > 0)
             {
                 health--;
-                Debug.Log(health);
-                //healthUI.text = health.ToString();
-                yield return new WaitForSeconds(2f / wolvesAttacking);
+                float healthPercentage = ((float)health / (float)maxHealth) * 100;
+                GameEventsManager.current.FenceHealthChanged(side, healthPercentage);
+                yield return new WaitForSeconds(tickSpeed / wolvesAttacking);
             }
         }
         else
         {
             isHealthTicking = false;
+        }
+        if (health <= 0)
+        {
+            //TODO: Signal to wolves to advance, game over
+            Destroy(gameObject);
         }
     }
 }

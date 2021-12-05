@@ -6,21 +6,27 @@ public class GameEventsManager : MonoBehaviour
 {
     public static GameEventsManager current;
 
-    public event Action onWolfFoundTarget;
-    public event Action onWolfLostTarget;
+    public event Action<int> onWolfFoundTarget;
+    public event Action<int> onWolfLostTarget;
+    public event Action<int, float> onFenceHealthChanged;
 
     void Awake()
     {
         current = this;
     }
 
-    public void WolfFoundTarget()
+    public void WolfFoundTarget(int fenceSide)
     {
-        onWolfFoundTarget?.Invoke();
+        onWolfFoundTarget?.Invoke(fenceSide);
     }
 
-    public void WolfLostTarget()
+    public void WolfLostTarget(int fenceSide)
     {
-        onWolfLostTarget?.Invoke();
+        onWolfLostTarget?.Invoke(fenceSide);
+    }
+
+    public void FenceHealthChanged(int fenceSide, float healthPercentage)
+    {
+        onFenceHealthChanged?.Invoke(fenceSide, healthPercentage);
     }
 }
