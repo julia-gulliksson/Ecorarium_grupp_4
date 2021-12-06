@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - SheepEnclosure
   - Destination
+  - Sheep
+  - CabbageSeed
   layers:
   - Default
   - TransparentFX
