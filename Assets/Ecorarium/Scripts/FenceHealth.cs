@@ -10,7 +10,7 @@ public class FenceHealth : MonoBehaviour
     int health;
     int maxHealth;
     bool isHealthTicking = false;
-    float tickSpeed = 0.1f;
+    float tickSpeed = 0.5f;
     [SerializeField] public int side;
 
     private void OnEnable()

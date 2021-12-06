@@ -49,6 +49,7 @@ public class Wolf : MonoBehaviour
 
     void OnDestroy()
     {
+        Debug.Log("Destroyed");
         if (hasFoundTarget == true) fenceScript?.WolfLost();
     }
 

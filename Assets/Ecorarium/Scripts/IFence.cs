@@ -1,5 +1,5 @@
 
-interface IFence
+public interface IFence
 {
     int fenceSide { get; set; }
     public void WolfHit();

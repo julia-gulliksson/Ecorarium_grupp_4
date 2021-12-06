@@ -52,7 +52,7 @@ public class WolfSpawn : MonoBehaviour
             if (targetPoint != Vector3.zero)
             {
                 GameObject wolfObj = Instantiate(wolf, positioning, Quaternion.identity);
-                Wolf wolfScript = wolfObj.GetComponent<Wolf>();
+                WolfStateManager wolfScript = wolfObj.GetComponent<WolfStateManager>();
                 wolfScript.targetPoint = targetPoint;
                 wolfScript.id = wolves.Count;
                 wolves.Add(wolfObj);
