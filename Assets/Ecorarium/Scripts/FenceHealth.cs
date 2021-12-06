@@ -10,7 +10,7 @@ public class FenceHealth : MonoBehaviour
     int health;
     int maxHealth;
     bool isHealthTicking = false;
-    float tickSpeed = 2f;
+    float tickSpeed = 0.1f;
     [SerializeField] public int side;
 
     private void OnEnable()
@@ -68,11 +68,6 @@ public class FenceHealth : MonoBehaviour
                 health--;
                 float healthPercentage = ((float)health / (float)maxHealth) * 100;
                 GameEventsManager.current.FenceHealthChanged(side, healthPercentage);
-                //if (health <= 299)
-                //{
-                //    GameEventsManager.current.FenceBroke();
-                //    Destroy(gameObject);
-                //}
                 yield return new WaitForSeconds(tickSpeed / wolvesAttacking);
             }
         }
