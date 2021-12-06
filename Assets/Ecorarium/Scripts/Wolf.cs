@@ -28,6 +28,7 @@ public class Wolf : MonoBehaviour
 
     void OnDestroy()
     {
+        Debug.Log("Död varg");
         if (hasFoundTarget == true) fenceScript?.WolfLost();
     }
 
