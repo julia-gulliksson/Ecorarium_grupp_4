@@ -11,10 +11,12 @@ public class WolfSpawn : MonoBehaviour
     List<Vector3> targetPoints = new List<Vector3>();
     [SerializeField] float spawnRadius = 6;
     GameObject[] destinationObjects;
+    public AudioSource source;
 
     private void Start()
     {
         StartCoroutine(DetermineFencePositions());
+        GameEventsManager.current.OnNight += NightBegin;
     }
 
     IEnumerator DetermineFencePositions()
@@ -63,5 +65,10 @@ public class WolfSpawn : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, spawnRadius);
+    }
+
+    void NightBegin()
+    {
+        source.Play();
     }
 }

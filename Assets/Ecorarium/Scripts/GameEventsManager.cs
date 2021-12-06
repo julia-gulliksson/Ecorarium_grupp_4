@@ -13,6 +13,9 @@ public class GameEventsManager : MonoBehaviour
     public event Action<int> onWolfAttacking;
     public event Action<int> onWolfStopAttacking;
 
+    public event Action OnDay;
+    public event Action OnNight;
+
     void Awake()
     {
         current = this;
@@ -46,5 +49,15 @@ public class GameEventsManager : MonoBehaviour
     public void WolfStopAttacking(int id)
     {
         onWolfStopAttacking?.Invoke(id);
+    }
+
+    public void Day()
+    {
+        OnDay?.Invoke();
+    }
+
+    public void Night()
+    {
+        OnNight?.Invoke();
     }
 }
