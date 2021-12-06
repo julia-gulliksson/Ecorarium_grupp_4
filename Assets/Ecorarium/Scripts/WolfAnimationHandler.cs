@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,24 +8,31 @@ public class WolfAnimationHandler : MonoBehaviour
     float normalizedVelocity;
     NavMeshAgent wolfNa;
     Wolf wolfController;
-    
+    int wolfId;
+
+    private void OnEnable()
+    {
+        GameEventsManager.current.onWolfAttacking += AttackStart;
+        GameEventsManager.current.onWolfStopAttacking += AttackStop;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.current.onWolfAttacking -= AttackStart;
+        GameEventsManager.current.onWolfStopAttacking -= AttackStop;
+    }
+
     void Start()
     {
-        
         wolfAnimation = GetComponent<Animator>();
         wolfNa = GetComponent<NavMeshAgent>();
         wolfController = GetComponent<Wolf>();
-        
+        wolfId = wolfController.id;
     }
 
-   
-
-    // Update is called once per frame
     void Update()
     {
         wolfAnimation.SetFloat("Velocity", GetNormalVelocity());
-
-        if(wolfController.hasFoundTarget) wolfAnimation.SetBool("Attack", true);
     }
 
     private float GetNormalVelocity()
@@ -36,5 +40,23 @@ public class WolfAnimationHandler : MonoBehaviour
         velocity = wolfNa.velocity.magnitude;
         normalizedVelocity = velocity / wolfNa.desiredVelocity.magnitude;
         return normalizedVelocity;
+    }
+
+    void AttackStart(int id)
+    {
+        if (id == wolfId)
+        {
+            Debug.Log("Starting attack " + id);
+            wolfAnimation.SetBool("Attack", true);
+        }
+    }
+
+    void AttackStop(int id)
+    {
+        if (id == wolfId)
+        {
+            Debug.Log("Stopping attack " + id);
+            wolfAnimation.SetBool("Attack", false);
+        }
     }
 }

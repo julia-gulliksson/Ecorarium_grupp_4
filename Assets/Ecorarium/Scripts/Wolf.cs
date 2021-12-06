@@ -4,26 +4,47 @@ using UnityEngine.AI;
 
 public class Wolf : MonoBehaviour
 {
-    public Vector3 targetPoint;
     [SerializeField] LayerMask hitMask;
-    public bool hasFoundTarget = false;
-    NavMeshAgent navMeshAgent;
-    float range = 4f;
     [SerializeField] public int id;
-    float rotationSpeed = 5f;
-    Vector3 hitPoint;
     [SerializeField] float heightOffset = 1f;
     [SerializeField] float heightOffsetLower = 0.2f;
+    GameObject[] sheepTargets;
+    public Vector3 targetPoint;
+    bool hasFoundTarget = false;
+    NavMeshAgent navMeshAgent;
+    float range = 4f;
+    float rotationSpeed = 5f;
+    Vector3 hitPoint;
     IFence fenceScript;
+    bool fenceHasBroken = false;
+
+    private void OnEnable()
+    {
+        GameEventsManager.current.onFenceBreak += HandleFenceBreak;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.current.onFenceBreak -= HandleFenceBreak;
+    }
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.SetDestination(targetPoint);
+        sheepTargets = GameObject.FindGameObjectsWithTag("Sheep");
     }
 
     void Update()
     {
-        DetectFence();
-        Move();
+        if (!fenceHasBroken)
+        {
+            DetectFence();
+        }
+        else
+        {
+            ChooseTarget();
+        }
     }
 
     void OnDestroy()
@@ -77,7 +98,14 @@ public class Wolf : MonoBehaviour
         if (Vector3.Distance(navMeshAgent.destination, transform.position) < 1f && !hasFoundTarget)
         {
             IFence fence = firstRay.hit.collider.GetComponent<IFence>();
-            fence?.WolfHit();
+            if (fence != null)
+            {
+                fence.WolfHit();
+                fenceScript = fence;
+            }
+
+            // Make sure that a fence hasn't broken, then stop attack animation
+            if (!fenceHasBroken) GameEventsManager.current.WolfAttacking(id);
 
             hasFoundTarget = true;
             hitPoint = -firstRay.hit.normal;
@@ -102,8 +130,54 @@ public class Wolf : MonoBehaviour
         }
     }
 
-    void Move()
+    void HandleFenceBreak()
     {
-        navMeshAgent.destination = targetPoint;
+        GameEventsManager.current.WolfStopAttacking(id);
+        fenceScript?.WolfLost();
+        fenceHasBroken = true;
+    }
+
+    void ChooseTarget()
+    {
+        // Calculate path to nearest sheep
+        float closestTargetDistance = float.MaxValue;
+        NavMeshPath path;
+        NavMeshPath shortestPath = null;
+        foreach (GameObject target in sheepTargets)
+        {
+            if (target == null) continue;
+            path = new NavMeshPath();
+            if (NavMesh.CalculatePath(transform.position, target.transform.position, navMeshAgent.areaMask, path))
+            {
+                float distance = Vector3.Distance(transform.position, path.corners[0]);
+                for (int i = 1; i < path.corners.Length; i++)
+                {
+                    distance += Vector3.Distance(path.corners[i - 1], path.corners[i]);
+                }
+                if (distance < closestTargetDistance)
+                {
+                    closestTargetDistance = distance;
+                    shortestPath = path;
+                }
+            }
+        }
+        if (shortestPath != null)
+        {
+            // Attack nearest sheep
+            navMeshAgent.SetPath(shortestPath);
+        }
+        else
+        {
+            // All sheep are dead
+            navMeshAgent.ResetPath();
+        }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("Sheep"))
+        {
+            Destroy(collider.gameObject);
+        }
     }
 }
