@@ -104,6 +104,7 @@ public class Wolf : MonoBehaviour
                 fenceScript = fence;
             }
 
+            // Make sure that a fence hasn't broken, then stop attack animation
             if (!fenceHasBroken) GameEventsManager.current.WolfAttacking(id);
 
             hasFoundTarget = true;
@@ -138,7 +139,7 @@ public class Wolf : MonoBehaviour
 
     void ChooseTarget()
     {
-        //Calculate path to nearest sheep
+        // Calculate path to nearest sheep
         float closestTargetDistance = float.MaxValue;
         NavMeshPath path;
         NavMeshPath shortestPath = null;
