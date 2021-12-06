@@ -6,27 +6,41 @@ public class GameEventsManager : MonoBehaviour
 {
     public static GameEventsManager current;
 
-    public event Action onWolfFoundTarget;
-    public event Action onWolfLostTarget;
-    public event Action<List<Vector3>> onTargetPointsGenerated;
+    public event Action<int> onWolfFoundTarget;
+    public event Action<int> onWolfLostTarget;
+    public event Action<int, float> onFenceHealthChanged;
+
+    public event Action OnDay;
+    public event Action OnNight;
 
     void Awake()
     {
         current = this;
     }
 
-    public void TargetPointsGenerated(List<Vector3> targetPoints)
+    public void WolfFoundTarget(int fenceSide)
     {
-        onTargetPointsGenerated?.Invoke(targetPoints);
+        onWolfFoundTarget?.Invoke(fenceSide);
     }
 
-    public void WolfFoundTarget()
+    public void WolfLostTarget(int fenceSide)
     {
-        onWolfFoundTarget?.Invoke();
+        onWolfLostTarget?.Invoke(fenceSide);
     }
 
-    public void WolfLostTarget()
+    public void FenceHealthChanged(int fenceSide, float healthPercentage)
     {
-        onWolfLostTarget?.Invoke();
+        onFenceHealthChanged?.Invoke(fenceSide, healthPercentage);
     }
+
+    public void Day()
+    {
+        OnDay?.Invoke();
+    }
+
+    public void Night()
+    {
+        OnNight?.Invoke();
+    }
+
 }
