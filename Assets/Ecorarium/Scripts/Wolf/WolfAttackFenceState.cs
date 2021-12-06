@@ -1,39 +1,31 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class Wolf : MonoBehaviour
+public class WolfAttackFenceState : WolfBaseState
 {
-    public Vector3 targetPoint;
-    [SerializeField] LayerMask hitMask;
-    public bool hasFoundTarget = false;
-    NavMeshAgent navMeshAgent;
-    float range = 4f;
-    [SerializeField] public int id;
-    float rotationSpeed = 5f;
     Vector3 hitPoint;
-    [SerializeField] float heightOffset = 1f;
-    [SerializeField] float heightOffsetLower = 0.2f;
-    IFence fenceScript;
-    void Start()
+    WolfStateManager wolf;
+    float heightOffset = 1f;
+    float heightOffsetLower = 0.2f;
+    float range = 4f;
+    bool hasFoundTarget = false;
+    float rotationSpeed = 5f;
+
+    public override void EnterState(WolfStateManager wolfRef)
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        wolfRef.navMeshAgent.SetDestination(wolfRef.targetPoint);
+        wolf = wolfRef;
     }
 
-    void Update()
+    public override void UpdateState()
     {
         DetectFence();
-        Move();
-    }
-
-    void OnDestroy()
-    {
-        Debug.Log("Död varg");
-        if (hasFoundTarget == true) fenceScript?.WolfLost();
     }
 
     void DetectFence()
     {
+        Transform transform = wolf.transform;
         Vector3 forward = transform.forward;
         Vector3 right = transform.right;
         Vector3 startPoint = new Vector3(transform.position.x, transform.position.y + heightOffset, transform.position.z);
@@ -53,9 +45,9 @@ public class Wolf : MonoBehaviour
         Debug.DrawRay(startPointLower, -right * range, Color.yellow);
 
         // Create list of rays facing different directions
-        List<RayDirection> rayDirections = new List<RayDirection>() { new RayDirection(faceForward, targetPoint, hitMask, range, Direction.Forward), new RayDirection(faceForwardLower, targetPoint, hitMask, range, Direction.Forward),
-        new RayDirection(faceRight, targetPoint, hitMask, range, Direction.Right), new RayDirection(faceRightLower, targetPoint, hitMask, range, Direction.Right),
-        new RayDirection(faceLeftLower, targetPoint, hitMask, range, Direction.Left), new RayDirection(faceLeft, targetPoint, hitMask, range, Direction.Left)};
+        List<RayDirection> rayDirections = new List<RayDirection>() { new RayDirection(faceForward, wolf.targetPoint, wolf.hitMask, range, Direction.Forward), new RayDirection(faceForwardLower, wolf.targetPoint, wolf.hitMask, range, Direction.Forward),
+        new RayDirection(faceRight, wolf.targetPoint, wolf.hitMask, range, Direction.Right), new RayDirection(faceRightLower, wolf.targetPoint, wolf.hitMask, range, Direction.Right),
+        new RayDirection(faceLeftLower, wolf.targetPoint, wolf.hitMask, range, Direction.Left), new RayDirection(faceLeft, wolf.targetPoint, wolf.hitMask, range, Direction.Left)};
 
         List<RayDirection> raysFoundTarget = new List<RayDirection>();
         foreach (RayDirection ray in rayDirections)
@@ -75,36 +67,58 @@ public class Wolf : MonoBehaviour
     {
         RayDirection firstRay = rays[0];
 
-        if (Vector3.Distance(navMeshAgent.destination, transform.position) < 1f && !hasFoundTarget)
+        if (Vector3.Distance(wolf.navMeshAgent.destination, wolf.transform.position) < 1f && !hasFoundTarget)
         {
             IFence fence = firstRay.hit.collider.GetComponent<IFence>();
-            fence?.WolfHit();
+            if (fence != null)
+            {
+                fence.WolfHit();
+                wolf.fenceScript = fence;
 
-            hasFoundTarget = true;
-            hitPoint = -firstRay.hit.normal;
+                GameEventsManager.current.WolfAttacking(wolf.id);
+
+                hasFoundTarget = true;
+                hitPoint = -firstRay.hit.normal;
+            }
         }
 
         if (hasFoundTarget)
         {
             Quaternion look = Quaternion.LookRotation(hitPoint);
-            if (transform.rotation == look && rays.Count == 1 && firstRay.direction != Direction.Forward)
+            if (wolf.transform.rotation == look && rays.Count == 1 && firstRay.direction != Direction.Forward)
             {
                 // Account for wolves at end of fence facing the wrong way
                 float yRotation = -90f;
                 if (firstRay.direction == Direction.Left) yRotation = 90.0f;
                 Vector3 newTarget = new Vector3(0.0f, yRotation, 0.0f);
                 Quaternion newLook = Quaternion.LookRotation(newTarget);
-                transform.rotation = Quaternion.Slerp(transform.rotation, newLook, rotationSpeed * Time.deltaTime);
+                wolf.transform.rotation = Quaternion.Slerp(wolf.transform.rotation, newLook, rotationSpeed * Time.deltaTime);
             }
             else
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, look, rotationSpeed * Time.deltaTime);
+                wolf.transform.rotation = Quaternion.Slerp(wolf.transform.rotation, look, rotationSpeed * Time.deltaTime);
             }
         }
     }
 
-    void Move()
+    public void HandleFenceBreak()
     {
-        navMeshAgent.destination = targetPoint;
+        GameEventsManager.current.WolfStopAttacking(wolf.id);
+        wolf.fenceScript?.WolfLost();
+        wolf.SwitchState(wolf.AttackSheepState);
+    }
+
+    public override void OnDestroy()
+    {
+        wolf.fenceScript?.WolfLost();
+    }
+
+    public override void ExitState()
+    {
+        wolf.fenceScript?.WolfLost();
+    }
+
+    public override void OnTriggerEnter(Collider collider)
+    {
     }
 }
