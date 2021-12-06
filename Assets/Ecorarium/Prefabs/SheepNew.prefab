@@ -686,7 +686,7 @@ MonoBehaviour:
   walkPointRange: 2
   whatisWalkable:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
 --- !u!195 &4573074595643163937
 NavMeshAgent:
   m_ObjectHideFlags: 0
