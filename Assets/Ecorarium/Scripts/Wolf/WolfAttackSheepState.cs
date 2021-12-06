@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WolfAttackSheepState : WolfBaseState
@@ -64,13 +62,11 @@ public class WolfAttackSheepState : WolfBaseState
         }
     }
 
-    private void OnTriggerEnter(Collider collider)
+    public override void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Sheep"))
         {
             Object.Destroy(collider.gameObject);
         }
     }
-
-
 }

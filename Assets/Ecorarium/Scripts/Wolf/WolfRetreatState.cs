@@ -28,4 +28,9 @@ public class WolfRetreatState : WolfBaseState
     {
 
     }
+
+    public override void OnTriggerEnter(Collider collider)
+    {
+
+    }
 }

@@ -15,18 +15,21 @@ public class WolfStateManager : MonoBehaviour
     public LayerMask hitMask;
     public NavMeshAgent navMeshAgent;
     public int id;
+    bool fenceHasBroken = false;
     [System.NonSerialized] public Vector3 targetPoint;
     [System.NonSerialized] public Vector3 spawnPosition;
 
     private void OnEnable()
     {
         GameEventsManager.current.onFenceBreak += AttackFenceState.HandleFenceBreak;
+        GameEventsManager.current.onFenceBreak += HandleFenceBreak;
         GameEventsManager.current.OnDay += HandleDay;
     }
 
     private void OnDisable()
     {
         GameEventsManager.current.onFenceBreak -= AttackFenceState.HandleFenceBreak;
+        GameEventsManager.current.onFenceBreak -= HandleFenceBreak;
         GameEventsManager.current.OnDay -= HandleDay;
     }
 
@@ -55,9 +58,22 @@ public class WolfStateManager : MonoBehaviour
     {
         currentState.OnDestroy();
     }
+    private void OnTriggerEnter(Collider collider)
+    {
+        currentState.OnTriggerEnter(collider);
+    }
 
     void HandleDay()
     {
-        SwitchState(RetreatState);
+        if (!fenceHasBroken)
+        {
+            // Wolves should only retreat if a fence is not broken
+            SwitchState(RetreatState);
+        }
+    }
+
+    void HandleFenceBreak()
+    {
+        fenceHasBroken = true;
     }
 }

@@ -117,4 +117,8 @@ public class WolfAttackFenceState : WolfBaseState
     {
         wolf.fenceScript?.WolfLost();
     }
+
+    public override void OnTriggerEnter(Collider collider)
+    {
+    }
 }

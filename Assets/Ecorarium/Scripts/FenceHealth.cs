@@ -10,7 +10,7 @@ public class FenceHealth : MonoBehaviour
     int health;
     int maxHealth;
     bool isHealthTicking = false;
-    float tickSpeed = 0.5f;
+    float tickSpeed = 0.1f;
     [SerializeField] public int side;
 
     private void OnEnable()
@@ -55,6 +55,11 @@ public class FenceHealth : MonoBehaviour
         if (fenceSide == side)
         {
             wolvesAttacking--;
+            if (wolvesAttacking <= 0)
+            {
+                StopCoroutine(DoDamage());
+                isHealthTicking = false;
+            }
         }
     }
 
