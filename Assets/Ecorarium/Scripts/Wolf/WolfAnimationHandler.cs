@@ -7,7 +7,7 @@ public class WolfAnimationHandler : MonoBehaviour
     float velocity;
     float normalizedVelocity;
     NavMeshAgent wolfNa;
-    Wolf wolfController;
+    WolfStateManager wolfController;
     int wolfId;
 
     private void OnEnable()
@@ -26,7 +26,7 @@ public class WolfAnimationHandler : MonoBehaviour
     {
         wolfAnimation = GetComponent<Animator>();
         wolfNa = GetComponent<NavMeshAgent>();
-        wolfController = GetComponent<Wolf>();
+        wolfController = GetComponent<WolfStateManager>();
         wolfId = wolfController.id;
     }
 
@@ -46,7 +46,6 @@ public class WolfAnimationHandler : MonoBehaviour
     {
         if (id == wolfId)
         {
-            Debug.Log("Starting attack " + id);
             wolfAnimation.SetBool("Attack", true);
         }
     }
@@ -55,7 +54,6 @@ public class WolfAnimationHandler : MonoBehaviour
     {
         if (id == wolfId)
         {
-            Debug.Log("Stopping attack " + id);
             wolfAnimation.SetBool("Attack", false);
         }
     }

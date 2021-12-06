@@ -55,6 +55,11 @@ public class FenceHealth : MonoBehaviour
         if (fenceSide == side)
         {
             wolvesAttacking--;
+            if (wolvesAttacking <= 0)
+            {
+                StopCoroutine(DoDamage());
+                isHealthTicking = false;
+            }
         }
     }
 
