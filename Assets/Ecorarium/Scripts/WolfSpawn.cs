@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WolfSpawn : MonoBehaviour
@@ -8,25 +9,46 @@ public class WolfSpawn : MonoBehaviour
     [SerializeField] GameObject wolf;
     List<GameObject> wolves = new List<GameObject>();
     [SerializeField] public int nrOfWolves = 10;
+    List<Vector3> defaultTargetPoints = new List<Vector3>();
     List<Vector3> targetPoints = new List<Vector3>();
     [SerializeField] float spawnRadius = 6;
     GameObject[] destinationObjects;
     public AudioSource source;
 
-    private void Start()
+    private void OnEnable()
     {
-        StartCoroutine(DetermineFencePositions());
         GameEventsManager.current.OnNight += NightBegin;
+        GameEventsManager.current.OnDay += DayBegin;
     }
 
-    IEnumerator DetermineFencePositions()
+    private void OnDisable()
+    {
+        GameEventsManager.current.OnNight -= NightBegin;
+        GameEventsManager.current.OnDay -= DayBegin;
+    }
+
+    private void Start()
     {
         destinationObjects = GameObject.FindGameObjectsWithTag("Destination");
         foreach (GameObject destination in destinationObjects)
         {
-            targetPoints.Add(destination.transform.position);
+            defaultTargetPoints.Add(destination.transform.position);
         }
-        yield return StartCoroutine(SpawnWolves());
+    }
+
+    void NightBegin()
+    {
+        // Create a copy of the default target points to populate a new list of target points
+        targetPoints = defaultTargetPoints.ToList();
+
+        source.Play();
+        StartCoroutine(SpawnWolves());
+    }
+
+    void DayBegin()
+    {
+        StopCoroutine(SpawnWolves());
+        wolves.Clear();
     }
 
     IEnumerator SpawnWolves()
@@ -65,10 +87,5 @@ public class WolfSpawn : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, spawnRadius);
-    }
-
-    void NightBegin()
-    {
-        source.Play();
     }
 }
