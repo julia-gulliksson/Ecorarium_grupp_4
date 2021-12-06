@@ -23,6 +23,11 @@ public class WolfAttackSheepState : WolfBaseState
 
     }
 
+    public override void ExitState()
+    {
+
+    }
+
     void ChooseTarget()
     {
         // Calculate path to nearest sheep

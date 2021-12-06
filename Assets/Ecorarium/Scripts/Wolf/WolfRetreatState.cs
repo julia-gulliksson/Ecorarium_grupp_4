@@ -1,20 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WolfRetreatState : WolfBaseState
 {
-    public override void EnterState(WolfStateManager wolf)
+    WolfStateManager wolf;
+    public override void EnterState(WolfStateManager wolfRef)
     {
-
+        GameEventsManager.current.WolfStopAttacking(wolfRef.id);
+        wolfRef.navMeshAgent.SetDestination(wolfRef.spawnPosition);
+        wolf = wolfRef;
     }
 
     public override void UpdateState()
     {
-
+        // Despawn when the wolf (almost) reaches spawn position
+        if (Vector3.Distance(wolf.transform.position, wolf.spawnPosition) < 2f)
+        {
+            Object.Destroy(wolf.gameObject);
+        }
     }
 
     public override void OnDestroy()
+    {
+
+    }
+
+    public override void ExitState()
     {
 
     }

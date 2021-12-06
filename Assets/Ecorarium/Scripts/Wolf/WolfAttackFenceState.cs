@@ -74,12 +74,12 @@ public class WolfAttackFenceState : WolfBaseState
             {
                 fence.WolfHit();
                 wolf.fenceScript = fence;
+
+                GameEventsManager.current.WolfAttacking(wolf.id);
+
+                hasFoundTarget = true;
+                hitPoint = -firstRay.hit.normal;
             }
-
-            GameEventsManager.current.WolfAttacking(wolf.id);
-
-            hasFoundTarget = true;
-            hitPoint = -firstRay.hit.normal;
         }
 
         if (hasFoundTarget)
@@ -109,6 +109,11 @@ public class WolfAttackFenceState : WolfBaseState
     }
 
     public override void OnDestroy()
+    {
+        wolf.fenceScript?.WolfLost();
+    }
+
+    public override void ExitState()
     {
         wolf.fenceScript?.WolfLost();
     }

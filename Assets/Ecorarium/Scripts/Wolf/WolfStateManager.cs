@@ -12,19 +12,22 @@ public class WolfStateManager : MonoBehaviour
     public WolfRetreatState RetreatState = new WolfRetreatState();
 
     public IFence fenceScript;
-    public Vector3 targetPoint;
-    [SerializeField] public LayerMask hitMask;
+    public LayerMask hitMask;
     public NavMeshAgent navMeshAgent;
     public int id;
+    [System.NonSerialized] public Vector3 targetPoint;
+    [System.NonSerialized] public Vector3 spawnPosition;
 
     private void OnEnable()
     {
         GameEventsManager.current.onFenceBreak += AttackFenceState.HandleFenceBreak;
+        GameEventsManager.current.OnDay += HandleDay;
     }
 
     private void OnDisable()
     {
         GameEventsManager.current.onFenceBreak -= AttackFenceState.HandleFenceBreak;
+        GameEventsManager.current.OnDay -= HandleDay;
     }
 
     void Start()
@@ -33,6 +36,7 @@ public class WolfStateManager : MonoBehaviour
 
         currentState = AttackFenceState;
         currentState.EnterState(this);
+        spawnPosition = transform.position;
     }
 
     void Update()
@@ -42,6 +46,7 @@ public class WolfStateManager : MonoBehaviour
 
     public void SwitchState(WolfBaseState state)
     {
+        currentState.ExitState();
         currentState = state;
         state.EnterState(this);
     }
@@ -49,5 +54,10 @@ public class WolfStateManager : MonoBehaviour
     private void OnDestroy()
     {
         currentState.OnDestroy();
+    }
+
+    void HandleDay()
+    {
+        SwitchState(RetreatState);
     }
 }
