@@ -25,6 +25,7 @@ public class LightingManager : MonoBehaviour
     }
     private void Update()
     {
+        
         if (preset == null)
             return;
         if (Application.isPlaying)
