@@ -8,7 +8,7 @@ public class Fence : MonoBehaviour, IFence
     {
         try
         {
-            fenceSide = transform.parent.GetComponent<FenceHealth>().side;
+            fenceSide = transform.parent.GetComponent<FenceStateManager>().side;
         }
         catch
         {

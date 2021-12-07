@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class FenceHealth : MonoBehaviour
 {
@@ -11,7 +9,14 @@ public class FenceHealth : MonoBehaviour
     int maxHealth;
     bool isHealthTicking = false;
     float tickSpeed = 0.1f;
+    float repairSpeed = 0.1f;
+    float resetSpeed = 0.05f;
     [SerializeField] public int side;
+    bool isRepairing = false;
+    bool isResetting = false;
+    int damagedHealth;
+    private Coroutine repair;
+    private Coroutine reset;
 
     private void OnEnable()
     {
@@ -23,6 +28,27 @@ public class FenceHealth : MonoBehaviour
     {
         GameEventsManager.current.onWolfFoundTarget -= IncrementWolvesAttacking;
         GameEventsManager.current.onWolfLostTarget -= DecrementWolvesAttacking;
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButton(0) && !isRepairing)
+        {
+            if (side == 1) Debug.Log("Start repair");
+            repair = StartCoroutine(Repair());
+            if (isResetting) StopCoroutine(reset);
+
+        }
+        if (!Input.GetMouseButton(0) && isRepairing)
+        {
+            if (side == 1) Debug.Log("STOP REPAIR");
+            StopCoroutine(repair);
+            if (!isResetting)
+            {
+                //TODO: Only reset if health is not maxhealth
+                reset = StartCoroutine(ResetHealth());
+            }
+        }
     }
 
     private void Start()
@@ -59,6 +85,7 @@ public class FenceHealth : MonoBehaviour
             {
                 StopCoroutine(DoDamage());
                 isHealthTicking = false;
+                damagedHealth = health;
             }
         }
     }
@@ -84,6 +111,42 @@ public class FenceHealth : MonoBehaviour
         {
             GameEventsManager.current.FenceBroke();
             Destroy(gameObject);
+        }
+    }
+
+    IEnumerator ResetHealth()
+    {
+        isResetting = true;
+        isRepairing = false;
+        while (health > damagedHealth)
+        {
+            health--;
+            if (side == 1)
+            {
+
+                Debug.Log("Resetting! " + health);
+            }
+            float healthPercentage = ((float)health / (float)maxHealth) * 100;
+            GameEventsManager.current.FenceHealthChanged(side, healthPercentage);
+            yield return new WaitForSeconds(resetSpeed);
+        }
+    }
+
+    IEnumerator Repair()
+    {
+        isRepairing = true;
+        isResetting = false;
+        while (health < maxHealth)
+        {
+            health++;
+            if (side == 1)
+            {
+                Debug.Log("Repairing! " + health);
+
+            }
+            float healthPercentage = ((float)health / (float)maxHealth) * 100;
+            GameEventsManager.current.FenceHealthChanged(side, healthPercentage);
+            yield return new WaitForSeconds(repairSpeed);
         }
     }
 }
