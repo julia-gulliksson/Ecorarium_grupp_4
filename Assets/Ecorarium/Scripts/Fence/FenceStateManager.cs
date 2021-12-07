@@ -98,4 +98,14 @@ public class FenceStateManager : MonoBehaviour
         GameEventsManager.current.FenceBroke();
         Destroy(gameObject);
     }
+
+    public void OnSelectFence()
+    {
+        Debug.Log("Success! Selected");
+    }
+
+    public void OnDeSelectFence()
+    {
+        Debug.Log("Deselected!");
+    }
 }
