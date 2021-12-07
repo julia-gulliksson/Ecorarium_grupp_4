@@ -37,13 +37,6 @@ public class WolfAttackFenceState : WolfBaseState
         Ray faceLeft = new Ray(startPoint, -right * range);
         Ray faceLeftLower = new Ray(startPointLower, -right * range);
 
-        Debug.DrawRay(startPoint, forward * range, Color.red);
-        Debug.DrawRay(startPoint, right * range, Color.blue);
-        Debug.DrawRay(startPoint, -right * range, Color.yellow);
-        Debug.DrawRay(startPointLower, forward * range, Color.red);
-        Debug.DrawRay(startPointLower, right * range, Color.blue);
-        Debug.DrawRay(startPointLower, -right * range, Color.yellow);
-
         // Create list of rays facing different directions
         List<RayDirection> rayDirections = new List<RayDirection>() { new RayDirection(faceForward, wolf.targetPoint, wolf.hitMask, range, Direction.Forward), new RayDirection(faceForwardLower, wolf.targetPoint, wolf.hitMask, range, Direction.Forward),
         new RayDirection(faceRight, wolf.targetPoint, wolf.hitMask, range, Direction.Right), new RayDirection(faceRightLower, wolf.targetPoint, wolf.hitMask, range, Direction.Right),
