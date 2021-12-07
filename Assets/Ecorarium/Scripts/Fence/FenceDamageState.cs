@@ -7,11 +7,13 @@ public class FenceDamageState : FenceBaseState
     int wolvesAttacking = 0;
     bool isHealthTicking = false;
     float tickSpeed = 0.1f;
+    int savedHealth;
 
     public override void EnterState(FenceStateManager fenceRef)
     {
         Debug.Log("Hello from damage state");
         fence = fenceRef;
+        savedHealth = fence.Health;
     }
 
     public override void UpdateState()
@@ -21,7 +23,7 @@ public class FenceDamageState : FenceBaseState
 
     public override void ExitState()
     {
-        fence.StopCoroutine(DoDamage());
+        fence.StopCoroutine(fence.damageHealth);
     }
 
     public void IncrementWolvesAttacking(int fenceSide)
@@ -32,7 +34,7 @@ public class FenceDamageState : FenceBaseState
 
             if (!isHealthTicking)
             {
-                fence.StartCoroutine(DoDamage());
+                fence.damageHealth = fence.StartCoroutine(DoDamage());
             }
         }
     }
@@ -44,9 +46,9 @@ public class FenceDamageState : FenceBaseState
             wolvesAttacking--;
             if (wolvesAttacking <= 0)
             {
-                fence.StopCoroutine(DoDamage());
+                fence.StopCoroutine(fence.damageHealth);
                 isHealthTicking = false;
-                fence.damagedHealth = fence.health;
+                fence.SetDamagedHealth(savedHealth);
             }
         }
     }
@@ -56,11 +58,11 @@ public class FenceDamageState : FenceBaseState
         isHealthTicking = true;
         if (wolvesAttacking > 0)
         {
-            while (wolvesAttacking > 0 && fence.health > 0)
+            while (wolvesAttacking > 0 && savedHealth > 0)
             {
-                fence.health--;
-                float healthPercentage = ((float)fence.health / (float)fence.maxHealth) * 100;
-                GameEventsManager.current.FenceHealthChanged(fence.side, healthPercentage);
+                savedHealth--;
+                fence.SendUpdatedHealth(savedHealth);
+                fence.UpdateHealth(savedHealth);
                 yield return new WaitForSeconds(tickSpeed / wolvesAttacking);
             }
         }
@@ -68,10 +70,9 @@ public class FenceDamageState : FenceBaseState
         {
             isHealthTicking = false;
         }
-        if (fence.health <= 0)
+        if (savedHealth <= 0)
         {
-            GameEventsManager.current.FenceBroke();
-            Object.Destroy(fence.gameObject);
+            fence.DestroyFence();
         }
     }
 }
