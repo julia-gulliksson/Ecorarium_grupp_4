@@ -14,7 +14,7 @@ ModelImporter:
     second: Sheep|1Idle
   - first:
       74: 5351620935745333840
-    second: Sheep|2Walk
+    second: Sheep_Walk
   - first:
       74: -2512054021272340385
     second: Sheep|2Walk (1)
@@ -48,7 +48,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sheep|2Walk
+      name: Sheep_Walk
       takeName: Sheep|2Walk
       internalID: 0
       firstFrame: 0
