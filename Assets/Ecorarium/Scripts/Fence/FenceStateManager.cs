@@ -6,13 +6,15 @@ public class FenceStateManager : MonoBehaviour
 {
     FenceBaseState currentState;
     public FenceDamageState DamageState = new FenceDamageState();
-    public FenceRepairableState RepairableState = new FenceRepairableState();
+    public FenceRepairState RepairState = new FenceRepairState();
+    public FenceResetState ResetState = new FenceResetState();
 
     [SerializeField] public int side;
     private int baseHealth = 100;
     public int Health { get; private set; }
     public int MaxHealth { get; private set; }
     public int DamagedHealth { get; private set; }
+    public bool IsNight { get; private set; }
 
     [System.NonSerialized] public Coroutine resetHealth;
     [System.NonSerialized] public Coroutine repairHealth;
@@ -22,18 +24,17 @@ public class FenceStateManager : MonoBehaviour
     {
         GameEventsManager.current.onWolfFoundTarget += DamageState.IncrementWolvesAttacking;
         GameEventsManager.current.onWolfLostTarget += DamageState.DecrementWolvesAttacking;
-        GameEventsManager.current.OnDay += HandleDay;
         GameEventsManager.current.OnNight += HandleNight;
+        GameEventsManager.current.OnDay += HandleDay;
     }
 
     private void OnDisable()
     {
         GameEventsManager.current.onWolfFoundTarget -= DamageState.IncrementWolvesAttacking;
         GameEventsManager.current.onWolfLostTarget -= DamageState.DecrementWolvesAttacking;
+        GameEventsManager.current.OnDay -= HandleNight;
         GameEventsManager.current.OnDay -= HandleDay;
-        GameEventsManager.current.OnNight -= HandleNight;
     }
-
 
     void Start()
     {
@@ -45,16 +46,9 @@ public class FenceStateManager : MonoBehaviour
         // Base health on amount of fence assets this side has
         MaxHealth = baseHealth * children;
         Health = MaxHealth;
+
         currentState = DamageState;
-
-        currentState = RepairableState;
         currentState.EnterState(this);
-
-    }
-
-    void Update()
-    {
-        currentState.UpdateState();
     }
 
     public void SwitchState(FenceBaseState state)
@@ -64,17 +58,22 @@ public class FenceStateManager : MonoBehaviour
         state.EnterState(this);
     }
 
-    void HandleDay()
+    private void HandleNight()
     {
-        SwitchState(RepairableState);
-    }
-
-    void HandleNight()
-    {
-        if (currentState != DamageState)
+        IsNight = true;
+        if (currentState != ResetState && !MaxHealthReached())
+        {
+            SwitchState(ResetState);
+        }
+        else if (currentState != DamageState)
         {
             SwitchState(DamageState);
         }
+    }
+
+    private void HandleDay()
+    {
+        IsNight = false;
     }
 
     public void UpdateHealth(int updatedHealth)
@@ -101,11 +100,22 @@ public class FenceStateManager : MonoBehaviour
 
     public void OnSelectFence()
     {
-        Debug.Log("Success! Selected");
+        if (!IsNight && !MaxHealthReached())
+        {
+            SwitchState(RepairState);
+        }
     }
 
     public void OnDeSelectFence()
     {
-        Debug.Log("Deselected!");
+        if (!IsNight && !MaxHealthReached())
+        {
+            SwitchState(ResetState);
+        }
+    }
+
+    public bool MaxHealthReached()
+    {
+        return Health >= MaxHealth;
     }
 }

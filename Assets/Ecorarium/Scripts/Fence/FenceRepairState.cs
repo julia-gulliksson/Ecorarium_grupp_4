@@ -5,40 +5,43 @@ public class FenceRepairState : FenceBaseState
 {
     FenceStateManager fence;
     float repairSpeed = 0.1f;
+    int savedHealth;
+    bool isRepairing = false;
 
     public override void EnterState(FenceStateManager fenceRef)
     {
-        //fence = fenceRef;
-        //Debug.Log("Hello from repair state");
-        //fence.StartCoroutine(Repair());
-    }
-
-    public override void UpdateState()
-    {
-        //if (!Input.GetMouseButton(0))
-        //{
-        //    fence.SwitchState(fence.ResetState);
-        //}
+        fence = fenceRef;
+        savedHealth = fence.Health;
+        if (!fence.MaxHealthReached() && !isRepairing)
+        {
+            fence.repairHealth = fence.StartCoroutine(Repair());
+        }
     }
 
     public override void ExitState()
     {
-        //fence.StopCoroutine(Repair());
+        if (isRepairing)
+        {
+            fence.StopCoroutine(fence.repairHealth);
+            isRepairing = false;
+        }
     }
 
-    //IEnumerator Repair()
-    //{
-    //    while (fence.health < fence.maxHealth)
-    //    {
-    //        fence.health++;
-    //        if (fence.side == 1)
-    //        {
-    //            Debug.Log("Repairing! " + fence.health);
+    IEnumerator Repair()
+    {
+        isRepairing = true;
+        while (savedHealth < fence.MaxHealth)
+        {
+            savedHealth++;
+            if (fence.side == 1)
+            {
+                Debug.Log("Repairing! " + savedHealth);
 
-    //        }
-    //        float healthPercentage = ((float)fence.health / (float)fence.maxHealth) * 100;
-    //        GameEventsManager.current.FenceHealthChanged(fence.side, healthPercentage);
-    //        yield return new WaitForSeconds(repairSpeed);
-    //    }
-    //}
+            }
+            fence.SendUpdatedHealth(savedHealth);
+            fence.UpdateHealth(savedHealth);
+            yield return new WaitForSeconds(repairSpeed);
+        }
+        fence.SwitchState(fence.DamageState);
+    }
 }

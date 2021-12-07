@@ -11,19 +11,16 @@ public class FenceDamageState : FenceBaseState
 
     public override void EnterState(FenceStateManager fenceRef)
     {
-        Debug.Log("Hello from damage state");
         fence = fenceRef;
         savedHealth = fence.Health;
     }
 
-    public override void UpdateState()
-    {
-
-    }
-
     public override void ExitState()
     {
-        fence.StopCoroutine(fence.damageHealth);
+        if (isHealthTicking)
+        {
+            fence.StopCoroutine(fence.damageHealth);
+        }
     }
 
     public void IncrementWolvesAttacking(int fenceSide)

@@ -5,40 +5,51 @@ public class FenceResetState : FenceBaseState
 {
     FenceStateManager fence;
     float resetSpeed = 0.05f;
+    int savedHealth;
+    bool isResetting = false;
 
     public override void EnterState(FenceStateManager fenceRef)
     {
-        //fence = fenceRef;
-        //Debug.Log("Hello from reset state");
-        //fence.StartCoroutine(ResetHealth());
-    }
+        fence = fenceRef;
+        // Save a reference to the current fence health
+        savedHealth = fence.Health;
 
-    public override void UpdateState()
-    {
-        //if (!Input.GetMouseButton(0))
-        //{
-        //    fence.SwitchState(fence.RepairState);
-        //}
+        if (!fence.MaxHealthReached() && savedHealth > fence.DamagedHealth)
+        {
+            fence.resetHealth = fence.StartCoroutine(ResetHealth());
+        }
+        else
+        {
+            fence.SwitchState(fence.DamageState);
+        }
     }
 
     public override void ExitState()
     {
-        //fence.StopCoroutine(ResetHealth());
+        if (isResetting)
+        {
+            fence.StopCoroutine(fence.resetHealth);
+            isResetting = false;
+        }
     }
 
-    //IEnumerator ResetHealth()
-    //{
-    //    while (fence.health > fence.damagedHealth)
-    //    {
-    //        fence.health--;
-    //        if (fence.side == 1)
-    //        {
+    IEnumerator ResetHealth()
+    {
+        isResetting = true;
+        while (savedHealth > fence.DamagedHealth)
+        {
+            savedHealth--;
+            if (fence.side == 1)
+            {
 
-    //            Debug.Log("Resetting! " + fence.health);
-    //        }
-    //        float healthPercentage = ((float)fence.health / (float)fence.maxHealth) * 100;
-    //        GameEventsManager.current.FenceHealthChanged(fence.side, healthPercentage);
-    //        yield return new WaitForSeconds(resetSpeed);
-    //    }
-    //}
+                Debug.Log("Resetting! " + savedHealth);
+            }
+            fence.SendUpdatedHealth(savedHealth);
+            fence.UpdateHealth(savedHealth);
+            yield return new WaitForSeconds(resetSpeed);
+        }
+
+        // Health is back to the damaged health, return to DamageState
+        fence.SwitchState(fence.DamageState);
+    }
 }
