@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class StickHandler : MonoBehaviour
 {
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(CalcSpeed());
     }
 
     // Update is called once per frame
@@ -18,11 +19,23 @@ public class StickHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision collider)
     {
-        if (collider.gameObject.name == "WolfNew(Clone)")
+        if (collider.gameObject.name == "WolfNew(Clone)" && speed > 1)
         {
-            Debug.Log("you hit wolf");
             Destroy(collider.gameObject);
         }
     }
 
+    IEnumerator CalcSpeed()
+    {
+        bool isPlaying = true;
+
+        while (isPlaying)
+        {
+            Vector3 prevPos = transform.position;
+
+            yield return new WaitForFixedUpdate();
+
+            speed = Mathf.RoundToInt(Vector3.Distance(transform.position, prevPos) / Time.fixedDeltaTime);
+        }
+    }
 }
