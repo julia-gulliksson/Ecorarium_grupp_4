@@ -88,13 +88,9 @@ public class SheepMovement : MonoBehaviour, IDestroyable
         walkPointSet = false;
     }
 
-    private void OnDestroy()
-    {
-        Instantiate(gorePrefab, transform.position, Quaternion.identity);
-    }
-
     public void Damage()
     {
+        Instantiate(gorePrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
