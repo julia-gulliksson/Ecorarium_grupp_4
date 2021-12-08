@@ -663,7 +663,7 @@ GameObject:
   - component: {fileID: -6120605796376967231}
   - component: {fileID: 7862414636669884055}
   m_Layer: 0
-  m_Name: WolfNew
+  m_Name: Wolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
