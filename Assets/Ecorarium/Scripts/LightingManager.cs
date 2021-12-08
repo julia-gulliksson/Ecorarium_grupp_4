@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteAlways]
+//[ExecuteAlways]
 public class LightingManager : MonoBehaviour
 {
     //Refrences
@@ -12,20 +12,25 @@ public class LightingManager : MonoBehaviour
     private Shader skyBoxShader;
     //Variables
     [SerializeField, Range(0, 1)] private float dayNightTime;
+    [SerializeField] private float timeResolution = 0.1f;
+    [SerializeField] private float duskDawnTime = 10;
 
     private void Start()
     {
+        UpdateLight(dayNightTime);
         GameEventsManager.current.OnDay += Day;
         GameEventsManager.current.OnNight += Night;
     }
     private void OnDisable()
     {
+        dayNightTime = 0;
+        UpdateLight(dayNightTime);
         GameEventsManager.current.OnDay -= Day;
         GameEventsManager.current.OnNight -= Night;
     }
     private void Update()
     {
-        
+        /*
         if (preset == null)
             return;
         if (Application.isPlaying)
@@ -35,16 +40,18 @@ public class LightingManager : MonoBehaviour
         else
         {
             UpdateLight(dayNightTime);
-        }
+        }*/
     }
 
     private void Day()
     {
-        dayNightTime = 0;
+        
+        StartCoroutine(Dawn(duskDawnTime));
     }
     private void Night()
     {
-        dayNightTime = 1;
+        
+        StartCoroutine(Dusk(duskDawnTime));
     }
     private void UpdateLight(float time)
     {
@@ -89,5 +96,26 @@ public class LightingManager : MonoBehaviour
         }
         
        
+    }
+
+    private IEnumerator Dawn(float fadeTime)
+    {
+        float increment = 1 / fadeTime;
+        for (int i = Mathf.RoundToInt(fadeTime); i >= 0; i--)
+        {
+            dayNightTime = increment * i;
+            UpdateLight(dayNightTime);
+            yield return new WaitForSeconds(timeResolution);
+        }
+    }
+    private IEnumerator Dusk(float fadeTime)
+    {
+        float increment = 1 / fadeTime;
+        for (int i = 0; i <= fadeTime; i++)
+        {
+            dayNightTime = increment * i;
+            UpdateLight(dayNightTime);
+            yield return new WaitForSeconds(timeResolution);
+        }
     }
 }

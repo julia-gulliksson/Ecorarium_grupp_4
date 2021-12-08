@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class WolfAnimationHandler : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject effectPrefab;
     Animator wolfAnimation;
     float velocity;
     float normalizedVelocity;
@@ -56,5 +58,14 @@ public class WolfAnimationHandler : MonoBehaviour
         {
             wolfAnimation.SetBool("Attack", false);
         }
+    }
+
+    public void AttackEffect()
+    {
+        float nosepositionZ = transform.localScale.z - 0.5f;
+
+        Vector3 nosePosition = transform.forward * nosepositionZ;
+
+        Instantiate(effectPrefab, transform.position + nosePosition, transform.rotation);
     }
 }

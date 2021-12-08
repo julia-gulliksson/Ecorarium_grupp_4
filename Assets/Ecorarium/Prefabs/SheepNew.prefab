@@ -683,6 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b81c15995b99840a7593d069456c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gorePrefab: {fileID: 1679951373353481449, guid: d4ca13f7bc31c54479bdeda8f3862ae8, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   walkPointRange: 2

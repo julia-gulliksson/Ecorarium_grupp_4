@@ -9,6 +9,8 @@ using Random = UnityEngine.Random;
 
 public class SheepMovement : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject gorePrefab;
     NavMeshAgent animal;
     [SerializeField]
     Vector3 walkPoint;
@@ -84,5 +86,10 @@ public class SheepMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         walkPointSet = false;
+    }
+
+    private void OnDestroy()
+    {
+        GameObject gore = Instantiate(gorePrefab, transform.position, Quaternion.identity);
     }
 }
