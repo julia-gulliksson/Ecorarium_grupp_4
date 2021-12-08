@@ -10,7 +10,7 @@ namespace Alex
 
         public void PlayAgain()
         {
-            SceneManager.LoadScene("EcoTerrain 1");
+            SceneManager.LoadScene("EcoTerrain 2");
         }
 
         public void MainMenu()

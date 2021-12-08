@@ -661,6 +661,7 @@ GameObject:
   - component: {fileID: 2453968944822605846}
   - component: {fileID: 1198766668445621662}
   - component: {fileID: -6120605796376967231}
+  - component: {fileID: 7862414636669884055}
   m_Layer: 0
   m_Name: WolfNew
   m_TagString: Untagged
@@ -781,12 +782,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5d97fc4b9573048be9b52a9017905f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPoint: {x: 0, y: 0, z: 0}
   hitMask:
     serializedVersion: 2
     m_Bits: 128
   navMeshAgent: {fileID: 2453968944822605846}
   id: 0
+--- !u!136 &7862414636669884055
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3373009278612546657}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3625878
+  m_Height: 1.6817894
+  m_Direction: 2
+  m_Center: {x: 0.0098154545, y: 0.60851073, z: 0.12567139}
 --- !u!1 &3440769577543308902
 GameObject:
   m_ObjectHideFlags: 0
