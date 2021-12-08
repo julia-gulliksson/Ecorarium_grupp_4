@@ -11,7 +11,7 @@ public class StickHandler : MonoBehaviour
         StartCoroutine(CalcSpeed());
     }
 
-    private void OnCollisionEnter(Collision collider)
+    private void OnTriggerEnter(Collider collider)
     {
         if (speed > 1 && !collider.gameObject.CompareTag("Sheep"))
         {
