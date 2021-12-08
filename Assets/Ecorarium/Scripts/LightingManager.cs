@@ -12,8 +12,8 @@ public class LightingManager : MonoBehaviour
     private Shader skyBoxShader;
     //Variables
     [SerializeField, Range(0, 1)] private float dayNightTime;
-    [SerializeField] private float timeResolution;
-    [SerializeField] private float duskDawnTime;
+    [SerializeField] private float timeResolution = 0.1f;
+    [SerializeField] private float duskDawnTime = 10;
 
     private void Start()
     {
