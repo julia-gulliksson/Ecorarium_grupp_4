@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteAlways]
+//[ExecuteAlways]
 public class LightingManager : MonoBehaviour
 {
     //Refrences
@@ -25,6 +25,7 @@ public class LightingManager : MonoBehaviour
     }
     private void Update()
     {
+        /*
         if (preset == null)
             return;
         if (Application.isPlaying)
@@ -34,16 +35,18 @@ public class LightingManager : MonoBehaviour
         else
         {
             UpdateLight(dayNightTime);
-        }
+        }*/
     }
 
     private void Day()
     {
         dayNightTime = 0;
+        UpdateLight(dayNightTime);
     }
     private void Night()
     {
         dayNightTime = 1;
+        UpdateLight(dayNightTime);
     }
     private void UpdateLight(float time)
     {
