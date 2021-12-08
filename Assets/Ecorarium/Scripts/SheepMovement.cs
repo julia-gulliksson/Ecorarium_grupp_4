@@ -6,8 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-
-public class SheepMovement : MonoBehaviour
+public class SheepMovement : MonoBehaviour, IDestroyable
 {
     [SerializeField]
     private GameObject gorePrefab;
@@ -85,11 +84,13 @@ public class SheepMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //print("HIT Somthing");
         walkPointSet = false;
     }
 
-    private void OnDestroy()
+    public void Damage()
     {
-        GameObject gore = Instantiate(gorePrefab, transform.position, Quaternion.identity);
+        Instantiate(gorePrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

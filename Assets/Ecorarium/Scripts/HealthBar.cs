@@ -37,6 +37,10 @@ public class HealthBar : MonoBehaviour
             slider.value = healthPercentage;
             fill.color = gradient.Evaluate(healthPercentage / 100);
             animator.SetFloat("health", healthPercentage);
+            if (healthPercentage == 100)
+            {
+                animator.SetTrigger("maxHealthAchieved");
+            }
         }
     }
 }
