@@ -37723,6 +37723,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4294666206153129633, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1432181865}
     - target: {fileID: 4294666206722167966, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: fill
       value: 
@@ -48913,7 +48917,7 @@ PrefabInstance:
     - target: {fileID: 4294666206153129633, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1432181865}
     - target: {fileID: 4294666206722167966, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: fill
       value: 
@@ -52461,6 +52465,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 629542536758681526, guid: 7ca2fa2809968cf47852232e5d4a6e43, type: 3}
   m_PrefabInstance: {fileID: 1432125230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1432181865 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6022083163652587880, guid: 74389e85a3d0acd47b676db6807d2e5d, type: 3}
+  m_PrefabInstance: {fileID: 1233981554}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1433336214
 PrefabInstance:
@@ -67172,6 +67181,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4294666206153129633, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1432181865}
     - target: {fileID: 4294666206722167960, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -78900,7 +78913,7 @@ PrefabInstance:
     - target: {fileID: 4294666206153129633, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1432181865}
     - target: {fileID: 4294666206722167966, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: fill
       value: 
