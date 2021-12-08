@@ -1,18 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static ScoreManager current;
+
+    public int Score { get; private set; }
+
+    private void Awake()
     {
-        
+        current = this;
+        Score = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        GameEventsManager.current.OnDay += IncrementScore;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.current.OnDay -= IncrementScore;
+    }
+
+    public void IncrementScore()
+    {
+        Score++;
+        GameEventsManager.current.ScoreChanged();
     }
 }

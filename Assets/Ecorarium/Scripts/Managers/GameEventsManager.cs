@@ -13,6 +13,7 @@ public class GameEventsManager : MonoBehaviour
     public event Action<int> onWolfAttacking;
     public event Action<int> onWolfStopAttacking;
     public event Action onGameOver;
+    public event Action onScoreChanged;
 
     public event Action OnDay;
     public event Action OnNight;
@@ -69,5 +70,10 @@ public class GameEventsManager : MonoBehaviour
     {
         GameIsOver = true;
         onGameOver?.Invoke();
+    }
+
+    public void ScoreChanged()
+    {
+        onScoreChanged?.Invoke();
     }
 }
