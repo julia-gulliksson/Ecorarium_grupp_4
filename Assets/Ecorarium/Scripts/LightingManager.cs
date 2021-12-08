@@ -17,11 +17,14 @@ public class LightingManager : MonoBehaviour
 
     private void Start()
     {
+        UpdateLight(dayNightTime);
         GameEventsManager.current.OnDay += Day;
         GameEventsManager.current.OnNight += Night;
     }
     private void OnDisable()
     {
+        dayNightTime = 0;
+        UpdateLight(dayNightTime);
         GameEventsManager.current.OnDay -= Day;
         GameEventsManager.current.OnNight -= Night;
     }
