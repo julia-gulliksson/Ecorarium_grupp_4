@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShinyRock : MonoBehaviour
@@ -8,7 +6,7 @@ public class ShinyRock : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.name == "Stimk")
+        if (collider.gameObject.CompareTag("Weapon"))
         {
             Sparkly.Play();
         }
