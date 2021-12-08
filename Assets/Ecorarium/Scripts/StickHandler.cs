@@ -5,23 +5,19 @@ using UnityEngine;
 public class StickHandler : MonoBehaviour
 {
     public float speed;
-    // Start is called before the first frame update
+
     void Start()
     {
         StartCoroutine(CalcSpeed());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter(Collision collider)
     {
-        if (collider.gameObject.name == "WolfNew(Clone)" && speed > 1)
+        if (speed > 1 && !collider.gameObject.CompareTag("Sheep"))
         {
-            Destroy(collider.gameObject);
+            // Call the Damage function if the trigger collider enherits IDestroyable (is a wolf)
+            IDestroyable destroyable = collider.gameObject.GetComponent<IDestroyable>();
+            destroyable?.Damage();
         }
     }
 

@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class WolfStateManager : MonoBehaviour
+public class WolfStateManager : MonoBehaviour, IDestroyable
 {
     WolfBaseState currentState;
 
@@ -18,6 +16,7 @@ public class WolfStateManager : MonoBehaviour
     bool fenceHasBroken = false;
     [System.NonSerialized] public Vector3 targetPoint;
     [System.NonSerialized] public Vector3 spawnPosition;
+    int baseHealth = 400;
 
     private void OnEnable()
     {
@@ -75,5 +74,14 @@ public class WolfStateManager : MonoBehaviour
     void HandleFenceBreak()
     {
         fenceHasBroken = true;
+    }
+
+    public void Damage()
+    {
+        baseHealth -= 100;
+        if (baseHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -6,8 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-
-public class SheepMovement : MonoBehaviour
+public class SheepMovement : MonoBehaviour, IDestroyable
 {
     [SerializeField]
     private GameObject gorePrefab;
@@ -91,6 +90,11 @@ public class SheepMovement : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameObject gore = Instantiate(gorePrefab, transform.position, Quaternion.identity);
+        Instantiate(gorePrefab, transform.position, Quaternion.identity);
+    }
+
+    public void Damage()
+    {
+        Destroy(gameObject);
     }
 }

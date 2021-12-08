@@ -16,16 +16,6 @@ public class WolfAttackSheepState : WolfBaseState
         ChooseTarget();
     }
 
-    public override void OnDestroy()
-    {
-
-    }
-
-    public override void ExitState()
-    {
-
-    }
-
     void ChooseTarget()
     {
         // Calculate path to nearest sheep
@@ -64,9 +54,11 @@ public class WolfAttackSheepState : WolfBaseState
 
     public override void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Sheep"))
-        {
-            Object.Destroy(collider.gameObject);
-        }
+        IDestroyable destroyable = collider.gameObject.GetComponent<IDestroyable>();
+        // Call the Damage function if the trigger collider enherits IDestroyable (is a sheep)
+        destroyable?.Damage();
     }
+
+    public override void ExitState() { }
+    public override void OnDestroy() { }
 }
