@@ -1,19 +1,18 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class WolfSpawn : MonoBehaviour
+public class WolfSpawnManager : MonoBehaviour
 {
     [SerializeField] GameObject wolf;
-    List<GameObject> wolves = new List<GameObject>();
     [SerializeField] public int nrOfWolves = 10;
+    [SerializeField] float spawnRadius = 6;
+    List<GameObject> wolves = new List<GameObject>();
     List<Vector3> defaultTargetPoints = new List<Vector3>();
     List<Vector3> targetPoints = new List<Vector3>();
-    [SerializeField] float spawnRadius = 6;
     GameObject[] destinationObjects;
-    public AudioSource source;
+    AudioSource source;
 
     private void OnEnable()
     {
@@ -30,6 +29,7 @@ public class WolfSpawn : MonoBehaviour
     private void Start()
     {
         destinationObjects = GameObject.FindGameObjectsWithTag("Destination");
+        source = GetComponent<AudioSource>();
         foreach (GameObject destination in destinationObjects)
         {
             defaultTargetPoints.Add(destination.transform.position);

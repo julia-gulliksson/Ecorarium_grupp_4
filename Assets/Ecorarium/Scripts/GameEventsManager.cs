@@ -12,6 +12,7 @@ public class GameEventsManager : MonoBehaviour
     public event Action onFenceBreak;
     public event Action<int> onWolfAttacking;
     public event Action<int> onWolfStopAttacking;
+    public event Action onGameOver;
 
     public event Action OnDay;
     public event Action OnNight;
@@ -59,5 +60,10 @@ public class GameEventsManager : MonoBehaviour
     public void Night()
     {
         OnNight?.Invoke();
+    }
+
+    public void GameOver()
+    {
+        onGameOver?.Invoke();
     }
 }

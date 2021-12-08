@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WolfAttackSheepState : WolfBaseState
 {
@@ -20,13 +21,13 @@ public class WolfAttackSheepState : WolfBaseState
     {
         // Calculate path to nearest sheep
         float closestTargetDistance = float.MaxValue;
-        UnityEngine.AI.NavMeshPath path;
-        UnityEngine.AI.NavMeshPath shortestPath = null;
+        NavMeshPath path;
+        NavMeshPath shortestPath = null;
         foreach (GameObject target in sheepTargets)
         {
             if (target == null) continue;
-            path = new UnityEngine.AI.NavMeshPath();
-            if (UnityEngine.AI.NavMesh.CalculatePath(wolf.transform.position, target.transform.position, wolf.navMeshAgent.areaMask, path))
+            path = new NavMeshPath();
+            if (NavMesh.CalculatePath(wolf.transform.position, target.transform.position, wolf.navMeshAgent.areaMask, path))
             {
                 float distance = Vector3.Distance(wolf.transform.position, path.corners[0]);
                 for (int i = 1; i < path.corners.Length; i++)
@@ -47,8 +48,10 @@ public class WolfAttackSheepState : WolfBaseState
         }
         else
         {
-            // All sheep are dead
             wolf.navMeshAgent.ResetPath();
+
+            // All sheep are dead, game over
+            GameEventsManager.current.GameOver();
         }
     }
 
