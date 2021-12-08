@@ -78810,6 +78810,14 @@ PrefabInstance:
       propertyPath: dayNightTime
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7896295194470592836, guid: fbf500ebee0098a438a118bc98ab0ccd, type: 3}
+      propertyPath: duskDawnTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896295194470592836, guid: fbf500ebee0098a438a118bc98ab0ccd, type: 3}
+      propertyPath: timeResolution
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbf500ebee0098a438a118bc98ab0ccd, type: 3}
 --- !u!1001 &4294666207385093251
