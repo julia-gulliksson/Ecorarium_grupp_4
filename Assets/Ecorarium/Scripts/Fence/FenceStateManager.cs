@@ -10,6 +10,7 @@ public class FenceStateManager : MonoBehaviour
     public FenceResetState ResetState = new FenceResetState();
 
     [SerializeField] public int side;
+    [SerializeField] LayerMask fenceMask;
     private int baseHealth = 100;
     public int Health { get; private set; }
     public int MaxHealth { get; private set; }
@@ -41,7 +42,11 @@ public class FenceStateManager : MonoBehaviour
         int children = 0;
         foreach (Transform childTransform in transform)
         {
-            if (childTransform.name.Contains("Fence")) children++;
+            if (fenceMask == (fenceMask | (1 << childTransform.gameObject.layer)))
+            {
+                // Add all the fence assets (with layer that matches the fenceMask)
+                children++;
+            }
         }
         // Base health on amount of fence assets this side has
         MaxHealth = baseHealth * children;
