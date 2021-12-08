@@ -2550,7 +2550,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c3c415375ee21ba409d1413660f900f5, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.496
   m_Pitch: 1
   Loop: 0
@@ -21405,8 +21405,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 602332315}
-  - component: {fileID: 602332317}
-  - component: {fileID: 602332316}
   m_Layer: 0
   m_Name: screen
   m_TagString: Untagged
@@ -21430,42 +21428,6 @@ Transform:
   m_Father: {fileID: 721857748}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &602332316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602332314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab68ce6587aab0146b8dabefbd806791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ClickSpeed: 0.3
-  m_MoveDeadzone: 0.6
-  m_RepeatDelay: 0.5
-  m_RepeatRate: 0.1
-  m_TrackedDeviceDragThresholdMultiplier: 1.4
-  m_MaxTrackedDeviceRaycastDistance: 1000
-  m_EnableXRInput: 1
-  m_EnableMouseInput: 1
-  m_EnableTouchInput: 1
---- !u!114 &602332317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602332314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
 --- !u!1001 &604305839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37761,6 +37723,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4294666206153129633, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1432181865}
     - target: {fileID: 4294666206722167966, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: fill
       value: 
@@ -48951,7 +48917,7 @@ PrefabInstance:
     - target: {fileID: 4294666206153129633, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1432181865}
     - target: {fileID: 4294666206722167966, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: fill
       value: 
@@ -52499,6 +52465,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 629542536758681526, guid: 7ca2fa2809968cf47852232e5d4a6e43, type: 3}
   m_PrefabInstance: {fileID: 1432125230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1432181865 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6022083163652587880, guid: 74389e85a3d0acd47b676db6807d2e5d, type: 3}
+  m_PrefabInstance: {fileID: 1233981554}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1433336214
 PrefabInstance:
@@ -67210,6 +67181,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4294666206153129633, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1432181865}
     - target: {fileID: 4294666206722167960, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -67647,6 +67622,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 501295248461903502, guid: d6a5e2c4aefa6804b8f7d2af9a9676b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 501295248461903502, guid: d6a5e2c4aefa6804b8f7d2af9a9676b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 501295248943222296, guid: d6a5e2c4aefa6804b8f7d2af9a9676b5, type: 3}
       propertyPath: m_Name
       value: CampFire
@@ -67708,16 +67691,24 @@ PrefabInstance:
       value: 2.373
       objectReference: {fileID: 0}
     - target: {fileID: 4134586633405174354, guid: d6a5e2c4aefa6804b8f7d2af9a9676b5, type: 3}
+      propertyPath: m_Range
+      value: 7.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134586633405174354, guid: d6a5e2c4aefa6804b8f7d2af9a9676b5, type: 3}
       propertyPath: m_Color.b
-      value: 0.0271004
+      value: 0.18792273
       objectReference: {fileID: 0}
     - target: {fileID: 4134586633405174354, guid: d6a5e2c4aefa6804b8f7d2af9a9676b5, type: 3}
       propertyPath: m_Color.g
-      value: 0.027272042
+      value: 0.83866197
       objectReference: {fileID: 0}
     - target: {fileID: 4134586633405174354, guid: d6a5e2c4aefa6804b8f7d2af9a9676b5, type: 3}
       propertyPath: m_Color.r
-      value: 0.028301895
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134586633405174354, guid: d6a5e2c4aefa6804b8f7d2af9a9676b5, type: 3}
+      propertyPath: m_Intensity
+      value: 2.98
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a5e2c4aefa6804b8f7d2af9a9676b5, type: 3}
@@ -78922,7 +78913,7 @@ PrefabInstance:
     - target: {fileID: 4294666206153129633, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1432181865}
     - target: {fileID: 4294666206722167966, guid: 4966c7512484de84b90de80f3515e8a8, type: 3}
       propertyPath: fill
       value: 
