@@ -84,7 +84,6 @@ public class SheepMovement : MonoBehaviour, IDestroyable
 
     private void OnTriggerEnter(Collider other)
     {
-        //print("HIT Somthing");
         walkPointSet = false;
     }
 
