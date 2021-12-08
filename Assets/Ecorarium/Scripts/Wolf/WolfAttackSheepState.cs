@@ -50,8 +50,11 @@ public class WolfAttackSheepState : WolfBaseState
         {
             wolf.navMeshAgent.ResetPath();
 
-            // All sheep are dead, game over
-            GameEventsManager.current.GameOver();
+            if (!GameEventsManager.current.GameIsOver)
+            {
+                // All sheep are dead, game over
+                GameEventsManager.current.GameOver();
+            }
         }
     }
 

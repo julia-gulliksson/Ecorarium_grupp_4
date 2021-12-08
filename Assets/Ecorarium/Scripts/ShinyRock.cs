@@ -6,7 +6,7 @@ public class ShinyRock : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.CompareTag("Weapon"))
+        if (collider.gameObject.name == "Stick")
         {
             Sparkly.Play();
         }

@@ -2452,120 +2452,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7116149066112638295, guid: aca4c69ba2792044da19860502518138, type: 3}
   m_PrefabInstance: {fileID: 67479837}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &67653496 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7748353027136099723, guid: 52f0b0c29e476c34593c5ac49fb17939, type: 3}
+--- !u!82 &67653499 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4776094122954657660, guid: 52f0b0c29e476c34593c5ac49fb17939, type: 3}
   m_PrefabInstance: {fileID: 226450606}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &67653498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67653496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03ae2a5ffb3d71e499c4dd7130a19df1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ringring: {fileID: 67653499}
---- !u!82 &67653499
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67653496}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c3c415375ee21ba409d1413660f900f5, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.496
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 19.1
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!4 &67842231 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 455600, guid: 7710ce4a7ee932b4a86742119e3babae, type: 3}
@@ -8480,9 +8371,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 4546894357154856474, guid: 52f0b0c29e476c34593c5ac49fb17939, type: 3}
+      propertyPath: ringring
+      value: 
+      objectReference: {fileID: 67653499}
     - target: {fileID: 6196931432150148826, guid: 52f0b0c29e476c34593c5ac49fb17939, type: 3}
       propertyPath: m_Name
-      value: klocka
+      value: Clock
       objectReference: {fileID: 0}
     - target: {fileID: 6824146279358233696, guid: 52f0b0c29e476c34593c5ac49fb17939, type: 3}
       propertyPath: m_RootOrder
@@ -40503,7 +40398,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4623126431613390207, guid: 02f01ac4794e6664891163e6a4434246, type: 3}
       propertyPath: m_Name
-      value: sign
+      value: Sign
       objectReference: {fileID: 0}
     - target: {fileID: 5432313472664295365, guid: 02f01ac4794e6664891163e6a4434246, type: 3}
       propertyPath: m_RootOrder

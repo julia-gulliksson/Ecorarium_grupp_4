@@ -17,8 +17,11 @@ public class GameEventsManager : MonoBehaviour
     public event Action OnDay;
     public event Action OnNight;
 
+    public bool GameIsOver { get; private set; }
+
     void Awake()
     {
+        GameIsOver = false;
         current = this;
     }
 
@@ -64,6 +67,7 @@ public class GameEventsManager : MonoBehaviour
 
     public void GameOver()
     {
+        GameIsOver = true;
         onGameOver?.Invoke();
     }
 }
