@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WolfAttackSheepState : WolfBaseState
 {
@@ -16,27 +17,17 @@ public class WolfAttackSheepState : WolfBaseState
         ChooseTarget();
     }
 
-    public override void OnDestroy()
-    {
-
-    }
-
-    public override void ExitState()
-    {
-
-    }
-
     void ChooseTarget()
     {
         // Calculate path to nearest sheep
         float closestTargetDistance = float.MaxValue;
-        UnityEngine.AI.NavMeshPath path;
-        UnityEngine.AI.NavMeshPath shortestPath = null;
+        NavMeshPath path;
+        NavMeshPath shortestPath = null;
         foreach (GameObject target in sheepTargets)
         {
             if (target == null) continue;
-            path = new UnityEngine.AI.NavMeshPath();
-            if (UnityEngine.AI.NavMesh.CalculatePath(wolf.transform.position, target.transform.position, wolf.navMeshAgent.areaMask, path))
+            path = new NavMeshPath();
+            if (NavMesh.CalculatePath(wolf.transform.position, target.transform.position, wolf.navMeshAgent.areaMask, path))
             {
                 float distance = Vector3.Distance(wolf.transform.position, path.corners[0]);
                 for (int i = 1; i < path.corners.Length; i++)
@@ -57,16 +48,23 @@ public class WolfAttackSheepState : WolfBaseState
         }
         else
         {
-            // All sheep are dead
             wolf.navMeshAgent.ResetPath();
+
+            if (!GameEventsManager.current.GameIsOver)
+            {
+                // All sheep are dead, game over
+                GameEventsManager.current.GameOver();
+            }
         }
     }
 
     public override void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Sheep"))
-        {
-            Object.Destroy(collider.gameObject);
-        }
+        IDestroyable destroyable = collider.gameObject.GetComponent<IDestroyable>();
+        // Call the Damage function if the trigger collider enherits IDestroyable (is a sheep)
+        destroyable?.Damage();
     }
+
+    public override void ExitState() { }
+    public override void OnDestroy() { }
 }

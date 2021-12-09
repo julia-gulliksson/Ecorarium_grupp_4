@@ -19,18 +19,9 @@ public class WolfRetreatState : WolfBaseState
         }
     }
 
-    public override void OnDestroy()
-    {
+    public override void OnDestroy() { }
 
-    }
+    public override void ExitState() { }
 
-    public override void ExitState()
-    {
-
-    }
-
-    public override void OnTriggerEnter(Collider collider)
-    {
-
-    }
+    public override void OnTriggerEnter(Collider collider) { }
 }

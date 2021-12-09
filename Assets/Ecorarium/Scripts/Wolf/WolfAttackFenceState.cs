@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -96,8 +95,11 @@ public class WolfAttackFenceState : WolfBaseState
 
     public void HandleFenceBreak()
     {
+        // Stop attack animation
         GameEventsManager.current.WolfStopAttacking(wolf.id);
+        // Register wolf lost fence
         wolf.fenceScript?.WolfLost();
+        // Switch to attacking sheep instead
         wolf.SwitchState(wolf.AttackSheepState);
     }
 
@@ -111,7 +113,5 @@ public class WolfAttackFenceState : WolfBaseState
         wolf.fenceScript?.WolfLost();
     }
 
-    public override void OnTriggerEnter(Collider collider)
-    {
-    }
+    public override void OnTriggerEnter(Collider collider) { }
 }
