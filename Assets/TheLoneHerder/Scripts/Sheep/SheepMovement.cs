@@ -15,6 +15,7 @@ namespace TheLoneHerder
         [SerializeField] Vector3 walkPoint;
         private AudioSource baa;
         NavMeshAgent animal;
+        
 
         //Variables
         [SerializeField] private bool walkPointSet;
