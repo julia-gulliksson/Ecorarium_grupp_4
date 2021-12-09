@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
-        // Quit 
+        Application.Quit();
     }
 
     public void MainMenu()
