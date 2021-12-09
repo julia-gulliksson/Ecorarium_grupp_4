@@ -42651,6 +42651,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6022083164470397710, guid: 74389e85a3d0acd47b676db6807d2e5d, type: 3}
+      propertyPath: m_RaycastMask.m_Bits
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022083164470397746, guid: 74389e85a3d0acd47b676db6807d2e5d, type: 3}
+      propertyPath: m_Name
+      value: LeftHand Ray Controller
+      objectReference: {fileID: 0}
     - target: {fileID: 6022083165237600271, guid: 74389e85a3d0acd47b676db6807d2e5d, type: 3}
       propertyPath: onTeleportCancel.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
       value: 0
