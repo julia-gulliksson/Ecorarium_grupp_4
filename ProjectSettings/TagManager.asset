@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fence
+  - Ground
+  - SheepEnclosure
+  - Destination
+  - Sheep
+  - CabbageSeed
   layers:
   - Default
   - TransparentFX
@@ -11,11 +17,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Walkable
+  - Fence
+  - XR Origin
+  - Weapon
+  - Enemy
   - 
   - 
   - 
