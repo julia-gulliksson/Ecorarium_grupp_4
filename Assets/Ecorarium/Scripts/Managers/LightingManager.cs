@@ -57,6 +57,7 @@ public class LightingManager : MonoBehaviour
     {
         RenderSettings.ambientLight = preset.ambientColor.Evaluate(time);
         RenderSettings.fogColor = preset.fogColor.Evaluate(time);
+        
         if(sun != null)
         {
             sun.color = preset.directionalColor.Evaluate(time);
