@@ -1808,7 +1808,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2424796243968205998, guid: 8b9627349d32113479bce3260fbbd462, type: 3}
       propertyPath: m_Name
-      value: Fishing_Rod
+      value: FishingRod
       objectReference: {fileID: 0}
     - target: {fileID: 3093212059087502868, guid: 8b9627349d32113479bce3260fbbd462, type: 3}
       propertyPath: m_RootOrder
