@@ -74112,7 +74112,7 @@ PrefabInstance:
       objectReference: {fileID: 299276042}
     - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
       propertyPath: nrOfWolves
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1542121967731945668, guid: ea762fea4f0ff8546a00f3147b474bd6, type: 3}
       propertyPath: spawnRadius
