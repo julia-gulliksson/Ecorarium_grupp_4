@@ -245,6 +245,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  layer:
+    serializedVersion: 2
+    m_Bits: 1024
+  effectPrefab: {fileID: 1679951373353481449, guid: d4ca13f7bc31c54479bdeda8f3862ae8, type: 3}
 --- !u!1 &7403889193562688504
 GameObject:
   m_ObjectHideFlags: 0
