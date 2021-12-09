@@ -39,11 +39,6 @@ public class FenceResetState : FenceBaseState
         while (savedHealth > fence.DamagedHealth)
         {
             savedHealth--;
-            if (fence.side == 1)
-            {
-
-                Debug.Log("Resetting! " + savedHealth);
-            }
             fence.SendUpdatedHealth(savedHealth);
             fence.UpdateHealth(savedHealth);
             yield return new WaitForSeconds(resetSpeed);

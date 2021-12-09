@@ -4,7 +4,7 @@ using UnityEngine;
 public class FenceRepairState : FenceBaseState
 {
     FenceStateManager fence;
-    float repairSpeed = 0.1f;
+    float repairSpeed = 0.8f;
     int savedHealth;
     bool isRepairing = false;
 
@@ -33,11 +33,6 @@ public class FenceRepairState : FenceBaseState
         while (savedHealth < fence.MaxHealth)
         {
             savedHealth++;
-            if (fence.side == 1)
-            {
-                Debug.Log("Repairing! " + savedHealth);
-
-            }
             fence.SendUpdatedHealth(savedHealth);
             fence.UpdateHealth(savedHealth);
             yield return new WaitForSeconds(repairSpeed);
