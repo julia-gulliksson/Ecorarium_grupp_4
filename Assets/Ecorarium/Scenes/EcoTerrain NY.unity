@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: cb172c295b71e784185f95ea7b616114, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 3ab00f2d9c285cc47886645dd4b4c291, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -2550,7 +2550,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c3c415375ee21ba409d1413660f900f5, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.496
   m_Pitch: 1
   Loop: 0
@@ -9885,7 +9885,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272768831}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
@@ -21405,8 +21405,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 602332315}
-  - component: {fileID: 602332317}
-  - component: {fileID: 602332316}
   m_Layer: 0
   m_Name: screen
   m_TagString: Untagged
@@ -21430,42 +21428,6 @@ Transform:
   m_Father: {fileID: 721857748}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &602332316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602332314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab68ce6587aab0146b8dabefbd806791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ClickSpeed: 0.3
-  m_MoveDeadzone: 0.6
-  m_RepeatDelay: 0.5
-  m_RepeatRate: 0.1
-  m_TrackedDeviceDragThresholdMultiplier: 1.4
-  m_MaxTrackedDeviceRaycastDistance: 1000
-  m_EnableXRInput: 1
-  m_EnableMouseInput: 1
-  m_EnableTouchInput: 1
---- !u!114 &602332317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602332314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
 --- !u!1001 &604305839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78803,6 +78765,10 @@ PrefabInstance:
       value: LightManager
       objectReference: {fileID: 0}
     - target: {fileID: 7896295194470592836, guid: fbf500ebee0098a438a118bc98ab0ccd, type: 3}
+      propertyPath: sun
+      value: 
+      objectReference: {fileID: 705507994}
+    - target: {fileID: 7896295194470592836, guid: fbf500ebee0098a438a118bc98ab0ccd, type: 3}
       propertyPath: preset
       value: 
       objectReference: {fileID: 11400000, guid: eafd3c9c1c2bdb0479ca9d8ea21bf57a, type: 2}
@@ -78812,7 +78778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7896295194470592836, guid: fbf500ebee0098a438a118bc98ab0ccd, type: 3}
       propertyPath: duskDawnTime
-      value: 10
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7896295194470592836, guid: fbf500ebee0098a438a118bc98ab0ccd, type: 3}
       propertyPath: timeResolution
