@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6018858872307955862}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKTargetBack.l_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6124729319749089183}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PawFront.l_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 899807146642317643}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UpperLegFron.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9082630085065338626}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKTargetBack.r_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4631598405481611969}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKTargetFront.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 795523549933615775}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKPoleFront.l_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5369908796027962106}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bone.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2277850538216191311}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5647016244784652176}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bone.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7114848034980867753}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKPoleBack.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5526418617033505480}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bone.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2271372883771018019}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bone.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5762736146223748322}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKPoleFront.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4268489593082920313}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKTargetFront.r_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7102328783352278583}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: spinefront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1293975858310112702}
   - component: {fileID: 6259517840339836078}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5608039461751080130}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKPoleBack.r_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 1198766668445621662}
   - component: {fileID: -6120605796376967231}
   - component: {fileID: 7862414636669884055}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,7 +796,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3373009278612546657}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.3625878
   m_Height: 1.6817894
@@ -811,7 +811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1117659074605001143}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKTargetFront.l_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5457320710280798071}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKTargetBack.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -874,7 +874,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8662586964675381668}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UpperLefBack.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -906,7 +906,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4730619576643238593}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PawFront.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -938,7 +938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 101446549320708017}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LowerLegFront.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -970,7 +970,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3517879860568909790}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKPoleFront.r_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1001,7 +1001,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6753026864064723876}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UpperLegFron.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1033,7 +1033,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8531104698753620882}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UpperLefBack.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1065,7 +1065,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 852502522045551540}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKPoleBack.l_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1096,7 +1096,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6408659239177645341}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bone.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1128,7 +1128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5211617350834894593}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PawBack.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1160,7 +1160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7745228702704486547}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PawFront.r_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1191,7 +1191,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7892995960364401362}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKTargetBack.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1223,7 +1223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3208071120045488680}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: spinefront.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1257,7 +1257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 516543885051181957}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PawBack.l_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1288,7 +1288,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7149092332583899456}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1323,7 +1323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7961356525900007282}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LowerLegBack.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1355,7 +1355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4878656647565962813}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKPoleFront.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1387,7 +1387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3882496266715151779}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bone.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1419,7 +1419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6549841170637973394}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKPoleBack.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1451,7 +1451,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4058137254544368053}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PawFront.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1483,7 +1483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8056913179710750071}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: spinefront.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1515,7 +1515,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4498861940288664367}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PawBack.r_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1546,7 +1546,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2311755317354720948}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PawBack.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1578,7 +1578,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7764701686037899508}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKTargetFront.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1610,7 +1610,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6749858670680779759}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LowerLegFront.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1642,7 +1642,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 388143115101354101}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bone.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1674,7 +1674,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9158507032581911320}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bone.011_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1705,7 +1705,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8296366847295025550}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: spinefront.002_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1736,7 +1736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6225802550270488806}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LowerLegBack.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1814,6 +1814,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EyeRight
       objectReference: {fileID: 0}
+    - target: {fileID: 7893199206321032738, guid: 279556a7b82e1444d98d7f7492898345, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 279556a7b82e1444d98d7f7492898345, type: 3}
 --- !u!4 &145637429881263248 stripped
@@ -1875,6 +1879,10 @@ PrefabInstance:
     - target: {fileID: 7893199206321032738, guid: 279556a7b82e1444d98d7f7492898345, type: 3}
       propertyPath: m_Name
       value: EyeRight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893199206321032738, guid: 279556a7b82e1444d98d7f7492898345, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 279556a7b82e1444d98d7f7492898345, type: 3}
