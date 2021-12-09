@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/TheLoneHerder/Scenes/Scen1.unity
+    path: Assets/TheLoneHerder/Scenes/Lobby.unity
     guid: 5df6a965326e34042935620790ebcc79
   - enabled: 1
     path: Assets/TheLoneHerder/Scenes/MainGame.unity

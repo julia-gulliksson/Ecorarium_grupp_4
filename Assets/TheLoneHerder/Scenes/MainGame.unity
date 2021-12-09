@@ -16584,6 +16584,7 @@ GameObject:
   - component: {fileID: 496495095}
   - component: {fileID: 496495094}
   - component: {fileID: 496495093}
+  - component: {fileID: 496495096}
   m_Layer: 0
   m_Name: Bridge1
   m_TagString: Untagged
@@ -16669,6 +16670,90 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496495091}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &496495096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496495091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f6bf3d943ac7945842268c9ef1dca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 1900828217}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 2
+  m_SelectMode: 1
+  m_CustomReticle: {fileID: 450936670097774315, guid: badab2d7a89042942929d5e715bb1b1c, type: 3}
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_TeleportationProvider: {fileID: 0}
+  m_MatchOrientation: 0
+  m_TeleportTrigger: 0
+  m_Teleporting:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &497070372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 629542536758681526, guid: 7ca2fa2809968cf47852232e5d4a6e43, type: 3}
@@ -18703,31 +18788,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7403889193562688511, guid: 7746de65415e77846a935008f5ee66f3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.93301296
+      value: 0.8923994
       objectReference: {fileID: 0}
     - target: {fileID: 7403889193562688511, guid: 7746de65415e77846a935008f5ee66f3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.10001302
+      value: -0.40459543
       objectReference: {fileID: 0}
     - target: {fileID: 7403889193562688511, guid: 7746de65415e77846a935008f5ee66f3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.18615429
+      value: -0.17020634
       objectReference: {fileID: 0}
     - target: {fileID: 7403889193562688511, guid: 7746de65415e77846a935008f5ee66f3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.2912572
+      value: -0.104669616
       objectReference: {fileID: 0}
     - target: {fileID: 7403889193562688511, guid: 7746de65415e77846a935008f5ee66f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 17.161
+      value: -49.266
       objectReference: {fileID: 0}
     - target: {fileID: 7403889193562688511, guid: 7746de65415e77846a935008f5ee66f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -17.613
+      value: -19.618
       objectReference: {fileID: 0}
     - target: {fileID: 7403889193562688511, guid: 7746de65415e77846a935008f5ee66f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 31.995
+      value: -4.314
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7746de65415e77846a935008f5ee66f3, type: 3}
@@ -36632,6 +36717,7 @@ GameObject:
   - component: {fileID: 1035775521}
   - component: {fileID: 1035775520}
   - component: {fileID: 1035775519}
+  - component: {fileID: 1035775522}
   m_Layer: 0
   m_Name: Bridge1 (1)
   m_TagString: Untagged
@@ -36717,6 +36803,90 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035775517}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1035775522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035775517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f6bf3d943ac7945842268c9ef1dca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 1900828217}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 2
+  m_SelectMode: 1
+  m_CustomReticle: {fileID: 450936670097774315, guid: badab2d7a89042942929d5e715bb1b1c, type: 3}
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_TeleportationProvider: {fileID: 0}
+  m_MatchOrientation: 0
+  m_TeleportTrigger: 0
+  m_Teleporting:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1040271338 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 494376, guid: 76be61eeff2e7164cb99e1cf8cf0c22b, type: 3}
@@ -39929,6 +40099,95 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 409994, guid: 48333a5aa700be24c963813c82ef05d9, type: 3}
   m_PrefabInstance: {fileID: 66202190}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1148233035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4894849518924458267, guid: dc53baa962b6d244cb9e81ec33c0865a, type: 3}
+  m_PrefabInstance: {fileID: 582338570}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1148233039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148233035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f6bf3d943ac7945842268c9ef1dca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 1900828217}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 2
+  m_SelectMode: 1
+  m_CustomReticle: {fileID: 450936670097774315, guid: badab2d7a89042942929d5e715bb1b1c, type: 3}
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_TeleportationProvider: {fileID: 0}
+  m_MatchOrientation: 0
+  m_TeleportTrigger: 0
+  m_Teleporting:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1148400101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42392,6 +42651,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6022083165237600271, guid: 74389e85a3d0acd47b676db6807d2e5d, type: 3}
+      propertyPath: onTeleportCancel.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022083165237600271, guid: 74389e85a3d0acd47b676db6807d2e5d, type: 3}
+      propertyPath: onTeleportCancel.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8063431729894604965, guid: 74389e85a3d0acd47b676db6807d2e5d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -42426,7 +42693,7 @@ PrefabInstance:
       objectReference: {fileID: 417204670}
     - target: {fileID: 8063431730444945647, guid: 74389e85a3d0acd47b676db6807d2e5d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74389e85a3d0acd47b676db6807d2e5d, type: 3}
@@ -66324,6 +66591,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7462569862156873362, guid: 1aba0fbf10ced5447ad5eb30f4652084, type: 3}
   m_PrefabInstance: {fileID: 1900706706}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1900828217 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5902396419465360837, guid: f66b612807534c34184301e969690fe8, type: 3}
+  m_PrefabInstance: {fileID: 5902396418548246671}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1900835125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71346,6 +71624,7 @@ GameObject:
   - component: {fileID: 2042071430}
   - component: {fileID: 2042071429}
   - component: {fileID: 2042071428}
+  - component: {fileID: 2042071431}
   m_Layer: 0
   m_Name: Bridge1 (2)
   m_TagString: Untagged
@@ -71431,6 +71710,90 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042071426}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2042071431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042071426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f6bf3d943ac7945842268c9ef1dca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 1900828217}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 2
+  m_SelectMode: 1
+  m_CustomReticle: {fileID: 450936670097774315, guid: badab2d7a89042942929d5e715bb1b1c, type: 3}
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_TeleportationProvider: {fileID: 0}
+  m_MatchOrientation: 0
+  m_TeleportTrigger: 0
+  m_Teleporting:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &2044703646 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 629542536758681526, guid: 7ca2fa2809968cf47852232e5d4a6e43, type: 3}
