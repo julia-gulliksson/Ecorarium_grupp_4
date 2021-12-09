@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 8411289138822538578}
   - component: {fileID: 8681690184927107103}
   m_Layer: 0
-  m_Name: radio
+  m_Name: Radio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
