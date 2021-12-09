@@ -8,13 +8,15 @@ namespace TheLoneHerder
     public class WolfSpawnManager : MonoBehaviour
     {
         [SerializeField] GameObject wolf;
-        [SerializeField] public int nrOfWolves = 10;
+        int nrOfWolves = 0;
         [SerializeField] float spawnRadius = 6;
         List<GameObject> wolves = new List<GameObject>();
         List<Vector3> defaultTargetPoints = new List<Vector3>();
         List<Vector3> targetPoints = new List<Vector3>();
         GameObject[] destinationObjects;
         AudioSource source;
+        int wolfIncrement = 3;
+        int nrOfNightsPassed = 0;
 
         private void OnEnable()
         {
@@ -40,6 +42,10 @@ namespace TheLoneHerder
 
         void NightBegin()
         {
+            nrOfNightsPassed++;
+            nrOfWolves = nrOfNightsPassed * wolfIncrement;
+            nrOfWolves = Mathf.Clamp(nrOfWolves, 2, 14);
+
             // Create a copy of the default target points to populate a new list of target points
             targetPoints = defaultTargetPoints.ToList();
 

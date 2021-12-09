@@ -1,12 +1,15 @@
 using UnityEngine;
 using TMPro;
 
-public class ScoreDisplay : MonoBehaviour
+namespace TheLoneHerder
 {
-    [SerializeField] TextMeshProUGUI nrOfDays;
-
-    void Start()
+    public class ScoreDisplay : MonoBehaviour
     {
-        nrOfDays.text = ScoreManager.current.Score.ToString();
+        [SerializeField] TextMeshProUGUI nrOfDays;
+
+        void Start()
+        {
+            nrOfDays.text = ScoreManager.current.Score.ToString();
+        }
     }
 }
