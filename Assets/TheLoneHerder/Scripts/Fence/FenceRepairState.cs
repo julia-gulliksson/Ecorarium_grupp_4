@@ -6,7 +6,7 @@ namespace TheLoneHerder
     public class FenceRepairState : FenceBaseState
     {
         FenceStateManager fence;
-        float repairSpeed = 0.8f;
+        float repairSpeed = 0.02f;
         int savedHealth;
         bool isRepairing = false;
 
