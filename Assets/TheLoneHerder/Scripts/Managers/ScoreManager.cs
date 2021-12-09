@@ -11,7 +11,7 @@ namespace TheLoneHerder
         private void Awake()
         {
             current = this;
-            Score = 0;
+            Score = -1;
         }
 
         private void OnEnable()
