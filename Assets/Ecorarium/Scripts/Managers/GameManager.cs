@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
+    [SerializeField] Canvas gameOverUI;
     private void OnEnable()
     {
         GameEventsManager.current.onGameOver += GameOver;
@@ -19,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        // Show game over ui, lock player position
+        gameOverUI.gameObject.SetActive(true);
     }
 
     public void RestartGame()
