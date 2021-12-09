@@ -33,7 +33,7 @@ namespace TheLoneHerder
 
         public void MainMenu()
         {
-            // Go to main menu
+            SceneManager.LoadScene("Lobby");
         }
     }
 }
