@@ -11,7 +11,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -3308049259716809649}
-    m_Position: {x: 250, y: 190, z: 0}
+    m_Position: {x: 270, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7678798225230121218}
     m_Position: {x: -1359.5, y: 764.5, z: 0}
@@ -41,9 +41,9 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: klocka
-  m_Speed: 1
-  m_CycleOffset: 0
+  m_Name: Clock
+  m_Speed: 0.3
+  m_CycleOffset: 0.666
   m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
