@@ -5,6 +5,9 @@ using UnityEngine;
 public class StickHandler : MonoBehaviour
 {
     public float speed;
+    private RaycastHit hit;
+    [SerializeField] LayerMask layer;
+    [SerializeField] GameObject effectPrefab;
 
     void Start()
     {
@@ -18,6 +21,10 @@ public class StickHandler : MonoBehaviour
             // Call the Damage function if the trigger collider enherits IDestroyable (is a wolf)
             IDestroyable destroyable = collider.gameObject.GetComponent<IDestroyable>();
             destroyable?.Damage();
+            if(Physics.Raycast(transform.GetChild(0).transform.position, transform.up, out hit, transform.localScale.y, layer))
+            {
+                Instantiate(effectPrefab, hit.point, Quaternion.identity);
+            }
         }
     }
 
