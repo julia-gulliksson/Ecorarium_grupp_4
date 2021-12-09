@@ -41,11 +41,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1542121967731945666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e549849fe085fcf40959de353d9fe300, type: 3}
+  m_Script: {fileID: 11500000, guid: afa482d53a3e3cf419de6cb22175a736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wolf: {fileID: 379894836497156008, guid: a5c90bec66dbe9c46b34b4fd2004e21b, type: 3}
-  nrOfWolves: 4
-  startPoint: {fileID: 0}
-  endPoint: {fileID: 0}
-  fenceSides: []
+  wolf: {fileID: 3373009278612546657, guid: e2715243a108ca14ca71063acd060efa, type: 3}
+  spawnRadius: 6
