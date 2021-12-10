@@ -22,7 +22,6 @@ namespace TheLoneHerder
             }
             else
             {
-                fence.soundPlayer[0].Play();
                 fence.SwitchState(fence.DamageState);
             }
         }
