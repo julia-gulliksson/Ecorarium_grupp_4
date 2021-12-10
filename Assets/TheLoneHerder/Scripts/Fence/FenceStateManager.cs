@@ -72,6 +72,9 @@ namespace TheLoneHerder
         private void HandleNight()
         {
             IsNight = true;
+
+            if (outlineScript.enabled && outlineScript.OutlineColor == outlineColor) outlineScript.OutlineColor = Color.red;
+
             if (currentState != ResetState && !MaxHealthReached())
             {
                 SwitchState(ResetState);
@@ -85,7 +88,7 @@ namespace TheLoneHerder
         private void HandleDay()
         {
             IsNight = false;
-            if (outlineScript.OutlineColor == Color.red) outlineScript.OutlineColor = outlineColor;
+            if (outlineScript.enabled && outlineScript.OutlineColor == Color.red) outlineScript.OutlineColor = outlineColor;
         }
 
         public void UpdateHealth(int updatedHealth)
