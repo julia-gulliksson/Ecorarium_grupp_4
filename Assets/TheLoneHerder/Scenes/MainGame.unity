@@ -18670,6 +18670,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7403889192960002853, guid: 7746de65415e77846a935008f5ee66f3, type: 3}
+      propertyPath: effectPrefab
+      value: 
+      objectReference: {fileID: 1679951373353481449, guid: 02b1d56afba80d643b418106d83ada02, type: 3}
     - target: {fileID: 7403889192960002854, guid: 7746de65415e77846a935008f5ee66f3, type: 3}
       propertyPath: m_RootOrder
       value: 0
