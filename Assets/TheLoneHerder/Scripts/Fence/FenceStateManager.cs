@@ -10,6 +10,7 @@ namespace TheLoneHerder
         public FenceDamageState DamageState = new FenceDamageState();
         public FenceRepairState RepairState = new FenceRepairState();
         public FenceResetState ResetState = new FenceResetState();
+        Outline outlineScript;
 
         [SerializeField] public int side;
         [SerializeField] LayerMask fenceMask;
@@ -41,6 +42,7 @@ namespace TheLoneHerder
 
         void Start()
         {
+            outlineScript = GetComponent<Outline>();
             int children = 0;
             foreach (Transform childTransform in transform)
             {
@@ -119,6 +121,16 @@ namespace TheLoneHerder
             {
                 SwitchState(ResetState);
             }
+        }
+
+        public void OnEnterHoverFence()
+        {
+            outlineScript.enabled = true;
+        }
+
+        public void OnExitHoverFence()
+        {
+            outlineScript.enabled = false;
         }
 
         public bool MaxHealthReached()
