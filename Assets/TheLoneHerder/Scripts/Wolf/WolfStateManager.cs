@@ -11,7 +11,6 @@ namespace TheLoneHerder
         public WolfAttackSheepState AttackSheepState = new WolfAttackSheepState();
         public WolfRetreatState RetreatState = new WolfRetreatState();
 
-        
         public IFence fenceScript;
         public LayerMask hitMask;
         public NavMeshAgent navMeshAgent;
