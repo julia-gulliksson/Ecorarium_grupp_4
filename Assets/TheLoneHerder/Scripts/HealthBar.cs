@@ -11,11 +11,13 @@ namespace TheLoneHerder
         [SerializeField] Gradient gradient;
         Animator animator;
         [SerializeField] Transform player;
+        AudioSource ding;
 
         private void Start()
         {
             slider = GetComponent<Slider>();
             animator = GetComponent<Animator>();
+            ding = GetComponent<AudioSource>();
         }
         private void Update()
         {
@@ -41,6 +43,7 @@ namespace TheLoneHerder
                 animator.SetFloat("health", healthPercentage);
                 if (healthPercentage == 100)
                 {
+                    ding.Play();
                     animator.SetTrigger("maxHealthAchieved");
                 }
             }

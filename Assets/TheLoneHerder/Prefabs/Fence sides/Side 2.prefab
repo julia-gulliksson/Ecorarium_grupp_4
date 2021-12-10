@@ -52,10 +52,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a3d4bb1dbc01b43a073744f61a418f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundObject: {fileID: 0}
   side: 2
   fenceMask:
     serializedVersion: 2
     m_Bits: 128
+  soundPlayer:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &319643532373130067
 MonoBehaviour:
   m_ObjectHideFlags: 0

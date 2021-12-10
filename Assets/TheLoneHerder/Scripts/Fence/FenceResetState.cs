@@ -22,7 +22,6 @@ namespace TheLoneHerder
             }
             else
             {
-                fence.soundPlayer[0].Play();
                 fence.SwitchState(fence.DamageState);
             }
         }
@@ -38,6 +37,7 @@ namespace TheLoneHerder
 
         IEnumerator ResetHealth()
         {
+            fence.sawingSound.Stop();
             isResetting = true;
             while (savedHealth > fence.DamagedHealth)
             {
