@@ -10,6 +10,8 @@ namespace TheLoneHerder
         public FenceDamageState DamageState = new FenceDamageState();
         public FenceRepairState RepairState = new FenceRepairState();
         public FenceResetState ResetState = new FenceResetState();
+        Outline outlineScript;
+        Color outlineColor;
 
         [SerializeField] public int side;
         [SerializeField] LayerMask fenceMask;
@@ -41,6 +43,8 @@ namespace TheLoneHerder
 
         void Start()
         {
+            outlineScript = GetComponent<Outline>();
+            outlineColor = outlineScript.OutlineColor;
             int children = 0;
             foreach (Transform childTransform in transform)
             {
@@ -81,6 +85,7 @@ namespace TheLoneHerder
         private void HandleDay()
         {
             IsNight = false;
+            if (outlineScript.OutlineColor == Color.red) outlineScript.OutlineColor = outlineColor;
         }
 
         public void UpdateHealth(int updatedHealth)
@@ -119,6 +124,24 @@ namespace TheLoneHerder
             {
                 SwitchState(ResetState);
             }
+        }
+
+        public void OnEnterHoverFence()
+        {
+            outlineScript.enabled = true;
+            if (IsNight)
+            {
+                outlineScript.OutlineColor = Color.red;
+            }
+            else
+            {
+                outlineScript.OutlineColor = outlineColor;
+            }
+        }
+
+        public void OnExitHoverFence()
+        {
+            outlineScript.enabled = false;
         }
 
         public bool MaxHealthReached()
