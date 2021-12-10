@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ namespace TheLoneHerder
         {
             wolfRef.navMeshAgent.SetDestination(wolfRef.targetPoint);
             wolf = wolfRef;
+            wolf.StartCoroutine(Growl());
         }
 
         public override void UpdateState()
@@ -40,8 +42,8 @@ namespace TheLoneHerder
 
             // Create list of rays facing different directions
             List<RayDirection> rayDirections = new List<RayDirection>() { new RayDirection(faceForward, wolf.targetPoint, wolf.hitMask, range, Direction.Forward), new RayDirection(faceForwardLower, wolf.targetPoint, wolf.hitMask, range, Direction.Forward),
-        new RayDirection(faceRight, wolf.targetPoint, wolf.hitMask, range, Direction.Right), new RayDirection(faceRightLower, wolf.targetPoint, wolf.hitMask, range, Direction.Right),
-        new RayDirection(faceLeftLower, wolf.targetPoint, wolf.hitMask, range, Direction.Left), new RayDirection(faceLeft, wolf.targetPoint, wolf.hitMask, range, Direction.Left)};
+            new RayDirection(faceRight, wolf.targetPoint, wolf.hitMask, range, Direction.Right), new RayDirection(faceRightLower, wolf.targetPoint, wolf.hitMask, range, Direction.Right),
+            new RayDirection(faceLeftLower, wolf.targetPoint, wolf.hitMask, range, Direction.Left), new RayDirection(faceLeft, wolf.targetPoint, wolf.hitMask, range, Direction.Left)};
 
             List<RayDirection> raysFoundTarget = new List<RayDirection>();
             foreach (RayDirection ray in rayDirections)
@@ -105,6 +107,14 @@ namespace TheLoneHerder
             wolf.SwitchState(wolf.AttackSheepState);
         }
 
+
+        IEnumerator Growl()
+        {
+            float randomWait = Random.Range(3, 20);
+            yield return new WaitForSeconds(randomWait);
+            wolf.growl.Play();
+        }
+
         public override void OnDestroy()
         {
             wolf.fenceScript?.WolfLost();
@@ -113,6 +123,7 @@ namespace TheLoneHerder
         public override void ExitState()
         {
             wolf.fenceScript?.WolfLost();
+            wolf.StopCoroutine(Growl());
         }
 
         public override void OnTriggerEnter(Collider collider) { }

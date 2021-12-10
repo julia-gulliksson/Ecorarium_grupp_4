@@ -15,7 +15,8 @@ namespace TheLoneHerder
         public LayerMask hitMask;
         public NavMeshAgent navMeshAgent;
         public int id;
-        AudioSource whimper;
+        [SerializeField] AudioSource whimper;
+        [SerializeField] public AudioSource growl;
         bool fenceHasBroken = false;
         [System.NonSerialized] public Vector3 targetPoint;
         [System.NonSerialized] public Vector3 spawnPosition;
