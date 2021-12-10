@@ -11,10 +11,12 @@ namespace TheLoneHerder
         public WolfAttackSheepState AttackSheepState = new WolfAttackSheepState();
         public WolfRetreatState RetreatState = new WolfRetreatState();
 
+        
         public IFence fenceScript;
         public LayerMask hitMask;
         public NavMeshAgent navMeshAgent;
         public int id;
+        AudioSource whimper;
         bool fenceHasBroken = false;
         [System.NonSerialized] public Vector3 targetPoint;
         [System.NonSerialized] public Vector3 spawnPosition;
@@ -36,6 +38,7 @@ namespace TheLoneHerder
 
         void Start()
         {
+            whimper = GetComponent<AudioSource>();
             navMeshAgent = GetComponent<NavMeshAgent>();
 
             currentState = AttackFenceState;
@@ -80,6 +83,8 @@ namespace TheLoneHerder
 
         public void Damage()
         {
+            int whimperChance = Random.Range(0, 5);
+            if (whimperChance == 0) whimper.Play();
             baseHealth -= 100;
             if (baseHealth <= 0)
             {
