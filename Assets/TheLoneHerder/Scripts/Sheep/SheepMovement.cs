@@ -15,7 +15,7 @@ namespace TheLoneHerder
         [SerializeField] Vector3 walkPoint;
         private AudioSource baa;
         NavMeshAgent animal;
-        
+
 
         //Variables
         [SerializeField] private bool walkPointSet;
@@ -39,7 +39,7 @@ namespace TheLoneHerder
         void Update()
         {
             Walk();
-            
+
 
             Baa();
         }
@@ -74,7 +74,7 @@ namespace TheLoneHerder
 
             //If walkPointSet is true set destination to walkPoint
             if (walkPointSet) animal.SetDestination(walkPoint);
-            
+
             //Reset walkPointSet if close enough to walkPoint
             Vector3 distanceToWalkPoint = transform.position - walkPoint;
             if (distanceToWalkPoint.magnitude < 1.0f)

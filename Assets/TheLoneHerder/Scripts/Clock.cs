@@ -6,6 +6,7 @@ namespace TheLoneHerder
     {
         AudioSource ringring;
         Animator animator;
+        bool firstDay = true;
 
         private void Start()
         {
@@ -32,7 +33,14 @@ namespace TheLoneHerder
         public void TriggerDay()
         {
             GameEventsManager.current.Day();
-            ringring.Play();
+            if (!firstDay)
+            {
+                ringring.Play();
+            }
+            else
+            {
+                firstDay = false;
+            }
         }
 
         public void TriggerNight()
