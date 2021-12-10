@@ -15,6 +15,7 @@ namespace TheLoneHerder
 
         [SerializeField] public int side;
         [SerializeField] LayerMask fenceMask;
+        public AudioSource sawingSound;
         private int baseHealth = 100;
         public int Health { get; private set; }
         public int MaxHealth { get; private set; }

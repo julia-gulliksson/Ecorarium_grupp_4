@@ -32,6 +32,7 @@ namespace TheLoneHerder
         IEnumerator Repair()
         {
             isRepairing = true;
+            fence.sawingSound.Play();
             while (savedHealth < fence.MaxHealth)
             {
                 savedHealth++;
@@ -39,6 +40,8 @@ namespace TheLoneHerder
                 fence.UpdateHealth(savedHealth);
                 yield return new WaitForSeconds(repairSpeed);
             }
+            fence.sawingSound.Stop();
+
             fence.SwitchState(fence.DamageState);
         }
     }
