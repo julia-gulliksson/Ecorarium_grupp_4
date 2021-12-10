@@ -32,6 +32,7 @@ namespace TheLoneHerder
         IEnumerator Repair()
         {
             isRepairing = true;
+            fence.soundPlayer[1].Play();
             while (savedHealth < fence.MaxHealth)
             {
                 savedHealth++;

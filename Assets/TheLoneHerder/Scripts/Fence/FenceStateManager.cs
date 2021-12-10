@@ -13,8 +13,10 @@ namespace TheLoneHerder
         Outline outlineScript;
         Color outlineColor;
 
+        [SerializeField] GameObject soundObject;
         [SerializeField] public int side;
         [SerializeField] LayerMask fenceMask;
+        public AudioSource[] soundPlayer = new AudioSource[2];
         private int baseHealth = 100;
         public int Health { get; private set; }
         public int MaxHealth { get; private set; }
@@ -40,9 +42,10 @@ namespace TheLoneHerder
             GameEventsManager.current.OnDay -= HandleNight;
             GameEventsManager.current.OnDay -= HandleDay;
         }
-
+        
         void Start()
         {
+            soundPlayer = soundObject.GetComponents<AudioSource>();
             outlineScript = GetComponent<Outline>();
             outlineColor = outlineScript.OutlineColor;
             int children = 0;
