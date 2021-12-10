@@ -21770,6 +21770,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8185108354633422185, guid: 0fae35f9cc032604aa892d829b62b0b7, type: 3}
   m_PrefabInstance: {fileID: 8432335678076127850}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &636522772 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8672301581284526320, guid: 0fae35f9cc032604aa892d829b62b0b7, type: 3}
+  m_PrefabInstance: {fileID: 8432335678076127850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &638848263 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2594766243793326376, guid: 4d1f930728eb81f499eefd1f6d4db221, type: 3}
@@ -38731,6 +38736,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1474028374}
     m_Modifications:
     - target: {fileID: 319643532373130066, guid: b72980cc468ffeb45a1491a543fd65ba, type: 3}
+      propertyPath: sawingSound
+      value: 
+      objectReference: {fileID: 636522772}
+    - target: {fileID: 319643532373130066, guid: b72980cc468ffeb45a1491a543fd65ba, type: 3}
       propertyPath: soundObject
       value: 
       objectReference: {fileID: 0}
@@ -40971,6 +40980,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1833449434}
+    - target: {fileID: 8307776488321372763, guid: 34edee35249190a4295ff6039c484118, type: 3}
+      propertyPath: sawingSound
+      value: 
+      objectReference: {fileID: 636522772}
     - target: {fileID: 8307776488321372763, guid: 34edee35249190a4295ff6039c484118, type: 3}
       propertyPath: soundObject
       value: 
@@ -49235,6 +49248,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3548512894578759859, guid: 0eaa69208172d9a46983ab12ab92f87c, type: 3}
+      propertyPath: sawingSound
+      value: 
+      objectReference: {fileID: 636522772}
     - target: {fileID: 3548512894578759859, guid: 0eaa69208172d9a46983ab12ab92f87c, type: 3}
       propertyPath: soundObject
       value: 
@@ -74749,6 +74766,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 298161793404989454, guid: 82c4818771768af44ac45f93d3cbfbd7, type: 3}
+      propertyPath: sawingSound
+      value: 
+      objectReference: {fileID: 636522772}
     - target: {fileID: 298161793404989454, guid: 82c4818771768af44ac45f93d3cbfbd7, type: 3}
       propertyPath: soundObject
       value: 
