@@ -15,6 +15,7 @@ namespace TheLoneHerder
 
         [SerializeField] public int side;
         [SerializeField] LayerMask fenceMask;
+        public AudioSource sawingSound;
         private int baseHealth = 100;
         public int Health { get; private set; }
         public int MaxHealth { get; private set; }
@@ -72,6 +73,9 @@ namespace TheLoneHerder
         private void HandleNight()
         {
             IsNight = true;
+
+            if (outlineScript.enabled && outlineScript.OutlineColor == outlineColor) outlineScript.OutlineColor = Color.red;
+
             if (currentState != ResetState && !MaxHealthReached())
             {
                 SwitchState(ResetState);
@@ -85,7 +89,7 @@ namespace TheLoneHerder
         private void HandleDay()
         {
             IsNight = false;
-            if (outlineScript.OutlineColor == Color.red) outlineScript.OutlineColor = outlineColor;
+            if (outlineScript.enabled && outlineScript.OutlineColor == Color.red) outlineScript.OutlineColor = outlineColor;
         }
 
         public void UpdateHealth(int updatedHealth)
