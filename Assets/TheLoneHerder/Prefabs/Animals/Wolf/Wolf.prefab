@@ -792,6 +792,7 @@ MonoBehaviour:
   id: 0
   whimper: {fileID: -8824824313829098140}
   growl: {fileID: 6164913688520933146}
+  ripple: {fileID: 8181358097998259907, guid: 74c5a0404cb17dd419f2457af0c3b96a, type: 3}
 --- !u!136 &7862414636669884055
 CapsuleCollider:
   m_ObjectHideFlags: 0

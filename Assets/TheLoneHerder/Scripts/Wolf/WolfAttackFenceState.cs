@@ -13,12 +13,13 @@ namespace TheLoneHerder
         float range = 4f;
         bool hasFoundTarget = false;
         float rotationSpeed = 5f;
+        float growlEffectDistance = 4f;
 
         public override void EnterState(WolfStateManager wolfRef)
         {
             wolfRef.navMeshAgent.SetDestination(wolfRef.targetPoint);
             wolf = wolfRef;
-            wolf.StartCoroutine(Growl());
+            wolf.growling = wolf.StartCoroutine(Growl());
         }
 
         public override void UpdateState()
@@ -99,6 +100,7 @@ namespace TheLoneHerder
 
         public void HandleFenceBreak()
         {
+            wolf.StopCoroutine(wolf.growling);
             // Stop attack animation
             GameEventsManager.current.WolfStopAttacking(wolf.id);
             // Register wolf lost fence
@@ -107,12 +109,22 @@ namespace TheLoneHerder
             wolf.SwitchState(wolf.AttackSheepState);
         }
 
-
         IEnumerator Growl()
         {
-            float randomWait = Random.Range(3, 20);
-            yield return new WaitForSeconds(randomWait);
-            wolf.growl.Play();
+            while (true)
+            {
+                float randomWait = Random.Range(3, 15);
+                yield return new WaitForSeconds(randomWait);
+                if (Vector3.Distance(wolf.transform.position, wolf.player.position) > growlEffectDistance)
+                {
+                    float nosePositionZ = wolf.transform.localScale.z - 0.5f;
+                    Vector3 nosePosition = wolf.transform.forward * nosePositionZ;
+                    ParticleSystem rippleEffect = Object.Instantiate(wolf.ripple, wolf.transform.position + nosePosition, wolf.transform.rotation);
+                    rippleEffect.transform.LookAt(wolf.player);
+                    rippleEffect.transform.SetParent(wolf.transform);
+                }
+                wolf.growl.Play();
+            }
         }
 
         public override void OnDestroy()
@@ -123,7 +135,7 @@ namespace TheLoneHerder
         public override void ExitState()
         {
             wolf.fenceScript?.WolfLost();
-            wolf.StopCoroutine(Growl());
+            wolf.StopCoroutine(wolf.growling);
         }
 
         public override void OnTriggerEnter(Collider collider) { }
