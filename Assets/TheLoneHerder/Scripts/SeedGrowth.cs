@@ -20,7 +20,11 @@ namespace TheLoneHerder
         // Update is called once per frame
         void Update()
         {
-            if (planted && growth < 2)
+            if (planted && growth == 0)
+            {
+                gameObject.transform.GetChild(growth).gameObject.SetActive(true);
+            }
+            else if (planted && growth == 1)
             {
                 gameObject.transform.GetChild(growth).gameObject.SetActive(true);
                 gameObject.transform.GetChild(growth - 1).gameObject.SetActive(false);
