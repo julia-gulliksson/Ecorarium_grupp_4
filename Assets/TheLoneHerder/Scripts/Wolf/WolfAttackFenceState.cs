@@ -14,6 +14,7 @@ namespace TheLoneHerder
         bool hasFoundTarget = false;
         float rotationSpeed = 5f;
         float growlEffectDistance = 4f;
+        ParticleSystem rippleEffect;
 
         public override void EnterState(WolfStateManager wolfRef)
         {
@@ -25,6 +26,8 @@ namespace TheLoneHerder
         public override void UpdateState()
         {
             DetectFence();
+
+            RotateRippleEffect();
         }
 
         void DetectFence()
@@ -115,15 +118,24 @@ namespace TheLoneHerder
             {
                 float randomWait = Random.Range(3, 15);
                 yield return new WaitForSeconds(randomWait);
+
+                wolf.growl.Play();
+
                 if (Vector3.Distance(wolf.transform.position, wolf.player.position) > growlEffectDistance)
                 {
                     float nosePositionZ = wolf.transform.localScale.z - 0.5f;
                     Vector3 nosePosition = wolf.transform.forward * nosePositionZ;
-                    ParticleSystem rippleEffect = Object.Instantiate(wolf.ripple, wolf.transform.position + nosePosition, wolf.transform.rotation);
-                    rippleEffect.transform.LookAt(wolf.player);
+                    rippleEffect = Object.Instantiate(wolf.ripple, wolf.transform.position + nosePosition, wolf.transform.rotation);
                     rippleEffect.transform.SetParent(wolf.transform);
                 }
-                wolf.growl.Play();
+            }
+        }
+
+        void RotateRippleEffect()
+        {
+            if (rippleEffect != null)
+            {
+                rippleEffect.transform.LookAt(wolf.player);
             }
         }
 
