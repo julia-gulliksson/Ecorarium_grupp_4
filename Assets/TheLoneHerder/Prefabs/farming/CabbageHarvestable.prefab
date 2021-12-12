@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 654027282621613118}
   - component: {fileID: 5742971069584426957}
   - component: {fileID: 8109688878899466502}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CabbageHarvestable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 5
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
