@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 7615327608115283258}
   - component: {fileID: 3411331201256676523}
   m_Layer: 0
-  m_Name: Cube.001
+  m_Name: pages
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 1074481250066986154}
   - component: {fileID: 8930460949363763317}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 1051433204112164607}
   - component: {fileID: 2818275644712142949}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
