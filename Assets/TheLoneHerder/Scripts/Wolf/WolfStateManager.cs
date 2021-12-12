@@ -11,13 +11,16 @@ namespace TheLoneHerder
         public WolfAttackSheepState AttackSheepState = new WolfAttackSheepState();
         public WolfRetreatState RetreatState = new WolfRetreatState();
 
-        
         public IFence fenceScript;
         public LayerMask hitMask;
         public NavMeshAgent navMeshAgent;
         public int id;
-        AudioSource whimper;
+        public Coroutine growling;
+        [SerializeField] AudioSource whimper;
+        [SerializeField] public AudioSource growl;
+        [SerializeField] public ParticleSystem ripple;
         bool fenceHasBroken = false;
+        [System.NonSerialized] public Transform player;
         [System.NonSerialized] public Vector3 targetPoint;
         [System.NonSerialized] public Vector3 spawnPosition;
         int baseHealth = 400;
@@ -44,6 +47,7 @@ namespace TheLoneHerder
             currentState = AttackFenceState;
             currentState.EnterState(this);
             spawnPosition = transform.position;
+            player = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
         void Update()

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,16 +13,21 @@ namespace TheLoneHerder
         float range = 4f;
         bool hasFoundTarget = false;
         float rotationSpeed = 5f;
+        float growlEffectDistance = 4f;
+        ParticleSystem rippleEffect;
 
         public override void EnterState(WolfStateManager wolfRef)
         {
             wolfRef.navMeshAgent.SetDestination(wolfRef.targetPoint);
             wolf = wolfRef;
+            wolf.growling = wolf.StartCoroutine(Growl());
         }
 
         public override void UpdateState()
         {
             DetectFence();
+
+            RotateRippleEffect();
         }
 
         void DetectFence()
@@ -40,8 +46,8 @@ namespace TheLoneHerder
 
             // Create list of rays facing different directions
             List<RayDirection> rayDirections = new List<RayDirection>() { new RayDirection(faceForward, wolf.targetPoint, wolf.hitMask, range, Direction.Forward), new RayDirection(faceForwardLower, wolf.targetPoint, wolf.hitMask, range, Direction.Forward),
-        new RayDirection(faceRight, wolf.targetPoint, wolf.hitMask, range, Direction.Right), new RayDirection(faceRightLower, wolf.targetPoint, wolf.hitMask, range, Direction.Right),
-        new RayDirection(faceLeftLower, wolf.targetPoint, wolf.hitMask, range, Direction.Left), new RayDirection(faceLeft, wolf.targetPoint, wolf.hitMask, range, Direction.Left)};
+            new RayDirection(faceRight, wolf.targetPoint, wolf.hitMask, range, Direction.Right), new RayDirection(faceRightLower, wolf.targetPoint, wolf.hitMask, range, Direction.Right),
+            new RayDirection(faceLeftLower, wolf.targetPoint, wolf.hitMask, range, Direction.Left), new RayDirection(faceLeft, wolf.targetPoint, wolf.hitMask, range, Direction.Left)};
 
             List<RayDirection> raysFoundTarget = new List<RayDirection>();
             foreach (RayDirection ray in rayDirections)
@@ -97,12 +103,40 @@ namespace TheLoneHerder
 
         public void HandleFenceBreak()
         {
+            wolf.StopCoroutine(wolf.growling);
             // Stop attack animation
             GameEventsManager.current.WolfStopAttacking(wolf.id);
             // Register wolf lost fence
             wolf.fenceScript?.WolfLost();
             // Switch to attacking sheep instead
             wolf.SwitchState(wolf.AttackSheepState);
+        }
+
+        IEnumerator Growl()
+        {
+            while (true)
+            {
+                float randomWait = Random.Range(3, 15);
+                yield return new WaitForSeconds(randomWait);
+
+                wolf.growl.Play();
+
+                if (Vector3.Distance(wolf.transform.position, wolf.player.position) > growlEffectDistance)
+                {
+                    float nosePositionZ = wolf.transform.localScale.z - 0.5f;
+                    Vector3 nosePosition = wolf.transform.forward * nosePositionZ;
+                    rippleEffect = Object.Instantiate(wolf.ripple, wolf.transform.position + nosePosition, wolf.transform.rotation);
+                    rippleEffect.transform.SetParent(wolf.transform);
+                }
+            }
+        }
+
+        void RotateRippleEffect()
+        {
+            if (rippleEffect != null)
+            {
+                rippleEffect.transform.LookAt(wolf.player);
+            }
         }
 
         public override void OnDestroy()
@@ -113,6 +147,7 @@ namespace TheLoneHerder
         public override void ExitState()
         {
             wolf.fenceScript?.WolfLost();
+            wolf.StopCoroutine(wolf.growling);
         }
 
         public override void OnTriggerEnter(Collider collider) { }

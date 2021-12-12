@@ -10,12 +10,14 @@ namespace TheLoneHerder
         public FenceDamageState DamageState = new FenceDamageState();
         public FenceRepairState RepairState = new FenceRepairState();
         public FenceResetState ResetState = new FenceResetState();
-        Outline outlineScript;
-        Color outlineColor;
 
+        [SerializeField] Color redColor;
         [SerializeField] public int side;
         [SerializeField] LayerMask fenceMask;
+        private Outline outlineScript;
+        private Color outlineColor;
         public AudioSource sawingSound;
+
         private int baseHealth = 100;
         public int Health { get; private set; }
         public int MaxHealth { get; private set; }
@@ -74,7 +76,7 @@ namespace TheLoneHerder
         {
             IsNight = true;
 
-            if (outlineScript.enabled && outlineScript.OutlineColor == outlineColor) outlineScript.OutlineColor = Color.red;
+            if (outlineScript.enabled && outlineScript.OutlineColor == outlineColor) outlineScript.OutlineColor = redColor;
 
             if (currentState != ResetState && !MaxHealthReached())
             {
@@ -89,7 +91,7 @@ namespace TheLoneHerder
         private void HandleDay()
         {
             IsNight = false;
-            if (outlineScript.enabled && outlineScript.OutlineColor == Color.red) outlineScript.OutlineColor = outlineColor;
+            if (outlineScript.enabled && outlineScript.OutlineColor == redColor) outlineScript.OutlineColor = outlineColor;
         }
 
         public void UpdateHealth(int updatedHealth)
@@ -132,15 +134,15 @@ namespace TheLoneHerder
 
         public void OnEnterHoverFence()
         {
-            outlineScript.enabled = true;
             if (IsNight)
             {
-                outlineScript.OutlineColor = Color.red;
+                outlineScript.OutlineColor = redColor;
             }
             else
             {
                 outlineScript.OutlineColor = outlineColor;
             }
+            outlineScript.enabled = true;
         }
 
         public void OnExitHoverFence()
