@@ -3546,7 +3546,7 @@ GameObject:
   - component: {fileID: 4991493103160841626}
   - component: {fileID: 4991493103160841625}
   m_Layer: 0
-  m_Name: spot (1)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3609,7 +3609,7 @@ GameObject:
   - component: {fileID: 4991493103453656604}
   - component: {fileID: 4991493103453656595}
   m_Layer: 0
-  m_Name: spot (1)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3672,7 +3672,7 @@ GameObject:
   - component: {fileID: 4991493103465965965}
   - component: {fileID: 4991493103465965964}
   m_Layer: 0
-  m_Name: spot (3)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3766,7 +3766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4991493103756715482}
   m_Layer: 0
-  m_Name: plantRow (2)
+  m_Name: PlantRow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3803,7 +3803,7 @@ GameObject:
   - component: {fileID: 4991493103778899074}
   - component: {fileID: 4991493103778899073}
   m_Layer: 0
-  m_Name: spot
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3866,7 +3866,7 @@ GameObject:
   - component: {fileID: 4991493103912986117}
   - component: {fileID: 4991493103912986116}
   m_Layer: 0
-  m_Name: spot (1)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3929,7 +3929,7 @@ GameObject:
   - component: {fileID: 4991493103928129525}
   - component: {fileID: 4991493103928129524}
   m_Layer: 0
-  m_Name: spot
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3990,7 +3990,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4991493104150733236}
   m_Layer: 0
-  m_Name: grabbable
+  m_Name: Grabbable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4054,7 +4054,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4991493104721118231}
   m_Layer: 0
-  m_Name: plantRow (1)
+  m_Name: PlantRow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4091,7 +4091,7 @@ GameObject:
   - component: {fileID: 4991493104748479323}
   - component: {fileID: 4991493104748479322}
   m_Layer: 0
-  m_Name: spot (3)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4152,7 +4152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4991493104764579840}
   m_Layer: 0
-  m_Name: plantRow
+  m_Name: PlantRow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4189,7 +4189,7 @@ GameObject:
   - component: {fileID: 4991493104839850871}
   - component: {fileID: 4991493104839850870}
   m_Layer: 0
-  m_Name: spot
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4252,7 +4252,7 @@ GameObject:
   - component: {fileID: 4991493105045530816}
   - component: {fileID: 4991493105045530823}
   m_Layer: 0
-  m_Name: spot (2)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4315,7 +4315,7 @@ GameObject:
   - component: {fileID: 4991493105069274370}
   - component: {fileID: 4991493105069274369}
   m_Layer: 0
-  m_Name: spot (2)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4451,7 +4451,7 @@ GameObject:
   - component: {fileID: 4991493105212268205}
   - component: {fileID: 4991493105212268204}
   m_Layer: 0
-  m_Name: spot (2)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4514,7 +4514,7 @@ GameObject:
   - component: {fileID: 4991493105234848143}
   - component: {fileID: 4991493105234848142}
   m_Layer: 0
-  m_Name: spot (3)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5361,7 +5361,7 @@ GameObject:
   - component: {fileID: 6463563702169023197}
   - component: {fileID: 6463563702169023198}
   m_Layer: 0
-  m_Name: spot
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5422,7 +5422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6463563702176199557}
   m_Layer: 0
-  m_Name: plantRow (2)
+  m_Name: PlantRow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5459,7 +5459,7 @@ GameObject:
   - component: {fileID: 6463563702273286570}
   - component: {fileID: 6463563702273286571}
   m_Layer: 0
-  m_Name: spot
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5522,7 +5522,7 @@ GameObject:
   - component: {fileID: 6463563702303109210}
   - component: {fileID: 6463563702303109211}
   m_Layer: 0
-  m_Name: spot (1)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5585,7 +5585,7 @@ GameObject:
   - component: {fileID: 6463563702477242435}
   - component: {fileID: 6463563702477242444}
   m_Layer: 0
-  m_Name: spot (1)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5648,7 +5648,7 @@ GameObject:
   - component: {fileID: 6463563702482223058}
   - component: {fileID: 6463563702482223059}
   m_Layer: 0
-  m_Name: spot (3)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5711,7 +5711,7 @@ GameObject:
   - component: {fileID: 6463563702789456837}
   - component: {fileID: 6463563702789456838}
   m_Layer: 0
-  m_Name: spot (1)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5774,7 +5774,7 @@ GameObject:
   - component: {fileID: 6463563703011648349}
   - component: {fileID: 6463563703011648350}
   m_Layer: 0
-  m_Name: spot (2)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5837,7 +5837,7 @@ GameObject:
   - component: {fileID: 6463563703033134751}
   - component: {fileID: 6463563703033134744}
   m_Layer: 0
-  m_Name: spot (2)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5900,7 +5900,7 @@ GameObject:
   - component: {fileID: 6463563703114317776}
   - component: {fileID: 6463563703114317777}
   m_Layer: 0
-  m_Name: spot (3)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5963,7 +5963,7 @@ GameObject:
   - component: {fileID: 6463563703153592562}
   - component: {fileID: 6463563703153592563}
   m_Layer: 0
-  m_Name: spot (2)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6026,7 +6026,7 @@ GameObject:
   - component: {fileID: 6463563703255264552}
   - component: {fileID: 6463563703255264553}
   m_Layer: 0
-  m_Name: spot
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6087,7 +6087,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6463563703314081375}
   m_Layer: 0
-  m_Name: plantRow
+  m_Name: PlantRow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6124,7 +6124,7 @@ GameObject:
   - component: {fileID: 6463563703600108804}
   - component: {fileID: 6463563703600108805}
   m_Layer: 0
-  m_Name: spot (3)
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6185,7 +6185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6463563703645098568}
   m_Layer: 0
-  m_Name: plantRow (1)
+  m_Name: PlantRow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

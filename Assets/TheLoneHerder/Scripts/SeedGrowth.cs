@@ -12,9 +12,14 @@ namespace TheLoneHerder
         bool planted = false;
 
         // Start is called before the first frame update
-        void Start()
+        void OnEnable()
         {
             GameEventsManager.current.OnDay += GrowthProgression;
+        }
+
+        void OnDisable()
+        {
+            GameEventsManager.current.OnDay -= GrowthProgression;
         }
 
         // Update is called once per frame
