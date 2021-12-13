@@ -13,5 +13,13 @@ namespace TheLoneHerder
                 Sparkly.Play();
             }
         }
+        
+        private void OnTriggerExit(Collider collider)
+        {
+            if (collider.gameObject.name == "Stick")
+            {
+                Sparkly.Stop();
+            }
+        }
     }
 }
