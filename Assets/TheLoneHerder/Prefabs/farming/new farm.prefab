@@ -4409,7 +4409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4991493105134551480}
   m_Layer: 0
-  m_Name: new farm
+  m_Name: New farm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
