@@ -8,13 +8,13 @@ namespace TheLoneHerder
     public class WolfSpawnManager : MonoBehaviour
     {
         [SerializeField] GameObject wolf;
-        int nrOfWolves = 0;
         [SerializeField] float spawnRadius = 6;
         List<GameObject> wolves = new List<GameObject>();
         List<Vector3> defaultTargetPoints = new List<Vector3>();
         List<Vector3> targetPoints = new List<Vector3>();
         GameObject[] destinationObjects;
         AudioSource source;
+        int nrOfWolves = 0;
         int wolfIncrement = 3;
         int nrOfNightsPassed = 0;
 
@@ -63,13 +63,13 @@ namespace TheLoneHerder
         {
             while (wolves.Count < nrOfWolves && targetPoints.Count > 0)
             {
-                Vector2 radius = UnityEngine.Random.insideUnitCircle * spawnRadius;
+                Vector2 radius = Random.insideUnitCircle * spawnRadius;
                 Vector3 positioning = new Vector3(transform.position.x + radius.x, transform.position.y, transform.position.z + radius.y);
                 Vector3 targetPoint = Vector3.zero;
 
                 try
                 {
-                    int randomIndex = UnityEngine.Random.Range(0, targetPoints.Count);
+                    int randomIndex = Random.Range(0, targetPoints.Count);
                     targetPoint = targetPoints[randomIndex];
                     // Remove targetPoint in list, since no other wolves should get this targetPoint
                     targetPoints.Remove(targetPoints[randomIndex]);

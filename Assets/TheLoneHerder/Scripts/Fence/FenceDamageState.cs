@@ -7,7 +7,7 @@ namespace TheLoneHerder
         FenceStateManager fence;
         int wolvesAttacking = 0;
         bool isHealthTicking = false;
-        float tickSpeed = 0.1f;
+        float tickSpeed = 0.2f;
         int savedHealth;
 
         public override void EnterState(FenceStateManager fenceRef)

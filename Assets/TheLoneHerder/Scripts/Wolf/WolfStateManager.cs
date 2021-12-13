@@ -15,7 +15,12 @@ namespace TheLoneHerder
         public LayerMask hitMask;
         public NavMeshAgent navMeshAgent;
         public int id;
+        public Coroutine growling;
+        [SerializeField] AudioSource whimper;
+        [SerializeField] public AudioSource growl;
+        [SerializeField] public ParticleSystem ripple;
         bool fenceHasBroken = false;
+        [System.NonSerialized] public Transform player;
         [System.NonSerialized] public Vector3 targetPoint;
         [System.NonSerialized] public Vector3 spawnPosition;
         int baseHealth = 400;
@@ -36,11 +41,13 @@ namespace TheLoneHerder
 
         void Start()
         {
+            whimper = GetComponent<AudioSource>();
             navMeshAgent = GetComponent<NavMeshAgent>();
 
             currentState = AttackFenceState;
             currentState.EnterState(this);
             spawnPosition = transform.position;
+            player = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
         void Update()
@@ -80,6 +87,8 @@ namespace TheLoneHerder
 
         public void Damage()
         {
+            int whimperChance = Random.Range(0, 5);
+            if (whimperChance == 0) whimper.Play();
             baseHealth -= 100;
             if (baseHealth <= 0)
             {

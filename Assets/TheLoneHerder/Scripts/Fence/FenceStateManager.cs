@@ -11,8 +11,13 @@ namespace TheLoneHerder
         public FenceRepairState RepairState = new FenceRepairState();
         public FenceResetState ResetState = new FenceResetState();
 
+        [SerializeField] Color redColor;
         [SerializeField] public int side;
         [SerializeField] LayerMask fenceMask;
+        private Outline outlineScript;
+        private Color outlineColor;
+        public AudioSource sawingSound;
+
         private int baseHealth = 100;
         public int Health { get; private set; }
         public int MaxHealth { get; private set; }
@@ -41,6 +46,8 @@ namespace TheLoneHerder
 
         void Start()
         {
+            outlineScript = GetComponent<Outline>();
+            outlineColor = outlineScript.OutlineColor;
             int children = 0;
             foreach (Transform childTransform in transform)
             {
@@ -68,6 +75,9 @@ namespace TheLoneHerder
         private void HandleNight()
         {
             IsNight = true;
+
+            if (outlineScript.enabled && outlineScript.OutlineColor == outlineColor) outlineScript.OutlineColor = redColor;
+
             if (currentState != ResetState && !MaxHealthReached())
             {
                 SwitchState(ResetState);
@@ -81,6 +91,7 @@ namespace TheLoneHerder
         private void HandleDay()
         {
             IsNight = false;
+            if (outlineScript.enabled && outlineScript.OutlineColor == redColor) outlineScript.OutlineColor = outlineColor;
         }
 
         public void UpdateHealth(int updatedHealth)
@@ -119,6 +130,24 @@ namespace TheLoneHerder
             {
                 SwitchState(ResetState);
             }
+        }
+
+        public void OnEnterHoverFence()
+        {
+            if (IsNight)
+            {
+                outlineScript.OutlineColor = redColor;
+            }
+            else
+            {
+                outlineScript.OutlineColor = outlineColor;
+            }
+            outlineScript.enabled = true;
+        }
+
+        public void OnExitHoverFence()
+        {
+            outlineScript.enabled = false;
         }
 
         public bool MaxHealthReached()
